@@ -13,6 +13,22 @@ class Teacher extends Model
         return $this->hasMany(Message::class);
     }
 
+    public function reviews() {
+        return $this->hasMany(Review::class);
+    }
+
+    public function subjects() {
+        return $this->belongsToMany(Subject::class);
+    }
+
+    public function sponsorization() {
+        return $this->belongsToMany(Sponsorization::class);
+    }
+
+    public function reatings() {
+        return $this->belongsToMany(Reating::class);
+    }
+
     public function user() {
         return $this->hasOne(User::class);
     }
