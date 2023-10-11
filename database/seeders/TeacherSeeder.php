@@ -1,5 +1,5 @@
 <?php
-
+//Cos'è lo slug?
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
