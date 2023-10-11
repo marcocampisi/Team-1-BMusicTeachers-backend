@@ -12,4 +12,8 @@ class Teacher extends Model
     public function messages() {
         return $this->hasMany(Message::class);
     }
+
+    public function user() {
+        return $this->hasOne(User::class);
+    }
 }
