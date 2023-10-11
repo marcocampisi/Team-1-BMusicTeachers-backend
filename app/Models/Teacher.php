@@ -25,8 +25,8 @@ class Teacher extends Model
         return $this->belongsToMany(Sponsorization::class);
     }
 
-    public function reatings() {
-        return $this->belongsToMany(Reating::class);
+    public function ratings() {
+        return $this->belongsToMany(Rating::class);
     }
 
     public function user() {
