@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Sponsorization;
 use App\Http\Requests\StoreSponsorizationRequest;
 use App\Http\Requests\UpdateSponsorizationRequest;
+use App\Http\Controllers\Controller;
 
 class SponsorizationController extends Controller
 {
