@@ -9,7 +9,7 @@
         <div class="col-md-8">
 
             <div class="card">
-                <div class="card-header fw-bold fs-4 text-center">Login</div>
+                <div class="card-header">Login</div>
 
                 <div class="card-body">
 
@@ -17,7 +17,7 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="email" class="form-label">E-mail</label>
+                            <label for="email" class="form-label">E-mail <span class="text-danger">*</span></label>
                             <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                             @error('email')
                                 <span class="invalid-feedback">{{ $message }}</span>
@@ -25,11 +25,15 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                             <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
                             @error('password')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <p class="fs-6 fw-light">I campi contrassegnati <span class="text-danger">*</span> sono obbligatori.</p>
                         </div>
 
                         <div class="mb-3">
@@ -39,7 +43,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-outline-primary">Login</button>
 
                     </form>
 
