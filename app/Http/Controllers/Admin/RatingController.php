@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Rating;
-use App\Http\Requests\StoreRatingRequest;
-use App\Http\Requests\UpdateRatingRequest;
+use App\Http\Requests\Rating\StoreRatingRequest;
+use App\Http\Requests\Rating\UpdateRatingRequest;
 use App\Http\Controllers\Controller;
 
 class RatingController extends Controller
