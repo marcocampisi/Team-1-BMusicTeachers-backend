@@ -17,14 +17,14 @@ return new class extends Migration
             $table->foreign('sponsorization_id')
                 ->references('id')
                 ->on('sponsorizations')
-                ->onUpdate('cascade')//decidere
-                ->onDelete('set null'); //decidere
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('teacher_id')->nullable();
             $table->foreign('teacher_id')
                 ->references('id')
                 ->on('teachers')
-                ->onUpdate('cascade')//decidere
-                ->onDelete('set null');//decidere
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->dateTime('sponsored_start');
             $table->dateTime('sponsored_until');
             $table->timestamps();

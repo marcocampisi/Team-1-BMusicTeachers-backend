@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Rating;
 
 class RatingSeeder extends Seeder
 {
@@ -12,6 +13,10 @@ class RatingSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        for($i = 1; $i <= 5; $i++) {
+            Rating::create([
+                'value' => $i
+            ]);
+        }
     }
 }
