@@ -1,15 +1,15 @@
 <?php 
   return [
     [
-      "last_name"=>"Lojodice",
-      "first_name"=>"Bartolomeo",
-      "email"=>"Lojodice.Bartolomeo@boolena.com",
+      "last_name"=>"Formisano",
+      "first_name"=>"Mauro",
+      "email"=>"formisano.mauro@boolena.com",
       "password"=>"GG79uarxY34K"
     ],
     [
-    "last_name"=>"Bacceliere",
-    "first_name"=>"Giovanna",
-    "email"=>"Bacceliere.Giovanna@boolena.com",
+    "last_name"=>"Caggiano",
+    "first_name"=>"Marco",
+    "email"=>"caggiano.marco@boolena.com",
     "password"=>"LO05tiahJ71Z"
     ],
     [
