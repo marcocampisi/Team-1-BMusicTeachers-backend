@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Sponsorization;
-use App\Http\Requests\StoreSponsorizationRequest;
-use App\Http\Requests\UpdateSponsorizationRequest;
+use App\Http\Requests\Sponsorization\StoreSponsorizationRequest;
+use App\Http\Requests\Sponsorization\UpdateSponsorizationRequest;
 use App\Http\Controllers\Controller;
 
 class SponsorizationController extends Controller
