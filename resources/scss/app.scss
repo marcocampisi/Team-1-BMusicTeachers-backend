@@ -1,1 +1,13 @@
 @import "bootstrap/scss/bootstrap";
+
+.bg-bellissimo {
+    background-image: url(/file-img-pdf/background-dashboard-login/template.png);
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+.logo-bellissimo {
+    width: 50px;
+    background-color: brown;
+    height: 50px;
+}
