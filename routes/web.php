@@ -35,13 +35,14 @@ Route::middleware('auth')
     ->name('admin.')
     ->prefix('admin')
     ->group(function(){
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])/*->name('dashboard')*/;
     Route::resource('/messages', MessageController::class);
     Route::resource('/ratings', RatingController::class);
     Route::resource('/reviews', ReviewController::class);
     Route::resource('/sponsorizations', SponsorizationController::class);
-    Route::resource('/subjects', SubjectController::class);
+    Route::resource('/subjects', SubjectController::class); 
     Route::resource('/teachers', TeacherController::class);
 });
+
 
 require __DIR__.'/auth.php';

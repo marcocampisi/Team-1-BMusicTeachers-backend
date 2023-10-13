@@ -4,10 +4,10 @@
 
 @section('main-content')
     
-    <form action="{{ route('admin.teachers.store')}}" method="PUT">
+    <form action="{{ route('admin.teachers.store')}}" method="POST">
         @csrf
-
-        @method('POST')
+        
+        
         <div class="mb-3">
             <label for="bio" class="form-label">About me:</label>
             <textarea class="form-control" name="bio" id="bio" rows="3" required></textarea>

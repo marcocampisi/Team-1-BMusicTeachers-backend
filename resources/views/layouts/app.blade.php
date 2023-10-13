@@ -33,14 +33,12 @@
                                 <a class="nav-link" href="#">Assistenza</a>
                             </li>
                         </ul>
-                        <form method="POST" action="{{ route('admin.teachers.create') }}">
-                            @csrf
-
-                            <button type="submit" class="btn btn-outline-success">
-                                Sei un Insegnante?
-                            </button>
+                        
+                       
+                            
+                        <a href="{{ route('admin.teachers.create') }}">Sei un Insegnante?</a>
+                            
                             <!-- Alessio, ci manchi un sacco un sacco uno slug-->
-                        </form>
                     </div>
                 </div>
             </nav>

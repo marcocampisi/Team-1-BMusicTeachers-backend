@@ -12,8 +12,8 @@
                     <div class="card-body my-card-slug">
                         <h5 class="card-title">{{ $teacher->user->first_name }}</h5>
                         <p class="card-text">{{ $teacher->bio }}</p>
-                        <a href="{{ route('admin.teacher.show', ['teacher' => $teacher]) }}" class="btn btn-primary">Show</a>
-                        <a href="{{ route('admin.teacher.edit', ['teacher' => $teacher]) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('admin.teachers.show', ['teacher' => $teacher]) }}" class="btn btn-primary">Show</a>
+                        <a href="{{ route('admin.teachers.edit', ['teacher' => $teacher]) }}" class="btn btn-warning">Edit</a>
                     </div>
                 </div>
             </div>

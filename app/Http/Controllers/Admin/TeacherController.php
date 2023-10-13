@@ -38,8 +38,18 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
         //
+       
+        /*
+        $teacher = new Teacher();
+        $teacher->bio = $request->input('bio');
+        $teacher->bio = $request->input('bio');
+        $teacher->bio = $request->input('bio');
+        $teacher->bio = $request->input('bio');
+        $teacher->bio = $request->input('bio');
+        $teacher->bio = $request->input('bio');
+        */
+        
         $formData=$request->validated();
-
         $teacher=Teacher::create(
         [
             'bio'=> $request->input('bio'),
@@ -48,6 +58,7 @@ class TeacherController extends Controller
             'phone' => $request->input('phone'),
             'service' => $request->input('service'),
         ]);
+        
 
         return redirect()->route('admin.teachers.index');
     }
@@ -65,7 +76,9 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        return view('admin.teachers.edit', compact('teacher'));
+        $services=Teacher::pluck('service')->unique();
+
+        return view('admin.teachers.edit', compact('services'), compact('teacher'), );
     }
 
     /**
@@ -75,15 +88,20 @@ class TeacherController extends Controller
     {
         //
         $formData=$request->validated();
+        
 
     
         $teacher->update(
-            [
-           
-            ]
+        [
+            'bio'=> $request->input('bio'),
+            'cv' => $request->input('cv'),
+            'photo' => $request->input('photo'),
+            'phone' => $request->input('phone'),
+            'service' => $request->input('service'),
+        ]
         );
 
-        return redirect()->route('admin.teachers.index',);
+        return redirect()->route('admin.teachers.show', compact('teacher'));
     }
 
     /**
