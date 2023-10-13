@@ -27,7 +27,7 @@ return [
     [
         "last_name" => "Gucci",
         "first_name" => "Cecco",
-        "email" => "cecco.gucci@intesigroup.com",
+        "email" => "cecco.gucci2@intesigroup.com",
         "password" => "ZW83aifhJ74O"
     ],
     [
@@ -57,7 +57,7 @@ return [
     [
         "last_name" => "Ferrazzi",
         "first_name" => "Bice",
-        "email" => "bice.ferrazzi@itnet.com",
+        "email" => "bice.ferrazzi2@itnet.com",
         "password" => "II81mnzzG11N"
     ],
     [
@@ -105,13 +105,13 @@ return [
     [
         "last_name" => "Zanfini",
         "first_name" => "Pantaleone",
-        "email" => "pant.zanf@intesigroup.com",
+        "email" => "pant.zanf2@intesigroup.com",
         "password" => "RY03mrhqB64Z"
     ],
     [
         "last_name" => "Graziani",
         "first_name" => "Panfilo",
-        "email" => "panf.graz@intesa.com",
+        "email" => "panf.graz2@intesa.com",
         "password" => "SV98dpzbF09O"
     ],
     [
@@ -141,7 +141,7 @@ return [
     [
         "last_name" => "Rossin",
         "first_name" => "Tullio",
-        "email" => "trossin@intesa.com",
+        "email" => "trossin2@intesa.com",
         "password" => "XB05acddY46J"
     ],
     [
@@ -153,19 +153,19 @@ return [
     [
         "last_name" => "Salvalalio",
         "first_name" => "Ulderico",
-        "email" => "ulderico.salvalalio@namirial.com",
+        "email" => "ulderico.salvalalio3@namirial.com",
         "password" => "OF68mybcP35I"
     ],
     [
         "last_name" => "Cageggi",
         "first_name" => "Apollinare",
-        "email" => "apol.cage@irideos.com",
+        "email" => "apol.cage3@irideos.com",
         "password" => "MD34kzahY32L"
     ],
     [
         "last_name" => "Armelloni",
         "first_name" => "Melania",
-        "email" => "melania.armelloni@intesigroup.com",
+        "email" => "melania.armelloni4@intesigroup.com",
         "password" => "EW83hpsuX45I"
     ],
     [

@@ -19,9 +19,9 @@ return new class extends Migration
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->text('bio');
-            $table->string('cv')->nullable();
-            $table->string('photo')->nullable();
+            $table->text('bio')->nullable();
+            $table->string('cv', 2048)->nullable();
+            $table->string('photo', 2048)->nullable();
             $table->unsignedInteger('phone');
             $table->string('service');
             $table->timestamps();

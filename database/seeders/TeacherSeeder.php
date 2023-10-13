@@ -15,13 +15,13 @@ class TeacherSeeder extends Seeder
     public function run(): void
     {
         $teachers = config('teachers');
-
+        
         foreach($teachers as $teacher) {
             
-            $random_user = User::inRandomOrder()->first()->id;
-
+            $random_user = User::inRandomOrder()->first();
+            
             Teacher::create([
-                'user_id' => $random_user,
+                'user_id' => $random_user->id,
                 'bio' => $teacher['bio'],
                 'cv' => 'uploads/documents/'.$teacher['cv'],
                 'photo' => 'uploads/images/'.$teacher['photo'],
