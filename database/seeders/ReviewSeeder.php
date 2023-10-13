@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Review;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Teacher;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ReviewSeeder extends Seeder
 {
@@ -47,7 +48,9 @@ class ReviewSeeder extends Seeder
         ];
 
         foreach($reviews as $review) {
+            $random_teacher = Teacher::inRandomOrder()->first();
             Review::create([
+                'teacher_id'=>$random_teacher->id,
                 'content' => $review
             ]);
         }

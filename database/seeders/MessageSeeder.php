@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Message;
+use App\Models\Teacher;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -41,7 +42,9 @@ class MessageSeeder extends Seeder
           ];
             
           foreach($messages as $message) {
+            $random_teacher = Teacher::inRandomOrder()->first();
             Message::create([
+                'teacher_id'=>$random_teacher->id,
                 'content' => $message
             ]);
           }
