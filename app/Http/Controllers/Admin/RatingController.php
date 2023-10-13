@@ -15,6 +15,9 @@ class RatingController extends Controller
     public function index()
     {
         //
+        $rating = Rating::all();
+
+        return view('ratings.index', compact('ratings'));
     }
 
     /**
@@ -23,6 +26,7 @@ class RatingController extends Controller
     public function create()
     {
         //
+        return view('ratings.create');
     }
 
     /**
@@ -31,6 +35,14 @@ class RatingController extends Controller
     public function store(StoreRatingRequest $request)
     {
         //
+        $formData=$request->validated();
+
+        $rating=Rating::create(
+        [
+         
+        ]);
+
+        return redirect()->route('ratings.index');
     }
 
     /**
@@ -47,6 +59,7 @@ class RatingController extends Controller
     public function edit(Rating $rating)
     {
         //
+        return view('ratings.edit', compact('ratings'));
     }
 
     /**
@@ -55,6 +68,16 @@ class RatingController extends Controller
     public function update(UpdateRatingRequest $request, Rating $rating)
     {
         //
+        $formData=$request->validated();
+
+    
+        $rating->update(
+            [
+ 
+            ]
+        );
+
+        return redirect()->route('ratings.index',);
     }
 
     /**
