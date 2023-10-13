@@ -48,8 +48,8 @@
             </nav>
         </header>
 
-        <main class="py-4 bg-bellissimo">
-            <div class="container">
+        <main>
+            <div class="container py-4">
                 @yield('main-content')
             </div>
         </main>

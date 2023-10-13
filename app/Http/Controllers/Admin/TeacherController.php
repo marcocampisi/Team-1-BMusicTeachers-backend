@@ -51,8 +51,7 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        //
-        return view('teachers.show', compact('teachers'));
+        return view('admin.teachers.show', compact('teacher'));
     }
 
     /**
@@ -60,8 +59,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
-        return view('admin.teachers.edit', compact('teachers'));
+        return view('admin.teachers.edit', compact('teacher'));
     }
 
     /**

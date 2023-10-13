@@ -1,13 +1,19 @@
 @import "bootstrap/scss/bootstrap";
 
-.bg-bellissimo {
+main {
     background-image: url(/file-img-pdf/background-dashboard-login/template.png);
-    height: 100vh;
+    width: 100vw;
+    min-height: 100vh;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .logo-bellissimo {
     width: 50px;
     background-color: brown;
     height: 50px;
+}
+
+.my-card-slug {
+    min-height: 150px;
 }
