@@ -23,7 +23,7 @@
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('dashboard') }}">Home</a>
+                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">I nostri teacher</a>
@@ -48,8 +48,8 @@
             </nav>
         </header>
 
-        <main class="py-4 bg-bellissimo">
-            <div class="container">
+        <main>
+            <div class="container py-4">
                 @yield('main-content')
             </div>
         </main>
