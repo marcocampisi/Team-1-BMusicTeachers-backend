@@ -14,7 +14,9 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = Review::all();
+        
+        return view('reviews.index');
     }
 
     /**
@@ -22,7 +24,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+        return view('reviews.create');
     }
 
     /**
@@ -30,7 +32,14 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request)
     {
-        //
+        $data = request()->validate([
+            'name' => 'nullable|string',
+            'content' => 'text'
+        ]);
+
+        $review = Review::create($data);
+
+        return redirect()->route('reviews.index')->with('success', 'Recensione creata correttamente.');
     }
 
     /**
@@ -38,7 +47,7 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        //
+        return view('reviews.show', compact('review'));
     }
 
     /**
@@ -62,6 +71,6 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        return redirect()->route('reviews.index')->with('success', 'Recensione eliminata correttamente.');
     }
 }
