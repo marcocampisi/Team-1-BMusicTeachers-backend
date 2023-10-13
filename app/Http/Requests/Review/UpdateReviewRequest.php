@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Review;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateReviewRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateReviewRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return  Auth::check();
     }
 
     /**
@@ -22,7 +23,16 @@ class UpdateReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'teacher_id' => 'nullable|exists:teachers,id',
+            'name' => 'nullable',
+            'content' => 'required',
+        ];
+    }
+
+    public function messages(){
+        return [
+            'teacher_id.exists'=> 'il teacher non esiste',
+            'content.required'=> 'il contenuto del messaggio è obbligatorio'
         ];
     }
 }

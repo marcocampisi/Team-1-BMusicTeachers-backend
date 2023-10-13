@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Message;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMessageRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreMessageRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return  Auth::check();
     }
 
     /**
@@ -31,7 +32,7 @@ class StoreMessageRequest extends FormRequest
     public function messages(){
         return [
             'teacher_id.exists'=> 'il teacher non esiste',
-            'content.required'=> 'il contenuto del messaggio è obligatorio'
+            'content.required'=> 'il contenuto del messaggio è obbligatorio'
         ];
     }
 }

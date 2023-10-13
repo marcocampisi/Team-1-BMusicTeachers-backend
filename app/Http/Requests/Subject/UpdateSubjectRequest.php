@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Subject;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateSubjectRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateSubjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,13 @@ class UpdateSubjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+        ];
+    }
+
+    public function messages(){
+        return [
+            'name.required'=> 'il nome dello strumento è obbligatorio'
         ];
     }
 }

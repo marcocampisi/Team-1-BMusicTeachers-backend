@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Sponsorization;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateSponsorizationRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateSponsorizationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,21 @@ class UpdateSponsorizationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+           'name'=> 'required',
+           'price'=> 'required|decimal:0,2|min:0.01',
+           'duration' => 'required|integer'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'il nome della sponsorizzazione è obbligatorio',
+            'price.required' => 'il prezzo della sponsorizzazione è obbligatorio',
+            'price.decimal' => 'il valore inserito nel campo prezzo non è valido',
+            'price.min' => 'il valore inserito nel campo prezzo deve essere superiore a 0.01€',
+            'duration.required' => 'la durata della sponsorizzazione è obbligatoria',
+            'duration.integer' => 'il valore della durata della sponsorizzazione non è valido',
         ];
     }
 }

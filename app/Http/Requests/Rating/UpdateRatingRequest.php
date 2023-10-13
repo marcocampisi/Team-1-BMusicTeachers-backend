@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Rating;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRatingRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateRatingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return  Auth::check();
     }
 
     /**
@@ -22,7 +23,14 @@ class UpdateRatingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'value'=> 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'value.required'=> 'il testo del messaggio è obbligatorio',
         ];
     }
 }
