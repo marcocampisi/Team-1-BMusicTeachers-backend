@@ -22,7 +22,16 @@ class UpdateMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'teacher_id'=> 'nullable|exists:teachers,id',
+            'name'=>'nullable',
+            'content'=>'required'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'teacher_id.exists'=> 'il teacher non esiste',
+            'content.required'=> 'il contenuto del messaggio è obligatorio'
         ];
     }
 }
