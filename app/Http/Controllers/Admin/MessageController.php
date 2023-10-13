@@ -16,7 +16,7 @@ class MessageController extends Controller
     {
         $messages = Message::all();
 
-        return view('messages.index', compact('messages')); 
+        return view('admin.messages.index', compact('messages')); 
     }
 
     /**
@@ -24,7 +24,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view('messages.create');
+        return view('admin.messages.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class MessageController extends Controller
 
         $message = Message::create($data);
 
-        return redirect()->route('messages.index')->with('success', 'Messaggio creato correttamente.');
+        return redirect()->route('admin.messages.index')->with('success', 'Messaggio creato correttamente.');
     }
 
     /**
@@ -47,7 +47,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        return view('messages.show', compact('message'));
+        return view('admin.messages.show', compact('message'));
     }
 
     /**
@@ -73,6 +73,6 @@ class MessageController extends Controller
     {
         $message->delete();
 
-        return redirect()->route('messages.index')->with('success', 'Messaggio eliminato correttamente.');
+        return redirect()->route('admin.messages.index')->with('success', 'Messaggio eliminato correttamente.');
     }
 }
