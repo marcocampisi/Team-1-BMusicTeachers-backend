@@ -22,11 +22,9 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">I nostri teacher</a>
+                                <a class="nav-link" href="{{ route('admin.teachers.index')}}">I nostri teacher</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Chi siamo</a>
@@ -35,7 +33,7 @@
                                 <a class="nav-link" href="#">Assistenza</a>
                             </li>
                         </ul>
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('admin.teachers.create') }}">
                             @csrf
 
                             <button type="submit" class="btn btn-outline-success">

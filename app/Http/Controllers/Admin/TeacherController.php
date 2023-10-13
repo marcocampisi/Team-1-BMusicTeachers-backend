@@ -27,7 +27,9 @@ class TeacherController extends Controller
     public function create()
     {
         //
-        return view('admin.teachers.create');
+        $services=Teacher::pluck('service')->unique();
+
+        return view('admin.teachers.create', compact('services'));
     }
 
     /**
@@ -40,7 +42,11 @@ class TeacherController extends Controller
 
         $teacher=Teacher::create(
         [
-            
+            'bio'=> $request->input('bio'),
+            'cv' => $request->input('cv'),
+            'photo' => $request->input('photo'),
+            'phone' => $request->input('phone'),
+            'service' => $request->input('service'),
         ]);
 
         return redirect()->route('admin.teachers.index');
