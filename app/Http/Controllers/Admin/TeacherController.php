@@ -17,7 +17,7 @@ class TeacherController extends Controller
         //
         $teachers=Teacher::all();
 
-        return view('admin.teachers.index', compact('teachers'));
+        return view('teachers.index', compact('teachers'));
     }
 
     /**
@@ -51,7 +51,7 @@ class TeacherController extends Controller
     public function show(Teacher $teacher)
     {
         //
-        return view('admin.teachers.show', compact('teachers'));
+        return view('teachers.show', compact('teachers'));
     }
 
     /**
