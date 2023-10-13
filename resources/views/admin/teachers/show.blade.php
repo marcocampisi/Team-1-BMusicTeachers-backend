@@ -1,6 +1,6 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
-@section('page-title', 'Show')
+@section('page-title', 'Show di Teacher')
 
 @section('main-content')
     <h1 class="text-white">{{ $teacher->user->first_name }}</h1>

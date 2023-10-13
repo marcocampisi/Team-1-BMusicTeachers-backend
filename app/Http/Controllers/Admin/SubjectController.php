@@ -6,6 +6,8 @@ use App\Models\Subject;
 use App\Http\Requests\Subject\StoreSubjectRequest;
 use App\Http\Requests\Subject\UpdateSubjectRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Teacher;
+use App\Models\User;
 
 class SubjectController extends Controller
 {
@@ -17,7 +19,7 @@ class SubjectController extends Controller
         //
         $subjects = Subject::all();
 
-        return view('subjects.index', compact('subjects'));
+        return view('admin.subjects.index', compact('subjects'));
     }
 
     /**
@@ -42,7 +44,9 @@ class SubjectController extends Controller
     public function show(Subject $subject)
     {
         //
-        return view('subjects.show', compact('subjects'));
+        $teachers=Teacher::all();
+
+        return view('admin.subjects.show', compact('subject'), compact('teachers'));
     }
 
     /**

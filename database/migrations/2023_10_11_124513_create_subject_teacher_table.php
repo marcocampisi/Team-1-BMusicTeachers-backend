@@ -17,14 +17,14 @@ return new class extends Migration
             $table->foreign('subject_id')
                 ->references('id')
                 ->on('subjects')
-                ->onUpdate('cascade')//decidere
-                ->onDelete('set null'); //decidere
+                ->onUpdate('cascade')
+                ->onDelete('cascade'); 
             $table->unsignedBigInteger('teacher_id')->nullable();
             $table->foreign('teacher_id')
                 ->references('id')
                 ->on('teachers')
-                ->onUpdate('cascade')//decidere
-                ->onDelete('set null');//decidere
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
