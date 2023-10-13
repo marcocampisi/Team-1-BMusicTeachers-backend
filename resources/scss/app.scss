@@ -60,7 +60,6 @@
   a,
   img,
   time,
-  span,
   input,
   label,
   select,
@@ -173,14 +172,53 @@
 .bg-mt {
     background-image: url(/file-img-pdf/background-dashboard-login/Template-1800px-1200px.png);
     background-size: cover;
+    background-position: center;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.card{
+  background: transparent;
+  box-shadow: -5px -5px 15px 15px rgba(0, 191, 99, 0.6),
+              10px 10px 15px 15px rgba(0, 0 , 0 ,0.6);
+}
+
+.ms-login-card{
+  height: 75vh;
+}
+
+// .ms-input{
+//   background-color: aqua;
+  
+// }
+
+input.ms-form-control {
+  background-color: transparent;
+  border-bottom: 3px solid #fff;
+  padding: 8px 0px;
+  box-shadow: rgba(0, 191, 99, 0.6);
+}
+
+input.ms-form-control:focus {
+  background-color: transparent;
+  outline: 0;
+  border-color: rgba(0, 191, 99, 0.6);
+  box-shadow: rgba(0, 191, 99, 0.6);
+}
+
+// input.form-control:valid {
+//   background-color: transparent;
+// }
+
 .logo-mt {
     width: 50px;
     height: 50px;
+}
+
+input.prova{
+  background-color: transparent;
+  border: 1px solid red;
 }
 
 .my-card-slug {
