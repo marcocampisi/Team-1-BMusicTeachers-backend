@@ -4,54 +4,62 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- Favicon -->
+        <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
+        <!-- google font link -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <title>@yield('page-title') | {{ config('app.name', 'Laravel') }}</title>
+
 
         <!-- Scripts -->
         @vite('resources/js/app.js')
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container">
-                    <a class="navbar-brand" href="/">
-                        <img class="logo-bellissimo" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('dashboard') }}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">I nostri teacher</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Chi siamo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Assistenza</a>
-                            </li>
-                        </ul>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <button type="submit" class="btn btn-outline-success">
-                                Sei un Insegnante?
-                            </button>
-                            <!-- Alessio, ci manchi un sacco un sacco uno slug-->
-                        </form>
+        <div class="bg-mt">
+            <header>
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container">
+                        <a class="navbar-brand" href="/">
+                            <img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt="">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarText">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('dashboard') }}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">I nostri teacher</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Chi siamo</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Assistenza</a>
+                                </li>
+                            </ul>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+    
+                                <button type="submit" class="btn btn-dark">
+                                    Sei un Insegnante?
+                                </button>
+                                <!-- Alessio, ci manchi un sacco un sacco uno slug-->
+                            </form>
+                        </div>
                     </div>
+                </nav>
+            </header>
+    
+            <main class="py-4">
+                <div>
+                    @yield('main-content')
                 </div>
-            </nav>
-        </header>
-
-        <main class="py-4 bg-bellissimo">
-            <div class="container">
-                @yield('main-content')
-            </div>
-        </main>
+            </main>
+        </div>
     </body>
 </html>
