@@ -15,6 +15,9 @@ class TeacherController extends Controller
     public function index()
     {
         //
+        $teachers=Teacher::all();
+
+        return view('admin.teachers.index', compact('teachers'));
     }
 
     /**
@@ -23,6 +26,7 @@ class TeacherController extends Controller
     public function create()
     {
         //
+        return view('admin.teachers.create');
     }
 
     /**
@@ -31,6 +35,14 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
         //
+        $formData=$request->validated();
+
+        $teacher=Teacher::create(
+        [
+            
+        ]);
+
+        return redirect()->route('admin.teachers.index');
     }
 
     /**
@@ -39,6 +51,7 @@ class TeacherController extends Controller
     public function show(Teacher $teacher)
     {
         //
+        return view('admin.teachers.show', compact('teachers'));
     }
 
     /**
@@ -47,6 +60,7 @@ class TeacherController extends Controller
     public function edit(Teacher $teacher)
     {
         //
+        return view('admin.teachers.edit', compact('teachers'));
     }
 
     /**
@@ -55,6 +69,16 @@ class TeacherController extends Controller
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
         //
+        $formData=$request->validated();
+
+    
+        $teacher->update(
+            [
+           
+            ]
+        );
+
+        return redirect()->route('admin.teachers.index',);
     }
 
     /**
@@ -63,5 +87,8 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher)
     {
         //
+        $teacher=Teacher::destroy($teacher->id);
+        
+        return redirect()->route('admin.teachers.index');
     }
 }
