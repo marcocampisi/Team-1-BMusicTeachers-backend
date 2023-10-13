@@ -6,6 +6,7 @@ use App\Models\Teacher;
 use App\Http\Requests\Teacher\StoreTeacherRequest;
 use App\Http\Requests\Teacher\UpdateTeacherRequest;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class TeacherController extends Controller
 {
@@ -17,7 +18,7 @@ class TeacherController extends Controller
         //
         $teachers=Teacher::all();
 
-        return view('teachers.index', compact('teachers'));
+        return view('admin.teachers.index', compact('teachers'));
     }
 
     /**
