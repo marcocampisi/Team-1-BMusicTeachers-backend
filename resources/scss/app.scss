@@ -1,16 +1,185 @@
 @import "bootstrap/scss/bootstrap";
 
-main {
-    background-image: url(/file-img-pdf/background-dashboard-login/template.png);
-    width: 100vw;
-    min-height: 100vh;
+/*-----------------------------------*\
+ * style.css
+\*-----------------------------------*/
+
+
+/*-----------------------------------*\
+ * #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+:root {
+
+    /**
+     * colors
+     */
+    --green:rgb(57, 241, 11);
+    --green-light:rgb(49, 255, 88);
+    --green-dark:rgb(0, 191, 99);
+
+    --bg-secondary: rgb(48, 48, 48);
+
+
+    /**
+    * typography
+    */
+    --fs-1: 2rem;
+    --fs-2: calc(1.813rem + 1vw);
+    --fs-3: calc(1.313rem + 1vw);
+    --fs-4: 1.4rem;
+    --fs-5: 1rem;
+    --fs-6: 0.813rem;
+    --fs-7: 0.75rem;
+
+    --fw-400: 400;
+    --fw-700: 700;
+
+
+    /**
+   * transition
+   */
+
+
+    }    
+
+/*-----------------------------------*\
+ * #RESET
+\*-----------------------------------*/
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  li { list-style: none; }
+  
+  a { text-decoration: none; }
+  
+  a,
+  img,
+  time,
+  span,
+  input,
+  label,
+  select,
+  button,
+  textarea,
+  ion-icon { display: block; }
+  
+  input,
+  button,
+  select,
+  textarea {
+    // background: none;
+    border: none;
+    font: inherit;
+  }
+  
+  button,
+  select { cursor: pointer; }
+  
+  input,
+  textarea { width: 100%; }
+  
+  ion-icon { pointer-events: none; }
+
+/*-----------------------------------*\
+ * #REUSED STYLE
+\*-----------------------------------*/
+
+.h1 {
+  font-size: var(--fs-1);
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.h2,
+.h3,
+
+.h4 {
+  color: var(--color-primary);
+  font-family: var(--ff-poppins);
+  line-height: 1.2;
+}
+
+.h2 { font-size: var(--fs-2); }
+
+.h3 { font-size: var(--fs-3); }
+
+.h4 { font-size: var(--fs-5); }
+
+.w-100 { width: 100%; }
+
+// .navbar {
+//     position: fixed;
+//     background: var(--bg-secondary);
+//     top: 100%;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     display: grid;
+//     place-items: center;
+//     visibility: hidden;
+//     transition: 0.75s cubic-bezier(0.71, 0.01, 0.24, 0.99);
+//     transition-delay: 0.5s;
+//     z-index: 1;
+//   }
+  
+//   .navbar.active {
+//     top: 0;
+//     visibility: visible;
+//     transition-delay: 0s;
+//   }
+  
+//   .navbar-list > li {
+//     margin-block: 20px;
+//     padding-inline: 50px;
+//     overflow: hidden;
+//   }
+  
+//   .navbar-link {
+//     position: relative;
+//     width: max-content;
+//     margin-inline: auto;
+//     color: var(--color-primary);
+//     font-family: var(--ff-poppins);
+//     font-size: var(--fs-1);
+//     padding: 10px;
+//     transform: translateY(50px);
+//     transition: 0.75s cubic-bezier(0.68, -0.55, 0.27, 2);
+//   }
+  
+//   .navbar.active .navbar-link {
+//     transform: translateY(0);
+//     transition-delay: 0.5s;
+//   }
+  
+//   .navbar-link::before {
+//     content: "";
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     left: 0;
+//     height: 5px;
+//     width: 0;
+//     background: var(--raw-seinna);
+//     transition: var(--transition-1);
+//   }
+  
+//   .navbar-link:is(:hover, :focus)::before { width: 100%; }
+
+.bg-mt {
+    background-image: url(/file-img-pdf/background-dashboard-login/Template-1800px-1200px.png);
+    background-size: cover;
+    height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.logo-bellissimo {
+.logo-mt {
     width: 50px;
-    background-color: brown;
     height: 50px;
 }
 
