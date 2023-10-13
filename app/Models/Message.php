@@ -9,6 +9,12 @@ class Message extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'teacher_id',
+        'name',
+        'content'
+    ];
+
     public function teacher() {
         return $this->belongsTo(Teacher::class);
     }

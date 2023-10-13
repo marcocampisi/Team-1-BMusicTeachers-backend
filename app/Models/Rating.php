@@ -9,6 +9,10 @@ class Rating extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'value'
+    ];
+
     public function teachers() {
         return $this->belongsToMany(Teacher::class);
     }
