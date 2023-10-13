@@ -6,6 +6,7 @@ use App\Http\Requests\Message\StoreMessageRequest;
 use App\Http\Requests\Message\UpdateMessageRequest;
 use App\Models\Message;
 use App\Http\Controllers\Controller;
+use App\Models\Teacher;
 
 class MessageController extends Controller
 {
@@ -24,7 +25,9 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view('admin.messages.create');
+        $teachers = Teacher::all();
+
+        return view('admin.messages.create', compact('teachers'));
     }
 
     /**
