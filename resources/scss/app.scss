@@ -205,12 +205,11 @@ h2{
     transition: 0.5s;
 }
 
-input:focus ~ label{
+
+input:focus ~ label,
+input:valid ~ label{
     top:-5px;
 } 
-input:valid ~ label {
-    top:-5px;
-}
 
 .inputbox input{
     width: 100%;

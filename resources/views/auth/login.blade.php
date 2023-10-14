@@ -10,22 +10,25 @@
             <h2>Login</h2>
             <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
+
+                <input type="email" id="email" class="text-light @error('email') is-invalid @enderror" name="email"  required>
                 <label for="email">
                     Email
                     <span class="text-danger">*</span>
                 </label>
-                <input type="email" id="email" class="text-light @error('email') is-invalid @enderror" name="email"  required>
-                    @error('email')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
+                @error('email')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
             </div>
             <div class="inputbox">
                 <ion-icon name="lock-closed-outline"></ion-icon>
-                <label for="password">Password<span class="text-danger">*</span></label>
+                
                 <input type="password" id="password" class="ms-form-control fs-5 text-light ms-input @error('password') is-invalid @enderror" name="password" required>
-                        @error('password')
-                            <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror                  
+                <label for="password">Password<span class="text-danger">*</span></label>
+                @error('password')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror   
+                               
             </div>
             <div class="mb-1 text-light">
                 <p class="fw-light">I campi contrassegnati <span class="text-danger">*</span> sono obbligatori.</p>
@@ -41,7 +44,7 @@
             </div>    
             <button type="submit">Login</button>
             <div class="register">
-                <p>Don't have a account ? <a href="#">Register</a></p>
+                <p>Don't have a account ? <a href="{{ route('register') }}">Register</a></p>
             </div>
 
             </div>
