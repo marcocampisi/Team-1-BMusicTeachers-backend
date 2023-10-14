@@ -6,7 +6,7 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
-                <h1 class="text-center text-primary text-uppercase">Register</h1>
+                <h2>Register</h2>
                 <!-- Firstame -->
                 <div class="inputbox">
                     <input class="ms-form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" type="text" id="first_name" first_name="first_name">
@@ -76,7 +76,7 @@
                         {{ __('Already registered?') }}
                     </a>
         
-                    <button type="submit" class="btn btn-primary mt-2">
+                    <button type="submit" class="mt-3">
                     Register
                     </button>
                 </div>
