@@ -166,22 +166,18 @@ section {
     display:flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: calc(100vh - 50px);
     width: 100%;
-    background:url(./template.png) no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 
 .form-box{
     position:relative;
-    width: 400px;
-    height: 450px;
     background:transparent;
     border: 2px solid rgba(255,255,255,0.5);
     border-radius:20px;
     backdrop-filter:blur(15px);
     display:flex;
+    padding: 0 50px;
     justify-content:center;
     align-items:center;
 }
@@ -290,4 +286,11 @@ button{
 
 .register p a:hover{
     text-decoration: underline;
+}
+
+.bg-guest {
+    background-image: url('../img/file-img-pdf/background-dashboard-login/login.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }

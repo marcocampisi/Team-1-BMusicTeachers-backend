@@ -35,12 +35,9 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'nullable|string',
-            'content' => 'required|string'
-        ]);
+        $formData= $request()->validated();
 
-        $message = Message::create($data);
+        $message = Message::create($formData);
 
         return redirect()->route('admin.messages.index')->with('success', 'Messaggio creato correttamente.');
     }
