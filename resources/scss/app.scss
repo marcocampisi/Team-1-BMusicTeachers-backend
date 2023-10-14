@@ -161,14 +161,13 @@ input.prova{
  * #LOGIN
 \*-----------------------------------*/
 
-
-section {
-    display:flex;
-    justify-content: center;
+.form-section {
+    display: flex;
     align-items: center;
-    min-height: calc(100vh - 50px);
-    width: 100%;
+    justify-content: center;
+    margin-top: 50px;
 }
+
 
 .form-box{
     position:relative;
@@ -180,6 +179,8 @@ section {
     padding: 0 50px;
     justify-content:center;
     align-items:center;
+
+    max-width: 400px;
 }
 
 h2{
@@ -289,6 +290,7 @@ button{
 }
 
 .bg-guest {
+    height: 100vh;
     background-image: url('../img/file-img-pdf/background-dashboard-login/login.png');
     background-position: center;
     background-size: cover;

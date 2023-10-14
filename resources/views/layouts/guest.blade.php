@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="bg-guest">
-            <header class="position-fixed">
+            <header>
 
                 <nav class="navbar navbar-dark navbar-expand-lg">
                     <div class="container">

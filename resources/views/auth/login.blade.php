@@ -3,7 +3,7 @@
 @section('page-title', 'Dashboard')
 
 @section('main-content')
-<section>
+<section class="form-section">
     <div class="form-box pt-4 pb-3">
         <form action="{{ route('login') }}" method="post">
             @csrf
