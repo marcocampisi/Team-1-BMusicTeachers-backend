@@ -39,16 +39,25 @@
                                 <li class="nav-item ">
                                     <a class="nav-link fs-5 text-light" href="">Assistenza</a>
                                 </li>
+
                             </ul>
                             
     
-                                <a href="{{ route('admin.teachers.create') }}">Sei un Insegnante?</a>
-                                <!-- Alessio, ci manchi un sacco un sacco uno slug-->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <button type="submit" class="btn btn-outline-danger">
+                                    Log Out
+                                </button>
+                            </form>
+                            
                             
                         </div>
                     </div>
                 </nav>
             </header>
+
+
     
             <main class="py-4">
                 <div>
