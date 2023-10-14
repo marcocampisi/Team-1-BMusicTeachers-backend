@@ -32,7 +32,7 @@
                                
             </div>
             <div class="mb-1 text-light">
-                <p class="fw-light">I campi contrassegnati <span class="text-danger">*</span> sono obbligatori.</p>
+                <p class="fw-light ms-small-text">I campi contrassegnati <span class="text-danger">*</span> sono obbligatori.</p>
             </div>
 
             <div class="forget">
