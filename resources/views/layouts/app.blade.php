@@ -21,7 +21,7 @@
             <header>
                 <nav class="navbar navbar-dark navbar-expand-lg">
                     <div class="container">
-                        <a class="navbar-brand" href="/">
+                        <a class="navbar-brand" href="">
                             <img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt="">
                         </a>
                         <button class="navbar-toggler btn-wight" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
