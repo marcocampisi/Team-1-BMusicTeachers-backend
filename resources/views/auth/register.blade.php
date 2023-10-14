@@ -12,7 +12,7 @@
                     <label class="form-label" for="first_name">
                         Firstname
                     </label>
-                    <input class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" type="text" id="first_name" first_name="first_name">
+                    <input class="form-control ms-form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" type="text" id="first_name" first_name="first_name">
                 </div>
                 @error('first_name')
                     <div class="alert alert-danger my-2">
@@ -24,7 +24,7 @@
                     <label class="form-label" for="last_name">
                         Lastname
                     </label>
-                    <input class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" type="text" id="last_name" last_name="last_name">
+                    <input class="form-control ms-form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" type="text" id="last_name" last_name="last_name">
                 </div>
                 @error('last_name')
                     <div class="alert alert-danger my-2">
@@ -37,7 +37,7 @@
                     <label class="form-label" for="email">
                         Email
                     </label>
-                    <input class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" type="email" id="email" name="email">
+                    <input class="form-control ms-form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" type="email" id="email" name="email">
                 </div>
                 @error('email')
                     <div class="alert alert-danger my-2">
@@ -63,7 +63,7 @@
                     <label class="form-label" for="password_confirmation">
                         Conferma Password
                     </label>
-                    <input class="form-control @error('password_confirmation') is-invalid @enderror"  type="password" id="password_confirmation" name="password_confirmation">
+                    <input class="form-control ms-form-control @error('password_confirmation') is-invalid @enderror"  type="password" id="password_confirmation" name="password_confirmation">
                 </div>
                 @error('password_confirmation')
                     <div class="alert alert-danger my-2">
