@@ -24,7 +24,7 @@
     /**
     * typography
     */
-    --fs-1: 2rem;
+    --fs-1: 2em;
     --fs-2: calc(1.813rem + 1vw);
     --fs-3: calc(1.313rem + 1vw);
     --fs-4: 1.4rem;
@@ -51,6 +51,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:"Poppins" , sans-serif;
   }
   
   li { list-style: none; }
@@ -71,7 +72,6 @@
   button,
   select,
   textarea {
-    // background: none;
     border: none;
     font: inherit;
   }
@@ -96,8 +96,6 @@
 
 .h2,
 .h3,
-
-
 .h4 {
   color: var(--color-primary);
   font-family: var(--ff-poppins);
@@ -111,64 +109,6 @@
 .h4 { font-size: var(--fs-5); }
 
 .w-100 { width: 100%; }
-
-// .navbar {
-//     position: fixed;
-//     background: var(--bg-secondary);
-//     top: 100%;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     display: grid;
-//     place-items: center;
-//     visibility: hidden;
-//     transition: 0.75s cubic-bezier(0.71, 0.01, 0.24, 0.99);
-//     transition-delay: 0.5s;
-//     z-index: 1;
-//   }
-  
-//   .navbar.active {
-//     top: 0;
-//     visibility: visible;
-//     transition-delay: 0s;
-//   }
-  
-//   .navbar-list > li {
-//     margin-block: 20px;
-//     padding-inline: 50px;
-//     overflow: hidden;
-//   }
-  
-//   .navbar-link {
-//     position: relative;
-//     width: max-content;
-//     margin-inline: auto;
-//     color: var(--color-primary);
-//     font-family: var(--ff-poppins);
-//     font-size: var(--fs-1);
-//     padding: 10px;
-//     transform: translateY(50px);
-//     transition: 0.75s cubic-bezier(0.68, -0.55, 0.27, 2);
-//   }
-  
-//   .navbar.active .navbar-link {
-//     transform: translateY(0);
-//     transition-delay: 0.5s;
-//   }
-  
-//   .navbar-link::before {
-//     content: "";
-//     position: absolute;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     left: 0;
-//     height: 5px;
-//     width: 0;
-//     background: var(--raw-seinna);
-//     transition: var(--transition-1);
-//   }
-  
-//   .navbar-link:is(:hover, :focus)::before { width: 100%; }
 
 .bg-mt {
     background-image: url(/file-img-pdf/background-dashboard-login/Template-1800px-1200px.png);
@@ -189,11 +129,6 @@
   height: 75vh;
 }
 
-// .ms-input{
-//   background-color: aqua;
-  
-// }
-
 input.ms-form-control {
   background-color: transparent;
   border-bottom: 3px solid #fff;
@@ -208,10 +143,6 @@ input.ms-form-control:focus {
   box-shadow: rgba(0, 191, 99, 0.6);
 }
 
-// input.form-control:valid {
-//   background-color: transparent;
-// }
-
 .logo-mt {
     width: 50px;
     height: 50px;
@@ -224,4 +155,139 @@ input.prova{
 
 .my-card-slug {
     min-height: 150px;
+}
+
+/*-----------------------------------*\
+ * #LOGIN
+\*-----------------------------------*/
+
+
+section {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background:url(./template.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.form-box{
+    position:relative;
+    width: 400px;
+    height: 450px;
+    background:transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+h2{
+    color:#fff;
+    text-align:center;
+}
+.inputbox{
+    position: relative;
+    margin: 30px 0;
+    width:310px;
+    border-bottom: 2px solid #fff;
+}
+
+.inputbox label{
+    position: absolute;
+    top:50%;
+    left:5px;
+    transform: translateY(-50%);
+    color:#fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+input:focus ~ label{
+    top:-5px;
+} 
+input:valid ~ label {
+    top:-5px;
+}
+
+.inputbox input{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border:none;
+    outline:none;
+    font-size:1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.inputbox ion-icon{
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    top:20px;
+}
+
+.forget{
+    display:flex;
+    justify-content: space-between;
+    margin:10px 0 15px;
+    color: #fff;
+}
+
+.forget label:nth-child(2){
+    order:1;
+}
+
+.forget label{
+    display:flex;
+    align-items: center;
+}
+
+.forget label input[type="checkbox"]{
+    margin-right:6px;
+}
+
+.forget label a{
+    color:#fff;
+    text-decoration: none;
+}
+
+.forget label a:hover{
+    text-decoration: underline;
+}
+
+button{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background:#fff;
+    border:none;
+    outline: none;
+    cursor:pointer;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.register{
+    font-size: 0.9em;
+    color:#fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.register p a {
+    text-decoration: none;
+    color:#fff;
+    font-weight: 600;
+}
+
+.register p a:hover{
+    text-decoration: underline;
 }
