@@ -19,24 +19,6 @@
                         {{ $message }}
                     </div>
                 @enderror
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        var firstNameInput = document.getElementById("first_name");
-                    
-                        firstNameInput.addEventListener("focus", function() {
-                            if (this.value === "{{ old('first_name') }}") {
-                                this.value = "";
-                            }
-                        });
-                    
-                        firstNameInput.addEventListener("blur", function() {
-                            if (this.value === "") {
-                                this.value = "{{ old('first_name') }}";
-                            }
-                        });
-                    });
-                    </script>
-
                 <!-- Lastname -->
                 <div class="inputbox">
                     <input class="ms-form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" type="text" id="last_name" last_name="last_name">
