@@ -36,12 +36,12 @@
     --fw-700: 700;
 
 
-    /**
-   * transition
-   */
+/**
+* transition
+*/
 
 
-    }    
+}    
 
 /*-----------------------------------*\
  * #RESET
@@ -120,29 +120,9 @@
     background-size: cover;
 }
 
-
-.ms-login-card{
-  height: 75vh;
-}
-
-input.ms-form-control {
-  background-color: transparent;
-  border-bottom: 3px solid #fff;
-  padding: 8px 0px;
-}
-
-input.ms-form-control:focus {
-  background-color: transparent;
-}
-
 .logo-mt {
     width: 50px;
     height: 50px;
-}
-
-input.prova{
-  background-color: transparent;
-  border: 1px solid red;
 }
 
 .my-card-slug {
@@ -150,14 +130,39 @@ input.prova{
 }
 
 /*-----------------------------------*\
- * #LOGIN
+ * #LOGIN / REGISTER
 \*-----------------------------------*/
+
+.bg-guest {
+    min-height: 100vh;
+    background-image: url('../img/file-img-pdf/background-dashboard-login/login.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+h2{
+    color:#fff;
+    text-align:center;
+}
+
+input.ms-form-control {
+    background-color: transparent;
+    border-bottom: 3px solid #fff;
+    padding: 8px 0px;
+}
+
+input.ms-form-control:focus {
+background-color: transparent;
+}
+
 
 .form-section {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 
@@ -175,10 +180,6 @@ input.prova{
     max-width: 400px;
 }
 
-h2{
-    color:#fff;
-    text-align:center;
-}
 .inputbox{
     position: relative;
     margin: 30px 0;
@@ -283,13 +284,6 @@ button{
     text-decoration: underline;
 }
 
-.bg-guest {
-    height: 100vh;
-    background-image: url('../img/file-img-pdf/background-dashboard-login/login.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 
 .ms-small-text{
     font-size: 14px;
