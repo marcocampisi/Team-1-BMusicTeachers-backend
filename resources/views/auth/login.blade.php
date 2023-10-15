@@ -7,6 +7,7 @@
     <div class="form-box pt-4 pb-3">
         <form action="{{ route('login') }}" method="post">
             @csrf
+            
             <h2>Login</h2>
             <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>

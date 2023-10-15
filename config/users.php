@@ -3,13 +3,13 @@ return [
     [
         "last_name" => "Formisano",
         "first_name" => "Mauro",
-        "email" => "formisano.mauro@boolena.com",
+        "email" => "formisano.mauro@boolen.com",
         "password" => "GG79uarxY34K"
     ],
     [
         "last_name" => "Caggiano",
         "first_name" => "Marco",
-        "email" => "caggiano.marco@boolena.com",
+        "email" => "caggiano.marco@boolen.com",
         "password" => "LO05tiahJ71Z"
     ],
     [
