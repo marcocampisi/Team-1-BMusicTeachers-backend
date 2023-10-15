@@ -7,6 +7,9 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+//Helpers
+use Illuminate\Support\Facades\Schema;
+
 class TeacherSeeder extends Seeder
 {
     /**
@@ -14,6 +17,11 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
+         //
+        Schema::withoutForeignKeyConstraints(function(){
+            Teacher::truncate();
+        });
+
         $teachers = config('teachers');
         
         foreach($teachers as $teacher) {

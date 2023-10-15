@@ -6,10 +6,11 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Teacher;
 use App\Models\Subject;
-use Illuminate\Support\Facades\Schema;
+
 
 class SubjectTeacherSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      */

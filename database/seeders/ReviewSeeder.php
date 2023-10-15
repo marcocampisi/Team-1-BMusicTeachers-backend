@@ -6,6 +6,8 @@ use App\Models\Review;
 use App\Models\Teacher;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+//helpers
+use Illuminate\Support\Facades\Schema;
 
 class ReviewSeeder extends Seeder
 {
@@ -14,6 +16,11 @@ class ReviewSeeder extends Seeder
      */
     public function run(): void
     {
+
+        Schema::withoutForeignKeyConstraints(function(){
+            Review::truncate();
+        });
+
         $reviews = [
             "È davvero bravo, sa come insegnare la musica in modo coinvolgente. Lo consiglio vivamente.",
             "Molto professionale e competente, ha reso le lezioni di musica divertenti e interessanti.",

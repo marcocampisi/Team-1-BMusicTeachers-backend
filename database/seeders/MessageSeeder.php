@@ -7,6 +7,9 @@ use App\Models\Teacher;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+//helpers
+use Illuminate\Support\Facades\Schema;
+
 class MessageSeeder extends Seeder
 {
     /**
@@ -14,6 +17,11 @@ class MessageSeeder extends Seeder
      */
     public function run(): void
     {
+
+      Schema::withoutForeignKeyConstraints(function(){
+        Message::truncate();
+      });
+
         $messages = [
             "Ciao, sono un tuo ex allievo. Ti ringrazio ancora per tutto quello che mi hai insegnato.",
             "Cerco un insegnante di musica per mio figlio. Mi consigli qualcuno?",
