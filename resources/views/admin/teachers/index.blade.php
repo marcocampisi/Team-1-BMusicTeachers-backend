@@ -7,10 +7,10 @@
     <div class="container">
         <div class="row row-gap-3">
             @foreach ($teachers as $teacher)
-                <div class="col-12 col-md-3 col-sm-4">
-                    <div class="card mb-4 h-100">
+                <div class="col-12 col-md-4 col-lg-3 ">
+                    <div class="card mb-4 h-100 ms-bg-index-card border text-light">
                         <img src="/storage/{{$teacher->photo  }}" class="card-img-top" alt="...">
-                        <div class="card-body my-card-slug bg-light">
+                        <div class="card-body my-card-slug">
                             <h5 class="card-title">{{ $teacher->user->first_name }} {{ $teacher->user->last_name }}</h5>
                             <p class="card-text">{{ $teacher->bio }}</p>
                             <a href="{{ route('admin.teachers.show', ['teacher' => $teacher]) }}" class="btn btn-primary">Show</a>
