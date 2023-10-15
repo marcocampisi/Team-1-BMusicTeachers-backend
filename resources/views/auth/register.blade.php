@@ -11,7 +11,7 @@
                 <div class="inputbox">
                     <input class="ms-form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" type="text" id="first_name" first_name="first_name">
                     <label class="form-label" for="first_name">
-                        Firstname
+                        Firstname<span class="text-danger">*</span>
                     </label>
                 </div>
                 @error('first_name')
@@ -19,11 +19,29 @@
                         {{ $message }}
                     </div>
                 @enderror
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var firstNameInput = document.getElementById("first_name");
+                    
+                        firstNameInput.addEventListener("focus", function() {
+                            if (this.value === "{{ old('first_name') }}") {
+                                this.value = "";
+                            }
+                        });
+                    
+                        firstNameInput.addEventListener("blur", function() {
+                            if (this.value === "") {
+                                this.value = "{{ old('first_name') }}";
+                            }
+                        });
+                    });
+                    </script>
+
                 <!-- Lastname -->
                 <div class="inputbox">
                     <input class="ms-form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" type="text" id="last_name" last_name="last_name">
                     <label class="form-label" for="last_name">
-                        Lastname
+                        Lastname<span class="text-danger">*</span>
                     </label>
                 </div>
                 @error('last_name')
@@ -36,7 +54,7 @@
                 <div class="mt-4 inputbox">
                     <input class="ms-form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" type="email" id="email" name="email">
                     <label class="form-label" for="email">
-                        Email
+                        Email<span class="text-danger">*</span>
                     </label>
                 </div>
                 @error('email')
@@ -49,7 +67,7 @@
                 <div class="mt-4 inputbox">
                     <input class="ms-form-control @error('password') is-invalid @enderror" type="password" id="password" name="password">
                     <label class="form-label" for="password">
-                        Password
+                        Password<span class="text-danger">*</span>
                     </label>
                 </div>
                 @error('password')
@@ -62,7 +80,7 @@
                 <div class="mt-4 inputbox">
                     <input class="ms-form-control @error('password_confirmation') is-invalid @enderror"  type="password" id="password_confirmation" name="password_confirmation">
                     <label class="form-label" for="password_confirmation">
-                        Conferma Password
+                        Conferma Password<span class="text-danger">*</span>
                     </label>
                 </div>
                 @error('password_confirmation')
@@ -70,17 +88,32 @@
                         {{ $message }}
                     </div>
                 @enderror
+
+                <div class="mb-1 text-light">
+                    <p class="fw-light ms-small-text">I campi contrassegnati <span class="text-danger">*</span> sono obbligatori.</p>
+                </div>
         
                 <div class="d-flex flex-column items-center justify-end mt-4">
-                    <a href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
+                    
+
+                    <div class="forget">
+                        <label for="remember">
+                            <input type="checkbox" class="form-check-input" id="remember" name="remember"> Ricordami
+                        </label>
+                        <label>
+                            <a href="#">Forgot Password?</a>
+                        </label>
+                    </div>    
         
                     <button type="submit" class="mt-3">
                     Register
                     </button>
+                    <a class="text-center mt-3" href="{{ route('login') }}">
+                        {{ __('Already registered?') }}
+                    </a>
                 </div>
             </form>
+
         </div>
     </div>
     
