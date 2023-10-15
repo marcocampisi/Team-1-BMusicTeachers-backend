@@ -9,12 +9,12 @@
             @foreach ($teachers as $teacher)
                 <div class="col-12 col-md-4 col-lg-3 ">
                     <div class="card mb-4 h-100 ms-bg-index-card border text-light">
-                        <img src="/storage/{{$teacher->photo  }}" class="card-img-top" alt="...">
+                        <img src="/storage/{{ $teacher->photo }}" class="card-img-top" alt="{{ $teacher->user->first_name }}">
                         <div class="card-body my-card-slug">
                             <h5 class="card-title">{{ $teacher->user->first_name }} {{ $teacher->user->last_name }}</h5>
                             <p class="card-text">{{ $teacher->bio }}</p>
                             <a href="{{ route('admin.teachers.show', ['teacher' => $teacher]) }}" class="btn btn-primary">Show</a>
-                            <a href="{{ route('admin.teachers.edit', ['teacher' => $teacher]) }}" class="btn btn-warning">Edit</a>
+                            {{-- <a href="{{ route('admin.teachers.edit', ['teacher' => $teacher]) }}" class="btn btn-warning">Edit</a> --}}
                         </div>
                     </div>
                 </div>
