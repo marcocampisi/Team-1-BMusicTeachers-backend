@@ -180,6 +180,10 @@ background-color: transparent;
     max-width: 400px;
 }
 
+.text-teachers{
+    backdrop-filter:blur(15px);
+}
+
 .inputbox{
     position: relative;
     margin: 30px 0;

@@ -3,7 +3,7 @@
 @section('page-title', 'Index di Teacher')
 
 @section('main-content')
-    <h1 class="text-center text-warning my-4">Index di Teacher</h1>
+    <h1 class="text-center text-success text-teachers my-4">Musicisti in Rete</h1>
     <div class="container">
         <div class="row row-gap-3">
             @foreach ($teachers as $teacher)
