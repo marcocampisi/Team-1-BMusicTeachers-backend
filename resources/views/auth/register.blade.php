@@ -51,7 +51,7 @@
                 <!-- Password -->
                 <div class="mt-4 inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input class="ms-form-control @error('password') is-invalid @enderror" type="password" id="password" name="password">
+                    <input class="ms-form-control @error('password') is-invalid @enderror" type="password" id="password" name="password" required autocomplete="off">
                     <label class="form-label" for="password">
                         Password<span class="text-danger">*</span>
                     </label>
@@ -65,7 +65,7 @@
                 <!-- Confirm Password -->
                 <div class="mt-4 inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input class="ms-form-control @error('password_confirmation') is-invalid @enderror"  type="password" id="password_confirmation" name="password_confirmation">
+                    <input class="ms-form-control @error('password_confirmation') is-invalid @enderror"  type="password" id="password_confirmation" name="password_confirmation" required autocomplete="off">
                     <label class="form-label" for="password_confirmation">
                         Conferma Password<span class="text-danger">*</span>
                     </label>
