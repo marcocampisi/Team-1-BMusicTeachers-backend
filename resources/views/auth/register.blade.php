@@ -10,7 +10,7 @@
                 <!-- Firstame -->
                 <div class="inputbox">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input class="ms-form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" type="text" id="first_name" name="first_name">
+                    <input class="ms-form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" type="text" id="first_name" name="first_name" required autocomplete="off">
                     <label class="form-label" for="first_name">
                         Firstname<span class="text-danger">*</span>
                     </label>
@@ -23,7 +23,7 @@
                 <!-- Lastname -->
                 <div class="inputbox">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input class="ms-form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" type="text" id="last_name" name="last_name">
+                    <input class="ms-form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" type="text" id="last_name" name="last_name" required autocomplete="off">
                     <label class="form-label" for="last_name">
                         Lastname<span class="text-danger">*</span>
                     </label>
@@ -37,7 +37,7 @@
                 <!-- Email Address -->
                 <div class="mt-4 inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input class="ms-form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" type="email" id="email" name="email">
+                    <input class="ms-form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" type="email" id="email" name="email" required autocomplete="off">
                     <label class="form-label" for="email">
                         Email<span class="text-danger">*</span>
                     </label>
