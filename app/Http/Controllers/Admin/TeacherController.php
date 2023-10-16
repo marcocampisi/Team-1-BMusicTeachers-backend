@@ -26,7 +26,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        //funzione necessaria per menu servizi nella vue create 
         $services=Teacher::pluck('service')->unique();
 
         return view('admin.teachers.create', compact('services'));
