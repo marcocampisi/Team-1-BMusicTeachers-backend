@@ -9,6 +9,7 @@
                 <h2>Register</h2>
                 <!-- Firstame -->
                 <div class="inputbox">
+                    <ion-icon name="person-outline"></ion-icon>
                     <input class="ms-form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" type="text" id="first_name" name="first_name">
                     <label class="form-label" for="first_name">
                         Firstname<span class="text-danger">*</span>
@@ -21,6 +22,7 @@
                 @enderror
                 <!-- Lastname -->
                 <div class="inputbox">
+                    <ion-icon name="person-outline"></ion-icon>
                     <input class="ms-form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" type="text" id="last_name" name="last_name">
                     <label class="form-label" for="last_name">
                         Lastname<span class="text-danger">*</span>
@@ -34,6 +36,7 @@
         
                 <!-- Email Address -->
                 <div class="mt-4 inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
                     <input class="ms-form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" type="email" id="email" name="email">
                     <label class="form-label" for="email">
                         Email<span class="text-danger">*</span>
@@ -47,6 +50,7 @@
         
                 <!-- Password -->
                 <div class="mt-4 inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
                     <input class="ms-form-control @error('password') is-invalid @enderror" type="password" id="password" name="password">
                     <label class="form-label" for="password">
                         Password<span class="text-danger">*</span>
@@ -60,6 +64,7 @@
         
                 <!-- Confirm Password -->
                 <div class="mt-4 inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
                     <input class="ms-form-control @error('password_confirmation') is-invalid @enderror"  type="password" id="password_confirmation" name="password_confirmation">
                     <label class="form-label" for="password_confirmation">
                         Conferma Password<span class="text-danger">*</span>

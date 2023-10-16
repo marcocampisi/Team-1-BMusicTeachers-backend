@@ -102,6 +102,7 @@
     </div> --}}
 
     <form action="{{ route('admin.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST">
+
         @csrf
         
         
