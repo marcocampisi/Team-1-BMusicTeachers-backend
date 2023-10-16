@@ -12,8 +12,9 @@
             <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
 
-                <input type="email" id="email" class="text-light @error('email') is-invalid @enderror" name="email"  required>
-                <label for="email">    
+                <input type="email" id="email" class="text-light @error('email') is-invalid @enderror" name="email"  required required autocomplete="off">
+                <label for="email">
+                   
                     Email
                     <span class="text-danger">*</span>
                 </label>
@@ -24,7 +25,7 @@
             <div class="inputbox">
                 <ion-icon name="lock-closed-outline"></ion-icon>
                 
-                <input type="password" id="password" class="ms-form-control fs-5 text-light ms-input @error('password') is-invalid @enderror" name="password" required>
+                <input type="password" id="password" class="ms-form-control fs-5 text-light ms-input @error('password') is-invalid @enderror" name="password" required required autocomplete="off">
                 <label for="password">Password<span class="text-danger">*</span></label>
                 @error('password')
                     <span class="invalid-feedback">{{ $message }}</span>
