@@ -66,6 +66,27 @@
                         Crea
                     </button>
             </form>
+
+        </div>
+    </div> --}}
+
+    <form action="{{ route('admin.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST">
+        @csrf
+        
+        
+        <div class="mb-3">
+            <label for="bio" class="form-label">About me:</label>
+            <textarea class="form-control" name="bio" id="bio" rows="3" required></textarea>
+          </div>
+
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Default file input example</label>
+            <input class="form-control" type="file" name="cv" id="formFile">
+        </div>
+
+        <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+            <input class="form-control" type="file" name="photo" id="formFileMultiple" multiple>
         </div>
     </div>
 @endsection
