@@ -14,13 +14,19 @@
         <div class="bg-guest">
             <header>
 
-                <nav class="navbar navbar-dark navbar-expand-lg">
-                    <div class="container">
+                <div class="container">
+                    <nav class="navbar navbar-dark navbar-expand-md">
+
+                       <div class="d-flex align-items-center justify-content-between w-100">   
                         <a class="navbar-brand" href="">
                             <img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt="">
-                        </a>                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                        </a>
+                        <div class="button-wrapper">
+                            <button class="navbar-toggler btn-wight" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                    </div>
                         <div class="collapse navbar-collapse" id="navbarText">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 @auth
@@ -47,8 +53,8 @@
                                 </form>
                             @endauth
                         </div>
-                    </div>
-                </nav>
+                    </nav>
+                </div>
 
             </header>
     
