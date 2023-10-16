@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Teacher;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Teacher\StoreTeacherRequest;
 use App\Http\Requests\Teacher\UpdateTeacherRequest;
-use App\Http\Controllers\Controller;
-use App\Models\User;
+//helpers
+use Illuminate\Support\Facades\Storage;
 
 class TeacherController extends Controller
 {
@@ -38,14 +40,30 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
         //
-        
+
         $formData=$request->validated();
+
+        // dd($formData);
+        $photo_path = null;
+        $cv_path = null;
+
+        if (isset($formData['photo'])) {
+            $photo_path = Storage::put('uploads/images', $formData['photo']);
+        }
+
+        if (isset($formData['cv'])) {
+            $photo_path = Storage::put('uploads/pdf', $formData['cv']);
+        }
+
+       
+
+        
         Teacher::create(
         [
             'user_id'=>$formData['user_id'],
             'bio'=>  $formData['bio'],
-            'cv' =>  $formData['cv'],
-            'photo' =>  $formData['photo'],
+            'cv' =>  $cv_path,
+            'photo' =>  $photo_path,
             'phone' =>  $formData['phone'],
             'service' =>  $formData['service'],
         ]);
@@ -80,15 +98,15 @@ class TeacherController extends Controller
         //
         $formData=$request->validated();
         
-
+        
     
         $teacher->update(
         [
-            'bio'=> $formData->input('bio'),
-            'cv' => $formData->input('cv'),
-            'photo' => $formData->input('photo'),
-            'phone' => $formData->input('phone'),
-            'service' => $formData->input('service'),
+            'bio'=> $formData['bio'],
+            'cv' => $formData['cv'],
+            'photo' => $formData['photo'],
+            'phone' => $formData['phone'],
+            'service' => $formData['service'],
         ]
         );
 

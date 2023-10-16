@@ -5,14 +5,14 @@
 @section('main-content')
     <div class="form-section"> 
         <div class="form-box pt-4 pb-3 text-light">
-            <form action="{{ route('admin.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST">
+            <form action="{{ route('admin.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <h2>Register</h2>
                 
                 
         
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
+                    <label for="formFile" class="form-label">Curriculum</label>
                     <input class="form-control" type="file" name="cv" id="formFile">
                 </div>
                 @error('cv')
@@ -22,8 +22,8 @@
                 @enderror
 
                 <div class="mb-3">
-                    <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                    <input class="form-control" type="file" name="photo" id="formFileMultiple" multiple>
+                    <label for="formFileMultiple" class="form-label">Photo</label>
+                    <input class="form-control" type="file" name="photo" id="formFileMultiple" accept="image/*">
                 </div>
                 @error('photo')
                     <div class="alert alert-danger my-2">
@@ -68,25 +68,6 @@
             </form>
 
         </div>
-    </div> --}}
+    </div> 
 
-    <form action="{{ route('admin.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST">
-        @csrf
-        
-        
-        <div class="mb-3">
-            <label for="bio" class="form-label">About me:</label>
-            <textarea class="form-control" name="bio" id="bio" rows="3" required></textarea>
-          </div>
-
-        <div class="mb-3">
-            <label for="formFile" class="form-label">Default file input example</label>
-            <input class="form-control" type="file" name="cv" id="formFile">
-        </div>
-
-        <div class="mb-3">
-            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-            <input class="form-control" type="file" name="photo" id="formFileMultiple" multiple>
-        </div>
-    </div>
 @endsection

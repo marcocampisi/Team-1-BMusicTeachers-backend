@@ -18,6 +18,22 @@ class Teacher extends Model
         'service'
     ];
 
+    protected $appends = [
+        'full_photo_img'
+    ];
+
+    /*
+        Custom attributes
+    */
+
+    public function getFullPhotoImgAttribute()
+    {
+        if($this->photo){
+            return asset('storage/'. $this->photo);
+        }
+        return null;
+    }
+
 
     public function messages() {
         return $this->hasMany(Message::class);
