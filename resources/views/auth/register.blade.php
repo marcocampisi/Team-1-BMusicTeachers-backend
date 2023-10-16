@@ -9,7 +9,7 @@
                 <h2>Register</h2>
                 <!-- Firstame -->
                 <div class="inputbox">
-                    <input class="ms-form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" type="text" id="first_name" name="first_name">
+                    <input class="ms-form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') == ' ' ? '' : old('first_name') }}" type="text" id="first_name" name="first_name">
                     <label class="form-label" for="first_name">
                         Firstname<span class="text-danger">*</span>
                     </label>

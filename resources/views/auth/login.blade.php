@@ -13,8 +13,7 @@
                 <ion-icon name="mail-outline"></ion-icon>
 
                 <input type="email" id="email" class="text-light @error('email') is-invalid @enderror" name="email"  required>
-                <label for="email">
-                   
+                <label for="email">    
                     Email
                     <span class="text-danger">*</span>
                 </label>
