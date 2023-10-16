@@ -14,10 +14,11 @@ class TeacherController extends Controller
     public function index()
     {
         //
-        $teachers=Teacher::with('subject', 'rating', 'review', 'sponsorization')
-        ->orderByRaw('sponsored_until >= NOW() DESC, sponsored_until', 'asc')->paginate(10);
+        $teachers=Teacher::join('sponsorization_teacher', 'teacher_id', '=', 'sponsorization_teacher.teacher_id')
+            ->with('subjects', 'ratings', 'reviews', 'sponsorization')
+            ->orderByRaw('sponsored_until >= NOW() DESC, sponsored_until')->paginate(10);
 
-        dd($teacher);
+        dd($teachers);
         return response()->json([
             'success' => true,
             'results' => $teachers
