@@ -336,7 +336,20 @@ button{
     background-image: linear-gradient(to right , transparent , transparent);
     background-color: white;
     color:green;
-
     transition: background-color 0.5s linear;
 }
 
+.ms-textarea{
+    all: unset;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgba($color: #fff, $alpha: 0.3);
+    border-radius: 10px;
+}
+.ms-textarea:focus{
+    all: unset;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgba($color: #fff, $alpha: 0.3);
+    border-radius: 10px;
+}

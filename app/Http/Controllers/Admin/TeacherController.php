@@ -38,16 +38,6 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
         //
-       
-        /*
-        $teacher = new Teacher();
-        $teacher->bio = $request->input('bio');
-        $teacher->bio = $request->input('bio');
-        $teacher->bio = $request->input('bio');
-        $teacher->bio = $request->input('bio');
-        $teacher->bio = $request->input('bio');
-        $teacher->bio = $request->input('bio');
-        */
         
         $formData=$request->validated();
         Teacher::create(
