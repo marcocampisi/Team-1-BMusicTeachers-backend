@@ -16,7 +16,7 @@ class ReviewController extends Controller
     {
         $reviews = Review::all();
         
-        return view('reviews.index');
+        return view('reviews.index' );
     }
 
     /**
@@ -32,12 +32,9 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'nullable|string',
-            'content' => 'text'
-        ]);
+        $data = request()->validate();
 
-        $review = Review::create($data);
+        Review::create($data);
 
         return redirect()->route('reviews.index')->with('success', 'Recensione creata correttamente.');
     }

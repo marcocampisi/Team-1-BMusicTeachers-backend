@@ -37,7 +37,7 @@ class MessageController extends Controller
     {
         $formData= $request()->validated();
 
-        $message = Message::create($formData);
+        Message::create($formData);
 
         return redirect()->route('admin.messages.index')->with('success', 'Messaggio creato correttamente.');
     }

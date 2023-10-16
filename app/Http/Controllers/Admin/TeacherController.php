@@ -50,13 +50,13 @@ class TeacherController extends Controller
         */
         
         $formData=$request->validated();
-        $teacher=Teacher::create(
+        Teacher::create(
         [
-            'bio'=> $request->input('bio'),
-            'cv' => $request->input('cv'),
-            'photo' => $request->input('photo'),
-            'phone' => $request->input('phone'),
-            'service' => $request->input('service'),
+            'bio'=>  $formData->input('bio'),
+            'cv' =>  $formData->input('cv'),
+            'photo' =>  $formData->input('photo'),
+            'phone' =>  $formData->input('phone'),
+            'service' =>  $formData->input('service'),
         ]);
         
 
@@ -93,11 +93,11 @@ class TeacherController extends Controller
     
         $teacher->update(
         [
-            'bio'=> $request->input('bio'),
-            'cv' => $request->input('cv'),
-            'photo' => $request->input('photo'),
-            'phone' => $request->input('phone'),
-            'service' => $request->input('service'),
+            'bio'=> $formData->input('bio'),
+            'cv' => $formData->input('cv'),
+            'photo' => $formData->input('photo'),
+            'phone' => $formData->input('phone'),
+            'service' => $formData->input('service'),
         ]
         );
 
