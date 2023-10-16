@@ -52,11 +52,12 @@ class TeacherController extends Controller
         $formData=$request->validated();
         Teacher::create(
         [
-            'bio'=>  $formData->input('bio'),
-            'cv' =>  $formData->input('cv'),
-            'photo' =>  $formData->input('photo'),
-            'phone' =>  $formData->input('phone'),
-            'service' =>  $formData->input('service'),
+            'user_id'=>$formData['user_id'],
+            'bio'=>  $formData['bio'],
+            'cv' =>  $formData['cv'],
+            'photo' =>  $formData['photo'],
+            'phone' =>  $formData['phone'],
+            'service' =>  $formData['service'],
         ]);
         
 

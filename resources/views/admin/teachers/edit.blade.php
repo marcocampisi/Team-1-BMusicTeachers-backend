@@ -3,7 +3,7 @@
 @section('page-title', 'Create Teacher')
 
 @section('main-content')
-    
+
     <form action="{{ route('admin.teachers.update', ['teacher' => $teacher])}}" method="POST">
         @csrf
         @method('PUT')
