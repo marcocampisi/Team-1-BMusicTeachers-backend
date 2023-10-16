@@ -11,7 +11,7 @@
                     <div class="card mb-4 h-100 ms-bg-index-card border text-light position-relative text-center">
                         <img src="/storage/{{ $teacher->photo }}" class="card-img-top" alt="{{ $teacher->user->first_name }}">
                         <div class="wishlist bg-success">&hearts;</div>
-                        <div class="card-body d-flex flex-column my-card-slug">
+                        <div class="card-body d-flex flex-column justify-content-between my-card-slug">
                             <h5 class="card-title">{{ $teacher->user->first_name }} {{ $teacher->user->last_name }}</h5>
                             <p class="card-text">{{ $teacher->bio }}</p>
                             <div class="justify-content-center align-items-center">
