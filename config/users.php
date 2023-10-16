@@ -3,13 +3,13 @@ return [
     [
         "last_name" => "Formisano",
         "first_name" => "Mauro",
-        "email" => "formisano.mauro@boolen.com",
+        "email" => "formisano.mauro@boolean.com",
         "password" => "GG79uarxY34K"
     ],
     [
         "last_name" => "Caggiano",
         "first_name" => "Marco",
-        "email" => "caggiano.marco@boolen.com",
+        "email" => "caggiano.marco@boolean.com",
         "password" => "LO05tiahJ71Z"
     ],
     [
@@ -33,7 +33,7 @@ return [
     [
         "last_name" => "Capuzzo",
         "first_name" => "Annamaria",
-        "email" => "Capuzzo.Annamaria@boolena.com",
+        "email" => "Capuzzo.Annamaria@boolean.com",
         "password" => "VZ55kztyY76F"
     ],
     [
@@ -135,7 +135,7 @@ return [
     [
         "last_name" => "Panelli",
         "first_name" => "Gaudenzio",
-        "email" => "Panelli.Gaudenzio@boolena.com",
+        "email" => "Panelli.Gaudenzio@boolean.com",
         "password" => "ZD77mmobN55Z"
     ],
     [
@@ -147,7 +147,7 @@ return [
     [
         "last_name" => "Mantoani",
         "first_name" => "Marilena",
-        "email" => "Mantoani.Marilena@boolena.com",
+        "email" => "Mantoani.Marilena@boolean.com",
         "password" => "GU70pklqV90F"
     ],
     [
