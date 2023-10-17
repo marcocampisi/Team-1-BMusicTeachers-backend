@@ -19,7 +19,7 @@ class RatingTeacherSeeder extends Seeder
         {
             $random_teacher = Teacher::inRandomOrder()->first();
 
-            $random_rating = Subject::inRandomOrder()->first();
+            $random_rating = Rating::inRandomOrder()->first();
 
             $random_teacher->subjects()->attach($random_rating);
         }
