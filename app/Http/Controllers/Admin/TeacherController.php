@@ -52,7 +52,7 @@ class TeacherController extends Controller
         }
 
         if (isset($formData['cv'])) {
-            $photo_path = Storage::put('uploads/pdf', $formData['cv']);
+            $cv_path = Storage::put('uploads/pdf', $formData['cv']);
         }
 
        
