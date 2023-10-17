@@ -45,7 +45,8 @@
                 </label>
             </div>    
             <button type="submit">Login</button>
-            <div class="register">
+            <div class="regis
+            ter">
                 <p>Don't have a account ? <a href="{{ route('register') }}">Register</a></p>
             </div>
 
