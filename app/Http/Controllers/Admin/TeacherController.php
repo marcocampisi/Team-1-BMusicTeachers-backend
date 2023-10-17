@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Teacher\StoreTeacherRequest;
 use App\Http\Requests\Teacher\UpdateTeacherRequest;
+use App\Models\Subject;
 //helpers
 use Illuminate\Support\Facades\Storage;
 
@@ -30,8 +31,9 @@ class TeacherController extends Controller
     {
         //funzione necessaria per menu servizi nella view create 
         $services=Teacher::pluck('service')->unique();
+        $subjects= Subject::all();
 
-        return view('admin.teachers.create', compact('services'));
+        return view('admin.teachers.create', compact('services', 'subjects'));
     }
 
     /**
@@ -63,6 +65,7 @@ class TeacherController extends Controller
             'bio'=>  $formData['bio'],
             'cv' =>  $cv_path,
             'photo' =>  $photo_path,
+            
             'phone' =>  $formData['phone'],
             'service' =>  $formData['service'],
         ]);
@@ -85,8 +88,10 @@ class TeacherController extends Controller
     public function edit(Teacher $teacher)
     {
         $services=Teacher::pluck('service')->unique();
+        $subjects= Subject::all();
 
-        return view('admin.teachers.edit', compact('services'), compact('teacher'), );
+
+        return view('admin.teachers.edit', compact('services'), compact('teacher', 'subjects'), );
     }
 
     /**
@@ -96,8 +101,7 @@ class TeacherController extends Controller
     {
         //
         $formData=$request->validated();
-        
-        
+       
     
         $teacher->update(
         [

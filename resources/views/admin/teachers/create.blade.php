@@ -8,9 +8,7 @@
             <form action="{{ route('admin.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <h2>Register</h2>
-                
-                
-        
+
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Curriculum</label>
                     <input class="form-control" type="file" name="cv" id="formFile">
@@ -41,6 +39,28 @@
                         {{ $message }}
                     </div>
                 @enderror
+
+                <div class="mb-3">
+                    @foreach ($subjects as $subject)
+                    <input 
+                    type="checkbox" 
+                    class="btn-check" 
+                    name="subjects[]" 
+                    id="subject-{{ $subject->id }}"
+                    @if (
+                      in_array( $subject->id ,
+                      old('subject', [])
+                      )
+                    )
+                      checked
+                    @endif 
+                     
+                    value="{{ $subject->id }}"
+                  >
+        
+                  <label class="btn btn-outline-light mt-2" for="subject-{{ $subject->id }}">{{ $subject->name }}</label>
+                    @endforeach
+                </div>
         
                 <div class="mb-3">
                     <select class="form-select" name="service">
