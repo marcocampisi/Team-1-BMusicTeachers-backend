@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Teacher;
+use App\Models\Subject;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Teacher\StoreTeacherRequest;
 use App\Http\Requests\Teacher\UpdateTeacherRequest;
@@ -54,7 +55,12 @@ class TeacherController extends Controller
             $cv_path = Storage::put('uploads/pdf', $formData['cv']);
         }
 
-       
+        if (isset($formData['subjects'])) {
+            foreach ($formData['subjects'] as $subjectId) {
+                                                
+                $teacher->subjects()->attach($subjectId); 
+            }
+        }
 
         
         Teacher::create(
@@ -96,14 +102,33 @@ class TeacherController extends Controller
     {
         //
         $formData=$request->validated();
+
+        $photo_path = $teacher->photo;
+        if (isset($formData['photo'])) {
+            if ($teacher->photo){
+                Storage::delete($teacher->photo);
+            }           
+            $photo_path = Storage::put('uploads/images', $formData['photo']);
+        }
+
+        $cv_path = $teacher->cv;
+        if (isset($formData['cv'])) {
+            if ($teacher->cv){
+                Storage::delete($teacher->cv);
+            }
+            $cv_path = Storage::put('uploads/pdf', $formData['cv']);
+        }
         
+        if (isset($formData['subjects'])) {
+            $teacher->subjects()->sync($formData['subjects']);
+        }
         
     
         $teacher->update(
         [
             'bio'=> $formData['bio'],
-            'cv' => $formData['cv'],
-            'photo' => $formData['photo'],
+            'cv' => $cv_path,
+            'photo' => $photo_path,
             'phone' => $formData['phone'],
             'service' => $formData['service'],
         ]
