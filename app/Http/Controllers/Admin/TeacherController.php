@@ -102,6 +102,10 @@ class TeacherController extends Controller
         //
         $formData=$request->validated();
 
+        if (auth()->user()->id !== $teacher->user_id) {
+            return abort(403); // Restituisci un errore 403 (Accesso vietato)
+        }
+
         $photo_path = $teacher->photo;
         if (isset($formData['photo'])) {
             if ($teacher->photo){
