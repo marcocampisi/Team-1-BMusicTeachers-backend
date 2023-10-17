@@ -35,7 +35,7 @@
     
             <div class="inputbox">
                 <div>
-                    <input type="tel" pattern="[0-9]{10}" name="phone" min="0" placeholder="Inserisci il tuo numero di telefono:" required value="{{old('phone')}}">
+                    <input type="tel" pattern="[0-9]{10}" name="phone" min="0" placeholder="Inserisci il tuo numero di telefono:" required value="{{old('phone', $teacher->phone)}}">
                 </div>
             </div>
             @error('phone')
@@ -94,7 +94,7 @@
 
             <div class="mb-3">
                 <label for="bio" class="form-label">About me:</label>
-                <textarea class="form-control bg-transparent text-light ms-textarea" name="bio" id="bio" rows="3" required>{{old('bio')}}</textarea>
+                <textarea class="form-control bg-transparent text-light ms-textarea" name="bio" id="bio" rows="3" required>{{ old('bio', $teacher->bio) }}</textarea>
             </div>
 
                 <button type="submit">

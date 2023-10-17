@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('bio')->nullable();
             $table->string('cv', 2048)->nullable();
             $table->string('photo', 2048)->nullable();
-            $table->unsignedBigInteger('phone');
+            $table->string('phone', 20);
             $table->string('service');
             $table->timestamps();
         });
