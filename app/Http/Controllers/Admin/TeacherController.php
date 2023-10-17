@@ -31,8 +31,9 @@ class TeacherController extends Controller
     {
         //funzione necessaria per menu servizi nella view create 
         $services=Teacher::pluck('service')->unique();
+        $subjects=Subject::all();
 
-        return view('admin.teachers.create', compact('services'));
+        return view('admin.teachers.create', compact('services', 'subjects'));
     }
 
     /**
@@ -43,7 +44,6 @@ class TeacherController extends Controller
         //
 
         $formData=$request->validated();
-
         $photo_path = null;
         $cv_path = null;
 
@@ -89,8 +89,9 @@ class TeacherController extends Controller
     public function edit(Teacher $teacher)
     {
         $services=Teacher::pluck('service')->unique();
+        $subjects=Subject::all();
 
-        return view('admin.teachers.edit', compact('services'), compact('teacher'), );
+        return view('admin.teachers.edit', compact('services','teacher', 'subjects') );
     }
 
     /**

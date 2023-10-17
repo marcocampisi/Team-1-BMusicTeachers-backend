@@ -6,7 +6,7 @@
 
 <div class="form-section"> 
     <div class="form-box pt-4 pb-3 text-light">
-        <form action="{{ route('admin.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST" enctype="multipart/form-data" >
+        <form action="{{ route('admin.teachers.update', ['teacher' => $teacher->id])}}" method="POST" enctype="multipart/form-data" >
             @csrf
             @method('PUT')
             <h2>Modifica il profilo</h2>

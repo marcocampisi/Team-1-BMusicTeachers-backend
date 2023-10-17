@@ -46,6 +46,7 @@
                     type="checkbox" 
                     class="btn-check" 
                     name="subjects[]" 
+                    value="{{ $subject->id }}"
                     id="subject-{{ $subject->id }}"
                     @if (
                       in_array( $subject->id ,
@@ -53,14 +54,17 @@
                       )
                     )
                       checked
-                    @endif 
-                     
-                    value="{{ $subject->id }}"
+                    @endif  
                   >
         
                   <label class="btn btn-outline-light mt-2" for="subject-{{ $subject->id }}">{{ $subject->name }}</label>
                     @endforeach
                 </div>
+                @error('subjects')
+                    <div class="alert alert-danger my-2">
+                        {{ $message }}
+                    </div>
+                @enderror
         
                 <div class="mb-3">
                     <select class="form-select" name="service">
