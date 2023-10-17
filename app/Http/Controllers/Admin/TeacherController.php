@@ -43,7 +43,6 @@ class TeacherController extends Controller
 
         $formData=$request->validated();
 
-        // dd($formData);
         $photo_path = null;
         $cv_path = null;
 

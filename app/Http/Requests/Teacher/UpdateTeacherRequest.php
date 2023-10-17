@@ -26,8 +26,8 @@ class UpdateTeacherRequest extends FormRequest
             'user_id'=> 'nullable|exists:users,id',
             'bio'=> 'nullable',
             'cv'=> 'nullable|max:2048|mimes:pdf',
-            'photo'=> 'nullable|image|max:2048',
-            'phone'=> 'required', 
+            'photo'=> 'nullable|image|max:8192',
+            'phone'=> 'required|min:0|regex:/^[0-9]{10}$/', 
             'service'=> 'required', 
         ];
     }
@@ -35,12 +35,13 @@ class UpdateTeacherRequest extends FormRequest
     public function messages(){
         return [
             'user_id.exists'=> 'l\'utente non esiste',
-            'cv.max'=> 'il nome del file è troppo lungo',
+            'cv.max'=> 'il file pdf è troppo pesante ',
             'cv.mimes'=> 'il formato del file inserito non è valido',
             'photo.image'=> 'il file dell\'immagine non è una immagine',
-            'photo.max'=> 'il nome del file è troppo lungo',
+            'photo.max'=> 'il file dell\'immagine è troppo pesante',
             'phone.required'=> 'il numero di telefono è obbligatorio',
-            'phone.service'=> 'il numero di telefono è obbligatorio'
+            'phone.regex'=> 'il numero di telefono non è nel formato corretto',
+            'service.required'=> 'il tipo di servizio offerto è obbligatorio'
         ];
     }
 }
