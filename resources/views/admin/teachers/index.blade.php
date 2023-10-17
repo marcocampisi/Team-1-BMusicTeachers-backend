@@ -16,7 +16,7 @@
                                 <path fill="black" d="M12 2.3l2.7 7.7h7.6l-6 4.6 2.7 7.7-7-5.3-7 5.3 2.7-7.7-6-4.6h7.6z"/>
                             </svg>
                         </div>                        
-                        <div class="card-body d-flex flex-column justify-content-between my-card-slug">
+                        <div class="card-body d-flex flex-column justify-content-between my-card-slug mt-2">
                             <h5 class="card-title">{{ $teacher->user->first_name }} {{ $teacher->user->last_name }}</h5>
                             <p class="card-text">{{ $teacher->bio }}</p>
                             <div class="justify-content-center align-items-center">
