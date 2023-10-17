@@ -7,6 +7,8 @@ use App\Http\Requests\Rating\StoreRatingRequest;
 use App\Http\Requests\Rating\UpdateRatingRequest;
 use App\Http\Controllers\Controller;
 
+use App\Models\Teacher;
+
 class RatingController extends Controller
 {
     /**
@@ -42,7 +44,7 @@ class RatingController extends Controller
          
         ]);
 
-        return redirect()->route('ratings.index');
+        return redirect()->route('admin.teachers.show');
     }
 
     /**

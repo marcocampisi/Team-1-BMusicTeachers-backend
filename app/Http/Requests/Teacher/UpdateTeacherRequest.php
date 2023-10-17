@@ -29,6 +29,7 @@ class UpdateTeacherRequest extends FormRequest
             'photo'=> 'nullable|image|max:8192',
             'phone'=> 'required|min:0|regex:/^[0-9]{10}$/', 
             'service'=> 'required', 
+            'subject'=> 'required|array',
         ];
     }
 
@@ -41,7 +42,8 @@ class UpdateTeacherRequest extends FormRequest
             'photo.max'=> 'il file dell\'immagine è troppo pesante',
             'phone.required'=> 'il numero di telefono è obbligatorio',
             'phone.regex'=> 'il numero di telefono non è nel formato corretto',
-            'service.required'=> 'il tipo di servizio offerto è obbligatorio'
+            'service.required'=> 'il tipo di servizio offerto è obbligatorio',
+            'subject.required'=> 'Lo strumento insegnato offerto è obbligatorio'
         ];
     }
 }

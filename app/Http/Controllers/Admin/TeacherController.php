@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Teacher;
+use App\Models\Subject;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Teacher\StoreTeacherRequest;
 use App\Http\Requests\Teacher\UpdateTeacherRequest;
-use App\Models\Subject;
 //helpers
 use Illuminate\Support\Facades\Storage;
 
@@ -31,9 +31,8 @@ class TeacherController extends Controller
     {
         //funzione necessaria per menu servizi nella view create 
         $services=Teacher::pluck('service')->unique();
-        $subjects= Subject::all();
 
-        return view('admin.teachers.create', compact('services', 'subjects'));
+        return view('admin.teachers.create', compact('services'));
     }
 
     /**
@@ -55,21 +54,23 @@ class TeacherController extends Controller
         if (isset($formData['cv'])) {
             $cv_path = Storage::put('uploads/pdf', $formData['cv']);
         }
-
-       
-
         
-        Teacher::create(
+        $teacher = Teacher::create(
         [
             'user_id'=>$formData['user_id'],
             'bio'=>  $formData['bio'],
             'cv' =>  $cv_path,
             'photo' =>  $photo_path,
-            
             'phone' =>  $formData['phone'],
             'service' =>  $formData['service'],
         ]);
         
+        if (isset($formData['subjects'])) {
+            foreach ($formData['subjects'] as $subjectId) {
+                                                
+                $teacher->subjects()->attach($subjectId); 
+            }
+        }
 
         return redirect()->route('admin.teachers.index');
     }
@@ -88,10 +89,8 @@ class TeacherController extends Controller
     public function edit(Teacher $teacher)
     {
         $services=Teacher::pluck('service')->unique();
-        $subjects= Subject::all();
 
-
-        return view('admin.teachers.edit', compact('services'), compact('teacher', 'subjects'), );
+        return view('admin.teachers.edit', compact('services'), compact('teacher'), );
     }
 
     /**
@@ -101,13 +100,33 @@ class TeacherController extends Controller
     {
         //
         $formData=$request->validated();
-       
+
+        $photo_path = $teacher->photo;
+        if (isset($formData['photo'])) {
+            if ($teacher->photo){
+                Storage::delete($teacher->photo);
+            }           
+            $photo_path = Storage::put('uploads/images', $formData['photo']);
+        }
+
+        $cv_path = $teacher->cv;
+        if (isset($formData['cv'])) {
+            if ($teacher->cv){
+                Storage::delete($teacher->cv);
+            }
+            $cv_path = Storage::put('uploads/pdf', $formData['cv']);
+        }
+        
+        if (isset($formData['subjects'])) {
+            $teacher->subjects()->sync($formData['subjects']);
+        }
+        
     
         $teacher->update(
         [
             'bio'=> $formData['bio'],
-            'cv' => $formData['cv'],
-            'photo' => $formData['photo'],
+            'cv' => $cv_path,
+            'photo' => $photo_path,
             'phone' => $formData['phone'],
             'service' => $formData['service'],
         ]

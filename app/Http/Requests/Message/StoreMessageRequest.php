@@ -23,7 +23,7 @@ class StoreMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'teacher_id'=> 'nullable|exists:teachers,id',
+            'teacher_id'=> 'required|exists:teachers,id',
             'name'=>'nullable',
             'content'=>'required'
         ];
