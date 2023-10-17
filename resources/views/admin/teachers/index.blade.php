@@ -8,8 +8,8 @@
         <div class="row row-gap-3">
             @foreach ($teachers as $teacher)
                 <div class="col-12 col-md-4 col-lg-3 ">
-                    <div class="card mb-4 h-100 ms-bg-index-card border text-light position-relative text-center">
-                        <img src="/storage/{{ $teacher->photo }}" class="card-img-top" alt="{{ $teacher->user->first_name }}">
+                    <div class="card mb-4 h-100 ms-bg-index-card border text-light position-relative text-center overflow-hidden">
+                        <img src="/storage/{{ $teacher->photo }}" class="card-img-top img-card" alt="{{ $teacher->user->first_name }}">
                         {{-- <div class="wishlist">&#9733;</div> --}}
                         <div class="wishlist">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">

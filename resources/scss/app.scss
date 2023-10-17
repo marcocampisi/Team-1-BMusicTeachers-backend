@@ -367,3 +367,9 @@ button{
 .welcome-blur{
     backdrop-filter:blur(15px);
 }
+
+.img-card{
+    min-height: 50%;
+    max-height: 50%;
+    object-fit: cover;
+}
