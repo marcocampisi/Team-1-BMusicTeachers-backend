@@ -23,18 +23,24 @@ class TeacherSeeder extends Seeder
         });
 
         $teachers = config('teachers');
+
+        $uniqueUserIds = User::inRandomOrder()->pluck('id')->unique();
         
         foreach($teachers as $teacher) {
             
-            $random_user = User::inRandomOrder()->first();
-            
+            if ($uniqueUserIds->count() === 0) {
+                $uniqueUserIds = User::inRandomOrder()->pluck('id')->unique();
+            }
+        
+            $user_id = $uniqueUserIds->shift();
+        
             Teacher::create([
-                'user_id' => $random_user->id,
+                'user_id' => $user_id,
                 'bio' => $teacher['bio'],
-                'cv' => 'uploads/documents/'.$teacher['cv'],
-                'photo' => 'uploads/images/'.$teacher['photo'],
+                'cv' => 'uploads/documents/' . $teacher['cv'],
+                'photo' => 'uploads/images/' . $teacher['photo'],
                 'phone' => $teacher['phone'],
-                'service' => $teacher['service']
+                'service' => $teacher['service'],
             ]);
 
         }
