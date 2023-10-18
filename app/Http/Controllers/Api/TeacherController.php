@@ -15,9 +15,10 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers=Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
-                ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
-                ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
-                ->get();
+        ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
+        ->select('teachers.*', 'sponsorization_teacher.sponsored_until')
+        ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
+        ->get();
 
         return response()->json([
             'success' => true,
