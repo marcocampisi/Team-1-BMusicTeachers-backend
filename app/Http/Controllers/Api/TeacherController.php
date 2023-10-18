@@ -18,6 +18,7 @@ class TeacherController extends Controller
         ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
         ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
         ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
+        ->distinct()
         ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
         ->get();
 
