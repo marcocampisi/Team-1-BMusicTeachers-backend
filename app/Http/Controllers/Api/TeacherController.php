@@ -16,7 +16,8 @@ class TeacherController extends Controller
     {
         $teachers=Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
         ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
-        ->select('teachers.*', 'sponsorization_teacher.sponsored_until')
+        ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
+        ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
         ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
         ->get();
 
