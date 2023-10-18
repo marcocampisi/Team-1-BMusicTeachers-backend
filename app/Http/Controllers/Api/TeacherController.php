@@ -17,7 +17,7 @@ class TeacherController extends Controller
         $teachers=Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
                 ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
                 ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
-                ->paginate(10);
+                ->get();
 
         return response()->json([
             'success' => true,
