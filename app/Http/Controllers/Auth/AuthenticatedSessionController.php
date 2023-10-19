@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
         if (auth()->user()->teacher_id) {
             return redirect()->intended(RouteServiceProvider::HOME);
         } else {
-           return redirect()->route('admin.teachers.create');
+           return redirect()->route('user.teachers.create');
         }
         
     }
