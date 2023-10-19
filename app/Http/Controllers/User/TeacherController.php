@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use App\Models\Teacher;
@@ -21,7 +21,7 @@ class TeacherController extends Controller
         //
         $teachers=Teacher::all();
 
-        return view('admin.teachers.index', compact('teachers'));
+        return view('user.teachers.index', compact('teachers'));
     }
 
     /**
@@ -33,7 +33,7 @@ class TeacherController extends Controller
         $services=Teacher::pluck('service')->unique();
         $subjects=Subject::all();
 
-        return view('admin.teachers.create', compact('services', 'subjects'));
+        return view('user.teachers.create', compact('services', 'subjects'));
     }
 
     /**
@@ -76,7 +76,7 @@ class TeacherController extends Controller
         $user->teacher_id = $teacher->id;
         $user->save();
 
-        return redirect()->route('admin.teachers.index');
+        return redirect()->route('user.teachers.index');
     }
 
     /**
@@ -84,7 +84,7 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        return view('admin.teachers.show', compact('teacher'));
+        return view('user.teachers.show', compact('teacher'));
     }
 
     /**
@@ -99,7 +99,7 @@ class TeacherController extends Controller
         $services=Teacher::pluck('service')->unique();
         $subjects=Subject::all();
 
-        return view('admin.teachers.edit', compact('services','teacher', 'subjects') );
+        return view('user.teachers.edit', compact('services','teacher', 'subjects') );
     }
 
     /**
@@ -145,7 +145,7 @@ class TeacherController extends Controller
         ]
         );
 
-        return redirect()->route('admin.teachers.show', compact('teacher'));
+        return redirect()->route('user.teachers.show', compact('teacher'));
     }
 
     /**
@@ -160,6 +160,6 @@ class TeacherController extends Controller
         
         $teacher=Teacher::destroy($teacher->id);
         
-        return redirect()->route('admin.teachers.index');
+        return redirect()->route('user.teachers.index');
     }
 }

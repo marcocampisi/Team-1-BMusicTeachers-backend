@@ -11,7 +11,7 @@
                     <div class="card-body my-card-slug">
                         <h5 class="card-title">{{ $message->name ? $message->name : "Anonimo" }}</h5>
                         <p class="card-text">{{ $message->content }}</p>
-                        <a class="btn btn-primary" href="{{ route('admin.messages.show', ['message' => $message]) }}">Visualizza</a>
+                        <a class="btn btn-primary" href="{{ route('user.messages.show', ['message' => $message]) }}">Visualizza</a>
                     </div>
                 </div>
             </div>

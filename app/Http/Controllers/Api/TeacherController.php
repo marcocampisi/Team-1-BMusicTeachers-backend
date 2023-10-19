@@ -31,7 +31,6 @@ class TeacherController extends Controller
     public function search(Request $request)
     {
     $searchQuery = $request->get('q');
-
     $teachers = Teacher::where('first_name', 'like', "%{$searchQuery}%")
         ->orWhere('last_name', 'like', "%{$searchQuery}%")
         ->get();

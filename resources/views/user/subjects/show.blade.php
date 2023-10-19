@@ -15,7 +15,7 @@
                 @foreach ($subject->teachers as $teacher)
                 
                     <li>
-                        <a href="{{ route('admin.teachers.show', ['teacher' => $teacher->id]) }}">
+                        <a href="{{ route('user.teachers.show', ['teacher' => $teacher->id]) }}">
                             {{ $teacher->user->first_name }}
                             {{ $teacher->user->last_name }}
                         </a>

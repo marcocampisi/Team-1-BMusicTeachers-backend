@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Models\Subject;
 use App\Http\Requests\Subject\StoreSubjectRequest;
@@ -19,7 +19,7 @@ class SubjectController extends Controller
         //
         $subjects = Subject::all();
 
-        return view('admin.subjects.index', compact('subjects'));
+        return view('user.subjects.index', compact('subjects'));
     }
 
     /**
@@ -46,7 +46,7 @@ class SubjectController extends Controller
         //
         $teachers=Teacher::all();
 
-        return view('admin.subjects.show', compact('subject'), compact('teachers'));
+        return view('user.subjects.show', compact('subject'), compact('teachers'));
     }
 
     /**
