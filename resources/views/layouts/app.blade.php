@@ -35,7 +35,7 @@
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 
                                 <li class="nav-item ">
-                                    <a class="nav-link text-light" href="{{ route('admin.teachers.index') }}">I nostri teacher</a>
+                                    <a class="nav-link text-light" href="{{ route('user.teachers.index') }}">I nostri teacher</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link text-light" href="">Messaggi</a>
