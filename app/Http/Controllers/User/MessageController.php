@@ -20,7 +20,7 @@ class MessageController extends Controller
         return view('user.messages.index', compact('messages')); 
     }
 
-    /**
+    /**admin
      * Show the form for creating a new resource.
      */
     public function create()
