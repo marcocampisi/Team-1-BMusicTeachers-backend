@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\RatingController;
-use App\Http\Controllers\Admin\ReviewController;
-use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\SubjectController;
-use App\Http\Controllers\Admin\TeacherController;
-use App\Http\Controllers\Admin\SponsorizationController;
+use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\RatingController;
+use App\Http\Controllers\User\ReviewController;
+use App\Http\Controllers\User\MessageController;
+use App\Http\Controllers\User\SubjectController;
+use App\Http\Controllers\User\TeacherController;
+use App\Http\Controllers\User\SponsorizationController;
 
 /*
 |--------------------------------------------------------------------------
