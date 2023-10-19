@@ -30,7 +30,11 @@ class TeacherController extends Controller
 
     public function search(Request $request , $searchQuery)
     {
-        $teachers = Teacher::whereHas('user', function ($query) use ($searchQuery) {
+        $teachers = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
+        ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
+        ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
+        ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
+        ->whereHas('user', function ($query) use ($searchQuery) {
             $query->whereRaw("CONCAT(first_name, '', last_name) LIKE '%{$searchQuery}%'");
         })->get();
         
