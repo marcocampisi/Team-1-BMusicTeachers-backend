@@ -40,6 +40,8 @@ Route::name('api.')->group(function(){
     ]); 
     Route::resource('/teachers', TeacherController::class)->only([
         'index',
-        'show'
-    ]);
+        'show',
+    ]); 
 });
+
+    Route::get('/teachers/search', [TeacherController::class, 'search']);
