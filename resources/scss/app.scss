@@ -181,6 +181,8 @@ background-color: transparent;
     max-width: 400px;
 }
 
+
+
 .text-teachers{
     background-image: linear-gradient(to right , black , green);
 }
@@ -202,6 +204,47 @@ background-color: transparent;
     pointer-events: none;
     transition: 0.5s;
 }
+
+
+.ms-progress{
+    height: 5px;
+    position: relative;
+}
+
+.ms-progress-bar{
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.ms-point {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 50%;
+    top: -3px;
+    border-radius: 100%;
+}
+
+.ms-point.end{
+    left: 100%;
+    top: -3px;
+    border-radius: 100%;
+}
+
+.ms-display-1{
+    position: absolute;
+    top: -23px;
+    left: calc(50% - 3px);
+}
+
+.ms-display-2{
+    position: absolute;
+    top: -23px;
+    left: calc(100% - 3px);
+}
+
 
 
 input:focus ~ label{
@@ -374,3 +417,4 @@ button{
     object-fit: cover;
     object-position: top center;
 }
+

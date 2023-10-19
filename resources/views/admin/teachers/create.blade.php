@@ -9,6 +9,14 @@
                 @csrf
                 <h2>Register</h2>
 
+                <div class="ms-progress bg-secondary mt-4 mb-3">
+                    <div class="ms-progress-bar w-100 bg-success"></div>
+                    <div class="ms-display-1 fw-bold text-success">1/2</div>
+                    <div class="ms-point bg-success"></div>
+                    <div class="ms-display-2 fw-bold text-success">2/2</div>
+                    <div class="ms-point end bg-success"></div>
+                </div>
+
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Curriculum</label>
                     <input class="form-control" type="file" name="cv" id="formFile">
