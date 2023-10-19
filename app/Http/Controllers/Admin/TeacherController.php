@@ -88,6 +88,10 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
+        if (auth()->user()->id !== $teacher->user_id) {
+            return abort(403);
+        }
+        
         $services=Teacher::pluck('service')->unique();
         $subjects=Subject::all();
 
