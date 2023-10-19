@@ -5,7 +5,7 @@
 @section('main-content')
     <div class="form-section"> 
         <div class="form-box pt-4 pb-3 text-light">
-            <form action="{{ route('admin.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST" enctype="multipart/form-data" >
+            <form action="{{ route('user.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <h2>Register</h2>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Requests\Message\StoreMessageRequest;
 use App\Http\Requests\Message\UpdateMessageRequest;
@@ -17,7 +17,7 @@ class MessageController extends Controller
     {
         $messages = Message::all();
 
-        return view('admin.messages.index', compact('messages')); 
+        return view('user.messages.index', compact('messages')); 
     }
 
     /**
@@ -27,7 +27,7 @@ class MessageController extends Controller
     {
         $teachers = Teacher::all();
 
-        return view('admin.messages.create', compact('teachers'));
+        return view('user.messages.create', compact('teachers'));
     }
 
     /**
@@ -39,7 +39,7 @@ class MessageController extends Controller
 
         Message::create($formData);
 
-        return redirect()->route('admin.messages.index')->with('success', 'Messaggio creato correttamente.');
+        return redirect()->route('user.messages.index')->with('success', 'Messaggio creato correttamente.');
     }
 
     /**
@@ -47,7 +47,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        return view('admin.messages.show', compact('message'));
+        return view('user.messages.show', compact('message'));
     }
 
     /**
@@ -73,6 +73,6 @@ class MessageController extends Controller
     {
         $message->delete();
 
-        return redirect()->route('admin.messages.index')->with('success', 'Messaggio eliminato correttamente.');
+        return redirect()->route('user.messages.index')->with('success', 'Messaggio eliminato correttamente.');
     }
 }

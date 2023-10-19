@@ -4,7 +4,7 @@
 
 @section('main-content')
     
-    <form action="{{ route('admin.messages.store')}}" method="POST">
+    <form action="{{ route('user.messages.store')}}" method="POST">
         @csrf
 
         <div class="mb-3">

@@ -11,7 +11,7 @@
                     <!--<img src="https://picsum.photos/1000" class="card-img-top" alt="...">-->
                     <div class="card-body my-card-slug">
                         <h5 class="card-title">{{ $subject->name }}</h5>
-                        <a href="{{ route('admin.subjects.show', ['subject' => $subject]) }}" class="btn btn-primary">Show</a>
+                        <a href="{{ route('user.subjects.show', ['subject' => $subject]) }}" class="btn btn-primary">Show</a>
                     </div>
                 </div>
             </div>

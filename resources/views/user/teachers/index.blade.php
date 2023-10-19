@@ -20,7 +20,7 @@
                             <h5 class="card-title">{{ $teacher->user->first_name }} {{ $teacher->user->last_name }}</h5>
                             <p class="card-text">{{ $teacher->bio }}</p>
                             <div class="justify-content-center align-items-center">
-                                <a href="{{ route('admin.teachers.show', ['teacher' => $teacher]) }}" class="btn btn-outline-light btn-success mt-3">Show</a>
+                                <a href="{{ route('user.teachers.show', ['teacher' => $teacher]) }}" class="btn btn-outline-light btn-success mt-3">Show</a>
                             </div>
                         </div>
                     </div>

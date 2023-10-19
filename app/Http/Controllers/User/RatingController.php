@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Models\Rating;
 use App\Http\Requests\Rating\StoreRatingRequest;
@@ -44,7 +44,7 @@ class RatingController extends Controller
          
         ]);
 
-        return redirect()->route('admin.teachers.show');
+        return redirect()->route('user.teachers.show');
     }
 
     /**

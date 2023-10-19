@@ -8,9 +8,9 @@
         <p class="text-white">{{ $teacher->bio }}</p>
         <p class="text-white">+39 {{ $teacher->phone }}</p>
         <button class="btn btn-warning col-2 mb-3">
-            <a class="text-white" href="{{ route('admin.teachers.edit', ['teacher' => $teacher->id]) }}">Modifica</a>
+            <a class="text-white" href="{{ route('user.teachers.edit', ['teacher' => $teacher->id]) }}">Modifica</a>
         </button>
-        <form action="{{ route('admin.teachers.destroy', ['teacher' => $teacher->id]) }}" method="post">
+        <form action="{{ route('user.teachers.destroy', ['teacher' => $teacher->id]) }}" method="post">
             @csrf
             @method('DELETE')
 

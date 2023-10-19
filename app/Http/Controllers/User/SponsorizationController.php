@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Models\Sponsorization;
 use App\Http\Requests\Sponsorization\StoreSponsorizationRequest;
@@ -17,7 +17,7 @@ class SponsorizationController extends Controller
         //
         $sponsorizations = Sponsorization::all();
 
-        return view('admin.sponsorizations.index', compact('sponsorizations'));
+        return view('user.sponsorizations.index', compact('sponsorizations'));
     }
 
     /**
