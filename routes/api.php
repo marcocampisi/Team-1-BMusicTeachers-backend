@@ -44,4 +44,4 @@ Route::name('api.')->group(function(){
     ]); 
 });
 
-    Route::get('/teachers/search', [TeacherController::class, 'search']);
+Route::get('/teachers/search/{seachQuery}', [TeacherController::class, 'search']);
