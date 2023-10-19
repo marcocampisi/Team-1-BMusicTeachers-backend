@@ -72,6 +72,10 @@ class TeacherController extends Controller
             }
         }
 
+        $user = User::find(auth()->user()->id);
+        $user->teacher_id = $teacher->id;
+        $user->save();
+
         return redirect()->route('admin.teachers.index');
     }
 
