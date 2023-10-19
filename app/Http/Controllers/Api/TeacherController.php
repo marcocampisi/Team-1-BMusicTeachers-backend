@@ -41,31 +41,21 @@ class TeacherController extends Controller
     ]);
     }
 
-    public function show(Teacher $teacher)
+    
+    public function show(string $id)
     {
+        $teacher = Teacher::where('id', $id)->first();
 
-        return response()->json([
-
-        ]);
-    }
-
-    /*public function show(string $slug)
-    {
-        $post = Post::where('slug', $slug)->first();
-
-        if ($post) {
+        if ($teacher) {
             return response()->json([
                 'success' => true,
-                'results' => $post
+                'results' => $teacher
             ], 200);
-        }
-        else {
+        } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Not found'
+                'message' => 'Teacher not found',
             ], 404);
         }
     }
-
-    */
 }

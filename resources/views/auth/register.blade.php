@@ -7,6 +7,13 @@
                 @csrf
 
                 <h2>Register</h2>
+                <div class="ms-progress bg-secondary mt-4">
+                    <div class="ms-progress-bar w-50 bg-success"></div>
+                    <div class="ms-display-1 fw-bold text-success">1/2</div>
+                    <div class="ms-point bg-success"></div>
+                    <div class="ms-display-2 fw-bold text-secondary">2/2</div>
+                    <div class="ms-point end bg-secondary"></div>
+                </div>
                 <!-- Firstame -->
                 <div class="inputbox">
                     <ion-icon name="person-outline"></ion-icon>

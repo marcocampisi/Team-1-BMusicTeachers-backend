@@ -72,6 +72,10 @@ class TeacherController extends Controller
             }
         }
 
+        $user = User::find(auth()->user()->id);
+        $user->teacher_id = $teacher->id;
+        $user->save();
+
         return redirect()->route('admin.teachers.index');
     }
 
@@ -88,6 +92,10 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
+        if (auth()->user()->id !== $teacher->user_id) {
+            return abort(403);
+        }
+        
         $services=Teacher::pluck('service')->unique();
         $subjects=Subject::all();
 
@@ -146,6 +154,10 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher)
     {
         //
+        if (auth()->user()->id !== $teacher->user_id) {
+            return abort(403);
+        }
+        
         $teacher=Teacher::destroy($teacher->id);
         
         return redirect()->route('admin.teachers.index');

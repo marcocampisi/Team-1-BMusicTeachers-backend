@@ -35,7 +35,7 @@
     
             <div class="inputbox">
                 <div>
-                    <input type="tel" pattern="[0-9]{10}" name="phone" min="0" placeholder="Inserisci il tuo numero di telefono:" required value="{{old('phone', $teacher->phone)}}">
+                    <input type="tel" pattern="[0-9]{5-20}" name="phone" min="0" placeholder="Inserisci il tuo numero di telefono:" required value="{{old('phone', $teacher->phone)}}">
                 </div>
             </div>
             @error('phone')

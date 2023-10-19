@@ -34,7 +34,7 @@ class TeacherSeeder extends Seeder
         
             $user_id = $uniqueUserIds->shift();
         
-            Teacher::create([
+            $teacher = Teacher::create([
                 'user_id' => $user_id,
                 'bio' => $teacher['bio'],
                 'cv' => 'uploads/documents/' . $teacher['cv'],
@@ -43,6 +43,9 @@ class TeacherSeeder extends Seeder
                 'service' => $teacher['service'],
             ]);
 
+            $user = User::find($user_id);
+            $user->teacher_id = $teacher->id;
+            $user->save();
         }
     }
 }
