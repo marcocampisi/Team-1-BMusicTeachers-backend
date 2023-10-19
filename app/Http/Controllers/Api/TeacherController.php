@@ -28,7 +28,7 @@ class TeacherController extends Controller
         ]);
     }
 
-   /*  public function show(string $id)
+     public function show(string $id)
     {
         $teacher = Teacher::where('id', $id)->first();
 
@@ -44,5 +44,4 @@ class TeacherController extends Controller
             ], 404);
         }
     }
-    */
 }
