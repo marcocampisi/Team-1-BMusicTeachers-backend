@@ -150,6 +150,10 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher)
     {
         //
+        if (auth()->user()->id !== $teacher->user_id) {
+            return abort(403);
+        }
+        
         $teacher=Teacher::destroy($teacher->id);
         
         return redirect()->route('admin.teachers.index');

@@ -27,7 +27,7 @@ class StoreTeacherRequest extends FormRequest
             'bio'=> 'nullable',
             'cv'=> 'nullable|max:2048|mimes:pdf',
             'photo'=> 'nullable|image|max:8192',
-            'phone'=> 'required|min:0|regex:/^[0-9]{10}$/', 
+            'phone'=> 'required|min:0|regex:/^[0-9]{15}$/', 
             'service'=> 'required', 
             'subjects'=> 'required|array',
         ];
