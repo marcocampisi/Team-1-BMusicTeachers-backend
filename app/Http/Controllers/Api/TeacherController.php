@@ -33,8 +33,6 @@ class TeacherController extends Controller
         $teachers = Teacher::whereHas('user', function ($query) use ($searchQuery) {
             $query->whereRaw("CONCAT(first_name, '', last_name) LIKE '%{$searchQuery}%'");
         })->get();
-
-        dd($teachers);
         
         return response()->json([
             'results' => $teachers
