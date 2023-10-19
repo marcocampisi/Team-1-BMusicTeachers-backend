@@ -28,12 +28,10 @@ class TeacherController extends Controller
         ]);
     }
 
-    public function search(Request $request , $seachQuery)
+    public function search(Request $request , $searchQuery)
     {
-
-        $teachers = Teacher::whereHas('user', function ($query) use ($seachQuery) {
-            $query->where('first_name', 'LIKE', "%$seachQuery%")
-                ->orWhere('last_name', 'LIKE', "%$seachQuery%");
+        $teachers = Teacher::whereHas('user', function ($query) use ($searchQuery) {
+            $query->whereRaw("CONCAT(first_name, '', last_name) LIKE '%{$searchQuery}%'");
         })->get();
 
         dd($teachers);
