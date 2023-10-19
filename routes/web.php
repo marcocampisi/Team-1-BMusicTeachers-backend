@@ -44,5 +44,20 @@ Route::middleware(["auth", "verified"])
     Route::resource('/teachers', TeacherController::class);
 });
 
+Route::middleware(["auth", "verified"])
+    ->name('user.') //Da modificare tutti i vari reindirizzamenti alle view di cui cambieremo anche la locazione nelle cartelle
+    ->prefix('user')
+    ->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])/*->name('dashboard')*/;
+    Route::resource('/messages', MessageController::class);
+    Route::resource('/ratings', RatingController::class);
+    Route::resource('/reviews', ReviewController::class);
+    Route::resource('/sponsorizations', SponsorizationController::class);
+    Route::resource('/subjects', SubjectController::class); 
+    Route::resource('/teachers', TeacherController::class);
+});
+
+
+
 
 require __DIR__.'/auth.php';
