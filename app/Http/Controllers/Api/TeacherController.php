@@ -39,7 +39,7 @@ class TeacherController extends Controller
         ->whereHas('user', function ($query) use ($searchQuery) {
             $query->whereRaw("CONCAT(first_name, '', last_name) LIKE '%{$searchQuery}%'");
         })->whereHas('subject', function($subjectQuery) use ($combinedSearchQuery){
-            $query->where("name LIKE '%{$combinedSearchquery}%'");
+           $subjectQuery->where("name LIKE '%{$combinedSearchQuery}%'");
         })->get();
         
         return response()->json([
