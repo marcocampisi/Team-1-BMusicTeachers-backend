@@ -14,13 +14,13 @@ class TeacherController extends Controller
     //
     public function index()
     {
-        $teachers=Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
-        ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
-        ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
-        ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
-        ->distinct()
-        ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
-        ->get();
+        $teachers = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
+            ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
+            ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
+            ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
+            ->distinct()
+            ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
+            ->get();
 
         return response()->json([
             'success' => true,
@@ -28,40 +28,34 @@ class TeacherController extends Controller
         ]);
     }
 
-    public function search(Request $request )
+    public function search(Request $request)
     {
-        // $searchQuery = $request->input('searchQuery');
+        $searchQuery = $request->input('searchQuery');
+        $subjectQuery = $request->input('subjectQuery');
 
-        // $subjectQuery = $request->input('subjectQuery');
+        $query = Teacher::leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
+            ->leftJoin('subject_teacher', 'subject_teacher.teacher_id', '=', 'teachers.id')
+            ->leftJoin('subjects', 'subjects.id', '=', 'subject_teacher.subject_id')
+            ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
+            ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name', 'subjects.name AS subject_name');
 
-        // $teachers = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization'. 'users')
-        // ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
-        // ->leftJoin('subject_teacher', 'subject_teacher.teacher_id', '=', 'teachers.id')
-        // ->leftJoin('subjects', 'subjects.id', '=', 'subject_teacher.subject_id')
-        // ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
-        // ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
-        // ->whereRaw("CONCAT(users.first_name, '', users.last_name) LIKE '%{$searchQuery}%'")
-        // ->where('subjects.name', 'like', "%{$subjectQuery}%")
-        // ->get();
-        
-        // return response()->json([
-        //     'results' => $teachers
-        // ]);
+            $query->where(function ($q) use ($searchQuery, $subjectQuery) {
+                $q->when($searchQuery, function ($userQuery) use ($searchQuery) {
+                    $userQuery->whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ["%$searchQuery%"]);
+                });
+    
+                $q->when($subjectQuery, function ($GINO) use ($subjectQuery) {
+                    $GINO->where('name', 'like', "%$subjectQuery%");
+                });
+            });
+    
+        $teachers = $query->distinct()->get();
 
-        // if ($teachers) {
-        //     return dd($teachers);
-        // }
-        // else {
-        //     return response()->json([
-        //         'success' => false,
-        //         'results' => $teachers
-        //     ]);
-        // }
+        return response()->json([
+            'results' => $teachers
+        ]);
     }
 
-    
-
-    
     public function show(string $id)
     {
         $teacher = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization', 'user')->where('id', $id)->first();
@@ -77,7 +71,5 @@ class TeacherController extends Controller
                 'message' => 'Teacher not found',
             ], 404);
         }
-
-        // provaaaaaaa
     }
 }
