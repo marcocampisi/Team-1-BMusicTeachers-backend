@@ -34,8 +34,8 @@ class TeacherController extends Controller
         ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
         ->leftJoin('subject_teacher', 'subject_teacher.teacher_id', '=', 'teachers.id')
         ->leftJoin('subjects', 'subjects.id', '=', 'subject_teacher.subject_id')
-        ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
-        ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
+        ->leftJoin('user', 'user.id', '=', 'teachers.user_id')
+        ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'user.first_name', 'user.last_name')
         ->whereHas('user', function ($query) use ($searchQuery) {
             $query->whereRaw("CONCAT(first_name, '', last_name) LIKE '%{$searchQuery}%'");
         })->whereHas('subject', function($subjectQuery) use ($combinedSearchQuery){
@@ -46,6 +46,22 @@ class TeacherController extends Controller
             'results' => $teachers
         ]);
     }
+    
+    // public function search(Request $request , $searchQuery, $combinedSearchQuery)
+    // {
+    //     $teachers = Teacher::with(['subjects', 'ratings', 'reviews', 'sponsorization'])
+    //     ->whereHas('user', function ($query) use ($searchQuery) {
+    //         $query->whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ["%$searchQuery%"]);
+    //     })
+    //     ->whereHas('subjects', function ($subjectQuery) use ($combinedSearchQuery) {
+    //         $subjectQuery->where('name', 'like', "%$combinedSearchQuery%");
+    //     })
+    //     ->paginate(10);
+
+    //     return response()->json([
+    //         'results' => $teachers
+    //     ]);
+    // }
 
     
 
