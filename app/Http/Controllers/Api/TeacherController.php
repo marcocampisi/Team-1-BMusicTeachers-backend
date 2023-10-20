@@ -30,16 +30,16 @@ class TeacherController extends Controller
 
     public function search(Request $request , $searchQuery, $combinedSearchQuery)
     {
-        $teachers = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
+        $teachers = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization'. 'users')
         ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
         ->leftJoin('subject_teacher', 'subject_teacher.teacher_id', '=', 'teachers.id')
         ->leftJoin('subjects', 'subjects.id', '=', 'subject_teacher.subject_id')
         ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
-        ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name', 'subjects.name')
+        ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
         ->whereHas('user', function ($query) use ($searchQuery) {
             $query->whereRaw("CONCAT(first_name, '', last_name) LIKE '%{$searchQuery}%'");
         })->whereHas('subject', function($subjectQuery) use ($combinedSearchQuery){
-           $subjectQuery->where("name LIKE '%{$combinedSearchQuery}%'");
+           $subjectQuery->where('name', 'like', "%{$combinedSearchQuery}%");
         })->get();
         
         return response()->json([
