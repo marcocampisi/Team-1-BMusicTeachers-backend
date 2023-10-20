@@ -30,8 +30,9 @@ class TeacherController extends Controller
 
     public function search(Request $request)
     {
-        $searchQuery = $request->input('searchQuery');
-        $subjectQuery = $request->input('subjectQuery');
+        $data = $request->input('data');
+        $searchQuery = $data['searchQuery'];
+        $subjectQuery = $data['subjectQuery'];
 
         $query = Teacher::leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
             ->leftJoin('subject_teacher', 'subject_teacher.teacher_id', '=', 'teachers.id')
