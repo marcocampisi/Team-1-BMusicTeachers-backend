@@ -44,7 +44,7 @@ Route::name('api.')->group(function(){
     ]); 
 });
 
-Route::get('/teachers/search', [TeacherController::class, 'search'])
+Route::post('/teachers/search', [TeacherController::class, 'search'])
     ->where('searchQuery', 'nullable')
     ->where('combinedSearchQuery', 'nullable');
 
