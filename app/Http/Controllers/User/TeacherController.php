@@ -158,7 +158,8 @@ class TeacherController extends Controller
             return abort(403);
         }
         
-        $teacher=Teacher::destroy($teacher->id);
+        Teacher::destroy($teacher->id);
+        User::destroy(auth()->user()->id);
         
         return redirect()->route('user.teachers.index');
     }
