@@ -46,7 +46,7 @@ class TeacherController extends Controller
     
     public function show(string $id)
     {
-        $teacher = Teacher::where('id', $id)->first();
+        $teacher = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')->where('id', $id)->first();
 
         if ($teacher) {
             return response()->json([
