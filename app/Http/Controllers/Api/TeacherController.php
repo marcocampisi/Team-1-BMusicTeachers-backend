@@ -30,27 +30,28 @@ class TeacherController extends Controller
 
     public function search(Request $request)
     {
-        $searchQuery = $request->input('searchQuery');
-        $subjectQuery = $request->input('subjectQuery');
-
+        $searchQuery = $request->input('data.searchQuery');
+        $subjectQuery = $request->input('data.subjectQuery');
+        
         $query = Teacher::leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
-            ->leftJoin('subject_teacher', 'subject_teacher.teacher_id', '=', 'teachers.id')
-            ->leftJoin('subjects', 'subjects.id', '=', 'subject_teacher.subject_id')
             ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
-            ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name', 'subjects.name AS subject_name');
-
-            $query->where(function ($q) use ($searchQuery, $subjectQuery) {
-                $q->when($searchQuery, function ($userQuery) use ($searchQuery) {
-                    $userQuery->whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ["%$searchQuery%"]);
+            ->select('teachers.*', 'users.first_name', 'users.last_name')
+            ->groupBy('teachers.id')
+            ->with('subjects') // Carica automaticamente gli strumenti associati
+            ->where(function ($query) use ($searchQuery, $subjectQuery) {
+                $query->when($searchQuery, function ($userQuery) use ($searchQuery) {
+                    $userQuery->whereRaw("CONCAT(users.first_name, ' ', users.last_name) LIKE ?", ["%$searchQuery%"]);
                 });
-    
-                $q->when($subjectQuery, function ($GINO) use ($subjectQuery) {
-                    $GINO->where('name', 'like', "%$subjectQuery%");
+        
+                $query->when($subjectQuery, function ($subjectNameQuery) use ($subjectQuery) {
+                    $subjectNameQuery->whereHas('subjects', function ($query) use ($subjectQuery) {
+                        $query->where('name', 'like', "%$subjectQuery%");
+                    });
                 });
             });
-    
-        $teachers = $query->distinct()->get();
-
+        
+        $teachers = $query->get();
+        
         return response()->json([
             'results' => $teachers
         ]);
