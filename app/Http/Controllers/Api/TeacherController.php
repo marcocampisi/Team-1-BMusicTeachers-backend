@@ -35,9 +35,9 @@ class TeacherController extends Controller
         
         $query = Teacher::leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
             ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
-            ->select('teachers.*', 'users.first_name', 'users.last_name')
-            ->groupBy('teachers.id')
-            ->with('subjects') // Carica automaticamente gli strumenti associati
+            ->select('teachers.*', 'users.first_name', 'users.last_name', 'sponsorization_teacher.sponsored_until')
+            ->groupBy('teachers.id', 'sponsorization_teacher.sponsored_until')
+            ->with('subjects')
             ->where(function ($query) use ($searchQuery, $subjectQuery) {
                 $query->when($searchQuery, function ($userQuery) use ($searchQuery) {
                     $userQuery->whereRaw("CONCAT(users.first_name, ' ', users.last_name) LIKE ?", ["%$searchQuery%"]);
@@ -50,7 +50,9 @@ class TeacherController extends Controller
                 });
             });
         
-        $teachers = $query->get();
+            $teachers = $query
+            ->orderByRaw('ISNULL(sponsorization_teacher.sponsored_until), sponsorization_teacher.sponsored_until')
+            ->get();
         
         return response()->json([
             'results' => $teachers
