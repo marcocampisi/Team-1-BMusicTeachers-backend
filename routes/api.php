@@ -26,12 +26,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::name('api.')->group(function(){
     Route::post('/message/create', [MessageController::class, 'store']);
-    Route::resource('/ratings', RatingController::class)->only([
-        'create'
-    ]);
-    Route::resource('/reviews', ReviewController::class)->only([
-        'create'
-    ]);
+    Route::post('/ratings/create', [RatingController::class, 'store']);
+    Route::post('/reviews/create', [ReviewController::class, 'store']);
     Route::resource('/subjects', SubjectController::class)->only([
         'index',
         'show'
