@@ -61,8 +61,13 @@ class TeacherController extends Controller
 
     public function show(string $id)
     {
-        $teacher = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization', 'user')->where('id', $id)->first();
-
+        $teacher = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization', 'user')
+        ->leftJoin('sponsorization_teacher', 'teachers.id', '=', 'sponsorization_teacher.teacher_id')
+        ->leftJoin('users', 'teachers.user_id', '=', 'users.id')
+        ->where('teachers.id', $id)
+        ->select('teachers.*', 'users.first_name', 'users.last_name', 'sponsorization_teacher.sponsored_until')
+        ->first();
+    
         if ($teacher) {
             return response()->json([
                 'success' => true,
