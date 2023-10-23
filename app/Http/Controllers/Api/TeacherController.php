@@ -80,6 +80,7 @@ class TeacherController extends Controller
         ->leftJoin('sponsorization_teacher', 'teachers.id', '=', 'sponsorization_teacher.teacher_id')
         ->leftJoin('users', 'teachers.user_id', '=', 'users.id')
         ->leftJoin('rating_teacher', 'teachers.id', '=', 'rating_teacher.teacher_id')
+        ->leftJoin('ratings', 'rating_teacher.rating_id', '=', 'ratings.id')
         ->where('teachers.id', $id)
         ->select('teachers.*', 'users.first_name', 'users.last_name', 'sponsorization_teacher.sponsored_until', 'ratings.*', 'reviews.*', 'messages.*')
         ->first();
