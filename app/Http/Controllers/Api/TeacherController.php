@@ -59,6 +59,21 @@ class TeacherController extends Controller
         ]);
     }
 
+    public function chart(string $id)
+    {
+        $teacherDataset = Teacher::with('messages', 'ratings', 'reviews')
+        ->leftJoin('rating_teacher', 'teachers.id', '=', 'rating_teacher.teacher_id')
+        ->leftJoin('ratings', 'rating_teacher.rating_id', '=', 'ratings.id')
+        ->leftJoin('messages', 'messages.teacher_id', '=', 'teachers.id')
+        ->leftJoin('reviews', 'reviews.teacher_id', '=', 'teachers.id')
+        ->where('teachers.id', $id)
+        ->select('messages.*', 'ratings.*', 'rating_teacher.*', 'reviews.*');
+
+        return response()->json([
+            'results' => $teacherDataset
+        ]);
+    }
+
     public function show(string $id)
     {
         $teacher = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization', 'user')
@@ -81,3 +96,4 @@ class TeacherController extends Controller
         }
     }
 }
+
