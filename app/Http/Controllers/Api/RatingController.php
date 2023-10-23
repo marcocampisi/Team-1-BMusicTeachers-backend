@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Rating;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RatingController extends Controller
 {
@@ -20,15 +21,30 @@ class RatingController extends Controller
             'data.rating_id' => 'required|exists:ratings,id',
         ]);
     
-        $rating = new Rating();
-        $rating->save(); 
-    
         if ($request->input('data.teacher_id')) {
-            $rating->teachers()->attach($request->input('data.teacher_id'));
+            $teacher = Teacher::find($request->input('data.teacher_id'));
+    
+            if (!$teacher) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Insegnante non trovato',
+                ], 404);
+            }
         }
     
-        // Collega anche il rating_id alla tabella pivot, se necessario
-        $rating->teachers()->attach($request->input('data.rating_id'));
+
+        $rating = Rating::find($request->input('data.rating_id'));
+    
+        if (!$rating) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Valutazione non trovata',
+            ], 404);
+        }
+    
+        if ($request->input('data.teacher_id')) {
+            $teacher->ratings()->attach($request->input('data.rating_id'));
+        }
     
         return response()->json([
             'success' => true,
