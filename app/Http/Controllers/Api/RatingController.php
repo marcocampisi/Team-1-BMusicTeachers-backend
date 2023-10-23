@@ -15,27 +15,28 @@ class RatingController extends Controller
     }
 
     public function store(Request $request){
-        // $request->validate([
-        //     'data.name' => 'nullable|string',
-        //     'data.content' => 'required|string',
-        //     'data.teacher_id' => 'nullable|exists:teachers,id',
-        // ]);
-
-        $value = $request->input('data.value');
-
+        $request->validate([
+            'data.teacher_id' => 'nullable|exists:teachers,id',
+            'data.rating_id' => 'required|exists:ratings,id',
+        ]);
     
-        // $message = new Rating();
-        // $message->name = $request->input('data.name');
-        // $message->content = $request->input('data.content');
-        // $message->teacher_id = $request->input('data.teacher_id');
+        $rating = new Rating();
+        $rating->save(); 
     
-
-        // $message->save();
+        if ($request->input('data.teacher_id')) {
+            $rating->teachers()->attach($request->input('data.teacher_id'));
+        }
     
-
+        // Collega anche il rating_id alla tabella pivot, se necessario
+        $rating->teachers()->attach($request->input('data.rating_id'));
+    
         return response()->json([
             'success' => true,
-            'message' => 'Messaggio salvato con successo',
+            'message' => 'Valutazione salvata con successo',
         ], 200);
     }
+
+
+
+
 }

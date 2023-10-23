@@ -28,6 +28,9 @@ Route::name('api.')->group(function(){
     Route::post('/message/create', [MessageController::class, 'store']);
     Route::post('/ratings/create', [RatingController::class, 'store']);
     Route::post('/reviews/create', [ReviewController::class, 'store']);
+    Route::resource('/ratings', RatingController::class)->only([
+        'index'
+    ]); 
     Route::resource('/subjects', SubjectController::class)->only([
         'index',
         'show'
