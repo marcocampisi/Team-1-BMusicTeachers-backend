@@ -32,7 +32,7 @@ class TeacherController extends Controller
     {
         $searchQuery = $request->input('data.searchQuery');
         $subjectQuery = $request->input('data.subjectQuery');
-        
+
         $query = Teacher::leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
             ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
             ->select('teachers.*', 'users.first_name', 'users.last_name', 'sponsorization_teacher.sponsored_until')
@@ -42,35 +42,20 @@ class TeacherController extends Controller
                 $query->when($searchQuery, function ($userQuery) use ($searchQuery) {
                     $userQuery->whereRaw("CONCAT(users.first_name, ' ', users.last_name) LIKE ?", ["%$searchQuery%"]);
                 });
-        
+
                 $query->when($subjectQuery, function ($subjectNameQuery) use ($subjectQuery) {
                     $subjectNameQuery->whereHas('subjects', function ($query) use ($subjectQuery) {
                         $query->where('name', 'like', "%$subjectQuery%");
                     });
                 });
             });
-        
+
             $teachers = $query
             ->orderByRaw('ISNULL(sponsorization_teacher.sponsored_until), sponsorization_teacher.sponsored_until')
             ->get();
-        
+
         return response()->json([
             'results' => $teachers
-        ]);
-    }
-
-    public function chart(string $id)
-    {
-        $teacherDataset = Teacher::with('messages', 'ratings', 'reviews')
-        ->leftJoin('rating_teacher', 'teachers.id', '=', 'rating_teacher.teacher_id')
-        ->leftJoin('ratings', 'rating_teacher.rating_id', '=', 'ratings.id')
-        ->leftJoin('messages', 'messages.teacher_id', '=', 'teachers.id')
-        ->leftJoin('reviews', 'reviews.teacher_id', '=', 'teachers.id')
-        ->where('teachers.id', $id)
-        ->select('messages.*', 'ratings.*', 'rating_teacher.*', 'reviews.*');
-
-        return response()->json([
-            'results' => $teacherDataset
         ]);
     }
 
@@ -82,7 +67,7 @@ class TeacherController extends Controller
         ->where('teachers.id', $id)
         ->select('teachers.*', 'users.first_name', 'users.last_name', 'sponsorization_teacher.sponsored_until')
         ->first();
-    
+
         if ($teacher) {
             return response()->json([
                 'success' => true,

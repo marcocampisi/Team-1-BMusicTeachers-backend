@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\SubjectController;
 use App\Http\Controllers\Api\TeacherController;
+use App\Http\Controllers\Api\ChartController;
 //Cos'è lo slug?
 
 /*
@@ -31,11 +32,12 @@ Route::name('api.')->group(function(){
     Route::resource('/subjects', SubjectController::class)->only([
         'index',
         'show'
-    ]); 
+    ]);
     Route::resource('/teachers', TeacherController::class)->only([
         'index',
         'show',
-    ]); 
+    ]);
+    Route::resource('/chart', ChartController::class)->only(['show']);
 });
 
 Route::post('/teachers/search', [TeacherController::class, 'search']);
