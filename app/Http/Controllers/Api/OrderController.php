@@ -36,33 +36,36 @@ class OrderController extends Controller
             ]
         ]);
 
+
         if ($result->success) {
 
-            $sponsorization_teacher = SponsorizationTeacher::findOrFail($request->teacher_id);
+            $sponsorization_teacher = SponsorizationTeacher::where('teacher_id', $request->teacher_id)->first();
 
-            $sponsored_start = Carbon::parse($sponsorization_teacher->sponsored_start);
-            $sponsored_until = Carbon::parse($sponsorization_teacher->sponsored_until);
+            if (isset($sponsorization_teacher->sponsored_until)) {
+                $old_sponsored_until = Carbon::parse($sponsorization_teacher->sponsored_until);
+            }
 
-            if ($sponsorization_teacher && $sponsored_until > now()) {
+            $current_date = Carbon::now();
+
+            if ($sponsorization_teacher && $old_sponsored_until > $current_date) {
                 $update_sponsorization_teacher = SponsorizationTeacher::create([
                     'sponsorization_id' => $sponsorization->id,
                     'teacher_id' => $request->teacher_id,
-                    'sponsored_start' => $sponsored_until,
-                    'sponsored_until' => $sponsored_start->addHours($sponsorization->duration)
+                    'sponsored_start' => $old_sponsored_until,
+                    'sponsored_until' => $old_sponsored_until->copy()->addHours($sponsorization->duration)
                 ]);
 
                 $update_sponsorization_teacher->save();
 
             } else {
                 $new_sponsorization_teacher = SponsorizationTeacher::create([
-                    'sponsorization_id' => $sponsorization->id,
+                    'sponsorization_id' => $request->sponsorization,
                     'teacher_id' => $request->teacher_id,
-                    'sponsored_start' => now(),
-                    'sponsored_until' => now()->addHours($sponsorization->duration)
+                    'sponsored_start' => $current_date,
+                    'sponsored_until' => $current_date->copy()->addHours($sponsorization->duration)
                 ]);
 
                 $new_sponsorization_teacher->save();
-
             }
 
             $data = [

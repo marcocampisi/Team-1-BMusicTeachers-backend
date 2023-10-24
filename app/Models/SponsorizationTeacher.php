@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class SponsorizationTeacher extends Pivot
 {
-    protected $fillable = [
-        'sponsored_until'
-    ];
+    protected $fillable = ['sponsored_start', 'sponsored_until', 'sponsorization_id', 'teacher_id'];
+
 
     public function sponsorization()
     {
