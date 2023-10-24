@@ -8,11 +8,13 @@
     <div style="background:#fff; width:800px; height:600px">
         <canvas id="myChart" ></canvas>
     </div>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+    import {Chart} from "chart.js";
+
     const ctx = document.getElementById('myChart');
-  
+
     new Chart(ctx, {
       type: 'bar',
       data: {
