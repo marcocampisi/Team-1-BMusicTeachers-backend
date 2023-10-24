@@ -15,7 +15,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
+        $teacherID = auth()->user()->teacher_id;
+
+        $messages = Message::where('teacher_id', $teacherID)->get();
 
         return view('user.messages.index', compact('messages')); 
     }

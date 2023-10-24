@@ -7,8 +7,8 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">{{ $message->name ?  $message->name : 'Anonimo'}}</h5>
-            <p class="card-text">{{ $message->content}}</p>
+            <h5 class="card-title">{{ $review->name ?  $review->name : 'Anonimo'}}</h5>
+            <p class="card-text">{{ $review->content}}</p>
             <a href="" class="btn btn-danger">Elimina</a>
         </div>
     </div>

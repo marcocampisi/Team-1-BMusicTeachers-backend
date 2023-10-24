@@ -14,9 +14,11 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
-        
-        return view('reviews.index' );
+        $teacherID = auth()->user()->teacher_id;
+
+        $reviews = Review::where('teacher_id', $teacherID)->get();
+
+        return view('user.reviews.index', compact('reviews')); 
     }
 
     /**
@@ -44,7 +46,7 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        return view('reviews.show', compact('review'));
+        return view('user.reviews.show', compact('review'));
     }
 
     /**

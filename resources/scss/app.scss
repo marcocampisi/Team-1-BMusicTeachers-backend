@@ -419,7 +419,7 @@ button.btn-log{
 }
 
 .bg-dashboard {
-    background-image: url('/file-img-pdf/background-dashboard-login/dashboard.png');
+    background-image: url('/file-img-pdf/background-dashboard-login/dashboard-scheletro.png');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -431,4 +431,8 @@ button.btn-log{
 .ms-header{
     width: 20%;
     max-width:320px;
+}
+
+.ms-dashboard-main{
+    width: 80%;
 }

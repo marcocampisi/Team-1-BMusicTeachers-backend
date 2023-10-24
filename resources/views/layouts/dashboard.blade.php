@@ -56,7 +56,7 @@
 
 
     
-            <main class="py-4">
+            <main class="py-4 ms-dashboard-main">
                 <div>
                     @yield('main-content')
                 </div>

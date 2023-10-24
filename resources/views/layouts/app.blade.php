@@ -38,10 +38,13 @@
                                     <a class="nav-link text-light" href="{{ route('user.teachers.index') }}">I nostri teacher</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link text-light" href="">Messaggi</a>
+                                    <a class="nav-link text-light" href="{{ route('user.messages.index') }}">Messaggi</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link text-light" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-light" href="{{ route('user.reviews.index') }}">Reviews</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link text-light" href="">Assistenza</a>
