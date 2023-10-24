@@ -303,7 +303,7 @@ input:valid ~ label{
     text-decoration: underline;
 }
 
-button{
+button.btn-log{
     width: 100%;
     height: 40px;
     border-radius: 40px;
@@ -418,3 +418,17 @@ button{
     object-position: top center;
 }
 
+.bg-dashboard {
+    background-image: url('/file-img-pdf/background-dashboard-login/dashboard.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ms-header{
+    width: 20%;
+    max-width:320px;
+}

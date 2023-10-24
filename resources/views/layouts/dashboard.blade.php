@@ -17,22 +17,19 @@
         @vite('resources/js/app.js')
     </head>
     <body>
-        <div class="bg-mt">
-            <header>
-                <div class="container">
-                <nav class="navbar navbar-dark navbar-expand-md">
-                    <a class="navbar-brand" href="">
-                        <img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt="">
-                    </a>
-                    <div class="d-flex align-items-center justify-content-between">   
-                        <div class="button-wrapper">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </div>
-                    </div>
-                        <div class="collapse navbar-collapse" id="navbarText">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+
+        <div class="bg-dashboard  d-flex">
+            <header class="ms-header">
+                <div class="container h-100">
+                    <nav class="navbar navbar-dark navbar-expand-md d-flex flex-column align-items-center justify-content-between h-100">
+                        <div class="w-100">
+                            <a class="navbar-brand text-center mx-0" href="">
+                                <img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt="">
+                            </a>
+                            
+                        
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-column w-100">
                                 
                                 <li class="nav-item ">
                                     <a class="nav-link text-light" href="{{ route('user.teachers.index') }}">I nostri teacher</a>
@@ -41,27 +38,18 @@
                                     <a class="nav-link text-light" href="">Messaggi</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link text-light" href="{{ route('user.dashboard') }}">Dashboard</a>
-                                </li>
-                                <li class="nav-item ">
                                     <a class="nav-link text-light" href="">Assistenza</a>
                                 </li>
-
+        
                             </ul>
+                        </div>    
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
 
-                            
-                            
-    
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <button type="submit" class="btn button-logout">
-                                    Log Out
-                                </button>
-                            </form>
-                            
-                            
-                        </div>
+                            <button type="submit" class="btn button-logout">
+                                Log Out
+                            </button>
+                        </form>               
                     </nav>
                 </div>
             </header>

@@ -44,7 +44,7 @@
                     <a href="#">Forgot Password?</a>
                 </label>
             </div>    
-            <button type="submit">Login</button>
+            <button class="btn-log" type="submit">Login</button>
             <div class="register">
                 <p>Don't have a account ?  <a class="mt-2" href="{{ route('register') }}">Register</a></p>
             </div>

@@ -99,7 +99,7 @@
                         </label>
                     </div>    
         
-                    <button type="submit" class="mt-3">
+                    <button type="submit" class="btn-log mt-3">
                     Register
                     </button>
                     <a class="text-center mt-3" href="{{ route('login') }}">
