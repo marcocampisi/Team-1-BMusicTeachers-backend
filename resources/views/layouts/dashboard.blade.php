@@ -20,7 +20,7 @@
       
 
         <div class="bg-dashboard  d-flex">
-            <header class="ms-header">
+            <aside class="ms-header">
                 <div class="container h-100">
                     <nav class="navbar navbar-dark navbar-expand-md d-flex flex-column align-items-center justify-content-between h-100">
                         <div class="w-100">
@@ -30,12 +30,17 @@
                             
                         
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-column w-100">
-                                
                                 <li class="nav-item ">
                                     <a class="nav-link text-light" href="{{ route('user.teachers.index') }}">I nostri teacher</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link text-light" href="">Messaggi</a>
+                                    <a class="nav-link text-light" href="{{ route('user.messages.index') }}">Messaggi</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-light" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-light" href="{{ route('user.reviews.index') }}">Reviews</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link text-light" href="">Assistenza</a>
@@ -52,11 +57,18 @@
                         </form>               
                     </nav>
                 </div>
-            </header>
+            </aside>
 
 
     
             <main class="py-4 ms-dashboard-main">
+                <div class="main-header text-light d-flex justify-content-between align-items-center">
+                    <h2>Welcome, {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }} </h2>
+                    <div class="d-flex justify-content-between align-items-center gap-3">
+                        <a href="">Visualizza Profilo</a>
+                        <img class="ms-img-dashboard" src="/storage/{{ auth()->user()->teacher->photo }}" alt="">
+                    </div>
+                </div>
                 <div>
                     @yield('main-content')
                 </div>
