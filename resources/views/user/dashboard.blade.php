@@ -13,106 +13,7 @@
 <div class="w-50">
   <canvas id="myChart" width="400" height="200"></canvas>
 </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
-  <script>
-    import {Chart} from "chart.js";
-
-    let dataYearly = @json($yearlyAverages);
-    let dataMonthly = @json($monthlyAverages);
-    let labelsYearly = dataYearly.map(function(item) {
-        return item.year;
-    });
-    let valuesYearly = dataYearly.map(function(item) {
-        return item.average;
-    });
-    let reviewCountsYearly = dataYearly.map(function(item) {
-        return item.numRatings;
-    });
-    let labelsMonthly = dataMonthly.map(function(item) {
-        return item.month;
-    });
-    let valuesMonthly = dataMonthly.map(function(item) {
-        return item.average;
-    });
-    let reviewCountsMonthly = dataMonthly.map(function(item) {
-        return item.numRatings;
-    });
-
-    let ctx = document.getElementById('myChart').getContext('2d');
-  let myChart;
-
-    function updateChart(selectedTimeFrame) {
-        if (myChart) {
-            myChart.destroy();
-        }
-
-        if (selectedTimeFrame === 'month') {
-            myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labelsMonthly,
-                    datasets: [{
-                        label: 'Media Voti',
-                        data: valuesMonthly,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }, {
-                        label: 'Numero di Recensioni',
-                        data: reviewCountsMonthly,
-                        backgroundColor: 'rgba(192, 75, 75, 0.2)',
-                        borderColor: 'rgba(192, 75, 75, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                        }
-                    }
-                }
-            });
-        } else {
-            myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labelsYearly,
-                    datasets: [{
-                        label: 'Media Voti',
-                        data: valuesYearly,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }, {
-                        label: 'Numero di Recensioni',
-                        data: reviewCountsYearly,
-                        backgroundColor: 'rgba(192, 75, 75, 0.2)',
-                        borderColor: 'rgba(192, 75, 75, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    document.getElementById('timeFrameSelect').addEventListener('change', function() {
-        const selectedTimeFrame = this.value;
-        updateChart(selectedTimeFrame);
-    });
-
-    updateChart('month');
-</script>
 
 <h2>Sponsorizzazioni</h2>
 {{--Braintree--}}
@@ -149,4 +50,81 @@
         </div>
     </div>
 </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+   let data = @json($monthlyAverages);
+    let labels = data.map(function(item) {
+        return item.month;
+    });
+    let values = data.map(function(item) {
+        return item.average;
+    });
+    let reviewCounts = data.map(function(item) {
+        return item.numRatings;
+    });
+
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let myChart;
+
+    function updateChart(selectedTimeFrame) {
+        let filteredData;
+
+        if (selectedTimeFrame === 'month') {
+            filteredData = data;
+        } else {
+            filteredData = @json($yearlyAverages);
+        }
+
+        labels = filteredData.map(function(item) {
+            return selectedTimeFrame === 'month' ? item.month : item.year;
+        });
+        values = filteredData.map(function(item) {
+            return item.average;
+        });
+        reviewCounts = filteredData.map(function(item) {
+            return item.numRatings;
+        });
+
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Media Voti',
+                    data: values,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Numero di Recensioni',
+                    data: reviewCounts,
+                    backgroundColor: 'rgba(192, 75, 75, 0.2)',
+                    borderColor: 'rgba(192, 75, 75, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            }
+        });
+    }
+
+    document.getElementById('timeFrameSelect').addEventListener('change', function() {
+        const selectedTimeFrame = this.value;
+        updateChart(selectedTimeFrame);
+    });
+
+    updateChart('month');
+</script>
 @endsection
