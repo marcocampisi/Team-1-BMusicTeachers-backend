@@ -50,5 +50,6 @@ Route::post('/teachers/search', [TeacherController::class, 'search']);
 // Rotte di Braintree
 
 Route::get('sponsorizations', [SponsorizationController::class, 'index']);
-Route::get('orders/generate', [OrderController::class, 'generate']);
-Route::post('orders/checkout', [OrderController::class, 'makePayment']);
+Route::get('orders/generate', [OrderController::class, 'generate'])->name('generate')->middleware('auth');
+
+//Route::post('orders/checkout', [OrderController::class, 'makePayment']);

@@ -16,12 +16,7 @@ class OrderController extends Controller
     {
         $token = $gateway->clientToken()->generate();
 
-        $data = [
-            'success' => true,
-            'token' => $token
-        ];
-
-        return response()->json($data);
+        return view('users.braintree', ['generate' => $token]);
     }
 
     public function makePayment(OrderRequest $request, Gateway $gateway)

@@ -19,15 +19,15 @@ class TeacherController extends Controller
     public function index()
     {
         //
-        $teachers=Teacher::all()
+        $teachers = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
             ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
             ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
             ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
             ->distinct()
             ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
             ->get();
-        
-            
+
+            dd($teachers);
 
         return view('user.teachers.index', compact('teachers'));
     }
@@ -37,7 +37,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //funzione necessaria per menu servizi nella view create 
+        //funzione necessaria per menu servizi nella view create
         $services=Teacher::pluck('service')->unique();
         $subjects=Subject::all();
 
@@ -62,7 +62,7 @@ class TeacherController extends Controller
         if (isset($formData['cv'])) {
             $cv_path = Storage::put('uploads/pdf', $formData['cv']);
         }
-        
+
         $teacher = Teacher::create(
         [
             'user_id'=>$formData['user_id'],
@@ -72,11 +72,11 @@ class TeacherController extends Controller
             'phone' =>  $formData['phone'],
             'service' =>  $formData['service'],
         ]);
-        
+
         if (isset($formData['subjects'])) {
             foreach ($formData['subjects'] as $subjectId) {
-                                                
-                $teacher->subjects()->attach($subjectId); 
+
+                $teacher->subjects()->attach($subjectId);
             }
         }
 
@@ -103,7 +103,7 @@ class TeacherController extends Controller
         if (auth()->user()->id !== $teacher->user_id) {
             return abort(403);
         }
-        
+
         $services=Teacher::pluck('service')->unique();
         $subjects=Subject::all();
 
@@ -126,7 +126,7 @@ class TeacherController extends Controller
         if (isset($formData['photo'])) {
             if ($teacher->photo){
                 Storage::delete($teacher->photo);
-            }           
+            }
             $photo_path = Storage::put('uploads/images', $formData['photo']);
         }
 
@@ -137,12 +137,12 @@ class TeacherController extends Controller
             }
             $cv_path = Storage::put('uploads/pdf', $formData['cv']);
         }
-        
+
         if (isset($formData['subjects'])) {
             $teacher->subjects()->sync($formData['subjects']);
         }
-        
-    
+
+
         $teacher->update(
         [
             'bio'=> $formData['bio'],
@@ -165,10 +165,10 @@ class TeacherController extends Controller
         if (auth()->user()->id !== $teacher->user_id) {
             return abort(403);
         }
-        
+
         Teacher::destroy($teacher->id);
         User::destroy(auth()->user()->id);
-        
+
         return redirect()->route('user.teachers.index');
     }
 }
