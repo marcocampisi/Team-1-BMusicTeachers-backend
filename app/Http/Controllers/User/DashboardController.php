@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         // Trova il professore con le relazioni di valutazioni
         $teacher = auth()->user()->teacher;
     
@@ -19,31 +20,55 @@ class DashboardController extends Controller
             ], 404);
         }
     
+        $currentYear = date('Y');
+        $startYear = $currentYear - 5; // Calcola l'anno di inizio (massimo 5 anni precedenti)
+    
         $monthlyAverages = [];
+        $yearlyAverages = [];
+    
+        // Loop attraverso gli anni
+        for ($year = $startYear; $year <= $currentYear; $year++) {
+            $startDate = "{$year}-01-01";
+            $endDate = "{$year}-12-31";
+    
+            // Filtra le valutazioni basate sulla tabella pivot per l'anno specifico
+            $ratingsForYear = $teacher->ratings()
+                ->whereBetween('rating_teacher.created_at', [$startDate, $endDate])
+                ->get();
+    
+            // Calcola la media dei voti e il numero di voti annuali
+            $average = $ratingsForYear->avg('value');
+            $numRatings = $ratingsForYear->count();
+    
+            $yearlyAverages[] = [
+                'year' => $year,
+                'average' => $average,
+                'numRatings' => $numRatings,
+            ];
+        }
     
         // Loop attraverso i mesi dell'anno corrente
-        $currentYear = date('Y');
-    
         for ($month = 1; $month <= 12; $month++) {
-            $startDate = "{$currentYear}-{$month}-01";
+            $startDate = "{$currentYear}-$month-01";
             $endDate = date('Y-m-t', strtotime($startDate));
     
-            // Filtra le valutazioni basate sulla tabella pivot
+            // Filtra le valutazioni basate sulla tabella pivot per il mese specifico
             $ratingsForMonth = $teacher->ratings()
                 ->whereBetween('rating_teacher.created_at', [$startDate, $endDate])
                 ->get();
     
-            // Calcola la media dei voti e il numero di voti
+            // Calcola la media dei voti e il numero di voti mensili
             $average = $ratingsForMonth->avg('value');
-            $numVoti = $ratingsForMonth->count();
+            $numRatings = $ratingsForMonth->count();
     
             $monthlyAverages[] = [
-                'mese' => date('Y-m', strtotime($startDate)),
-                'media' => $average,
-                'num_voti' => $numVoti,
+                'month' => date('Y-m', strtotime($startDate)),
+                'average' => $average,
+                'numRatings' => $numRatings,
             ];
         }
     
-        return view('user.dashboard', compact('monthlyAverages'));
+        return view('user.dashboard', compact('monthlyAverages', 'yearlyAverages'));
     }
+    
 }
