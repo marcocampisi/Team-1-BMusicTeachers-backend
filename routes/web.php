@@ -9,6 +9,7 @@ use App\Http\Controllers\User\MessageController;
 use App\Http\Controllers\User\SubjectController;
 use App\Http\Controllers\User\TeacherController;
 use App\Http\Controllers\User\SponsorizationController;
+use App\Http\Controllers\Api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,7 @@ Route::middleware(["auth", "verified"])
     Route::resource('/ratings', RatingController::class);
     Route::resource('/reviews', ReviewController::class);
     Route::resource('/sponsorizations', SponsorizationController::class);
-    Route::resource('/subjects', SubjectController::class); 
+    Route::resource('/subjects', SubjectController::class);
     Route::resource('/teachers', TeacherController::class);
 });*/
 
@@ -49,11 +50,13 @@ Route::middleware(["auth", "verified"])
     ->prefix('user')
     ->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/checkout', [OrderController::class, 'token'])->name('checkout')->middleware('auth');
+    Route::post('/orders/payment', [OrderController::class, 'makePayment'])->name('payment')->middleware('auth');
     Route::resource('/messages', MessageController::class);
     Route::resource('/ratings', RatingController::class);
     Route::resource('/reviews', ReviewController::class);
     Route::resource('/sponsorizations', SponsorizationController::class);
-    Route::resource('/subjects', SubjectController::class); 
+    Route::resource('/subjects', SubjectController::class);
     Route::resource('/teachers', TeacherController::class);
 });
 

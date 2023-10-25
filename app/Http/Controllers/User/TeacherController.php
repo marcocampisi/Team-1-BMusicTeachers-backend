@@ -27,8 +27,6 @@ class TeacherController extends Controller
             ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
             ->get();
 
-            dd($teachers);
-
         return view('user.teachers.index', compact('teachers'));
     }
 

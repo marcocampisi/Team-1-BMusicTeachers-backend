@@ -12,11 +12,11 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function generate(Request $request, Gateway $gateway)
+    public function token(Request $request, Gateway $gateway)
     {
-        $token = $gateway->clientToken()->generate();
+        $clientToken = $gateway->clientToken()->generate();
 
-        return view('users.braintree', ['generate' => $token]);
+        return view('user.braintree', ['token' => $clientToken]);
     }
 
     public function makePayment(OrderRequest $request, Gateway $gateway)
@@ -62,21 +62,6 @@ class OrderController extends Controller
 
                 $new_sponsorization_teacher->save();
             }
-
-            $data = [
-                'success' => true,
-                'message' => 'Transazione eseguita'
-            ];
-
-            return response()->json($data);
-        } else {
-            $data = [
-                'success' => true,
-                'message' => 'Transazione fallita'
-            ];
-            return response()->json($data, 401);
         }
-
-        return 'make payment';
     }
 }

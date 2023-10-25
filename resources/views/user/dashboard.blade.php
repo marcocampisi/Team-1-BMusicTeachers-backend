@@ -5,7 +5,7 @@
 @section('main-content')
 
 <h1>funziona... non credo</h1>
-{{-- 
+{{--
     <div style="background:#fff; width:800px; height:600px">
         <canvas id="myChart" ></canvas>
     </div>
@@ -49,38 +49,13 @@
   </div>
 </div>
 {{-- scrypt braintree --}}
-<script>
-let paymentValidated = false;
-
-const input = document.querySelector('#dropin-wrapper');
-
-braintree.dropin.create({
-// Inserisci la tua chiave di autorizzazione qui
-authorization: 'sandbox_s93sbd2q_2jc4smw4xvmkzsp6',
-  container: '#dropin-container'
-}, 
-
-  function (createErr, instance) {
-  input.addEventListener('mouseleave', function () {
-  instance.requestPaymentMethod((requestPaymentMethodErr, payload) => {
-          if (requestPaymentMethodErr) {
-          console.error(requestPaymentMethodErr);
-          } 
-          else {
-          paymentValidated = true;
-          console.log(paymentValidated);
-          document.getElementById("myForm").requestSubmit();
-          // window.location.href = 'http://127.0.0.1:8000/admin/dashboard'
-          }
-      });
-  });
-})
-</script>
 
 <div class="card">
   <div class="card-body">
       <form method="POST" action="">
-          <button>Sponsorizzazione 1</button>
+          <button>
+              <a href="{{route('user.checkout', ['sponsorization' => 1])}}">Sponsorizzazione 1</a>
+          </button>
       </form>
   </div>
 </div>
@@ -88,15 +63,19 @@ authorization: 'sandbox_s93sbd2q_2jc4smw4xvmkzsp6',
 <div class="card">
   <div class="card-body">
     <form method="POST" action="">
-          <button>Sponsorizzazione 2</button>
+        <button>
+            <a href="{{route('user.checkout', ['sponsorization' => 2])}}">Sponsorizzazione 2</a>
+        </button>
       </form>
   </div>
 </div>
 
 <div class="card">
   <div class="card-body">
-      <form method="POST" action="<?php echo Braintree_TransparentRedirect::url(); ?>">
-          <button>Sponsorizzazione 3</button>
+      <form method="POST" action="">
+          <button>
+              <a href="{{route('user.checkout', ['sponsorization' => 3])}}">Sponsorizzazione 3</a>
+          </button>
       </form>
   </div>
 </div>
