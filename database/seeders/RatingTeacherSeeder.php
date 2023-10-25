@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use App\Models\Teacher;
 use App\Models\Rating;
+use App\Models\Teacher;
+use Illuminate\Support\Carbon;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class RatingTeacherSeeder extends Seeder
 {
@@ -14,14 +15,29 @@ class RatingTeacherSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        for($i=0; $i<30; $i++)
-        {
-            $random_teacher = Teacher::inRandomOrder()->first();
+        $teachers = Teacher::all();
+        $ratings = Rating::all();
 
-            $random_rating = Rating::inRandomOrder()->first();
+        foreach ($teachers as $teacher) {
+            // Genera un numero casuale di voti da associare all'insegnante
+            $numRatings = rand(10, 15);
 
-            $random_teacher->ratings()->attach($random_rating);
+            for ($i = 0; $i < $numRatings; $i++) {
+                // Imposta la data di inizio come una data casuale precedente al mese corrente
+                $startDate = Carbon::now()->subMonths(rand(1, 12));
+                
+                // Imposta la data di fine come l'ultimo giorno del mese corrente
+                $endDate = Carbon::now()->endOfMonth();
+                
+                // Genera una data casuale tra la data di inizio e fine
+                $randomDate = Carbon::createFromTimestamp(mt_rand($startDate->timestamp, $endDate->timestamp));
+
+                // Associa il voto all'insegnante con la data casuale
+                $teacher->ratings()->attach($ratings->random()->id, [
+                    'created_at' => $randomDate,
+                    'updated_at' => $randomDate
+                ]);
+            }
         }
     }
 }
