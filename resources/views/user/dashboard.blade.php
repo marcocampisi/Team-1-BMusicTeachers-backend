@@ -4,7 +4,8 @@
 
 @section('main-content')
 
-<h1>funziona</h1>
+<h1>funziona... non credo</h1>
+{{-- 
     <div style="background:#fff; width:800px; height:600px">
         <canvas id="myChart" ></canvas>
     </div>
@@ -33,5 +34,71 @@
         }
       }
     });
-  </script>
+  </script> --}}
+
+<h2>SPONSORIZZAZIONI MAGICHE</h2>
+{{-- Braintree --}}
+<div>
+  <div id="dropin-wrapper">
+      <div id="checkout-message">
+          Qui ci sarà il resoconto
+      </div>
+      {{-- 🔪🔪🔪 Se ti prendo Taylor Otwell...  --}}
+      <div id="dropin-container"></div>
+      {{-- <button id="submit-button">Submit payment</button> --}}
+  </div>
+</div>
+{{-- scrypt braintree --}}
+<script>
+let paymentValidated = false;
+
+const input = document.querySelector('#dropin-wrapper');
+
+braintree.dropin.create({
+// Inserisci la tua chiave di autorizzazione qui
+authorization: 'sandbox_s93sbd2q_2jc4smw4xvmkzsp6',
+  container: '#dropin-container'
+}, 
+
+  function (createErr, instance) {
+  input.addEventListener('mouseleave', function () {
+  instance.requestPaymentMethod((requestPaymentMethodErr, payload) => {
+          if (requestPaymentMethodErr) {
+          console.error(requestPaymentMethodErr);
+          } 
+          else {
+          paymentValidated = true;
+          console.log(paymentValidated);
+          document.getElementById("myForm").requestSubmit();
+          // window.location.href = 'http://127.0.0.1:8000/admin/dashboard'
+          }
+      });
+  });
+})
+</script>
+
+<div class="card">
+  <div class="card-body">
+      <form method="POST" action="">
+          <button>Sponsorizzazione 1</button>
+      </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <form method="POST" action="">
+          <button>Sponsorizzazione 2</button>
+      </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+      <form method="POST" action="<?php echo Braintree_TransparentRedirect::url(); ?>">
+          <button>Sponsorizzazione 3</button>
+      </form>
+  </div>
+</div>
+
 @endsection

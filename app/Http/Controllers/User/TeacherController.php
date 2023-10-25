@@ -19,7 +19,15 @@ class TeacherController extends Controller
     public function index()
     {
         //
-        $teachers=Teacher::all();
+        $teachers=Teacher::all()
+            ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
+            ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
+            ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
+            ->distinct()
+            ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
+            ->get();
+        
+            
 
         return view('user.teachers.index', compact('teachers'));
     }
@@ -76,7 +84,7 @@ class TeacherController extends Controller
         $user->teacher_id = $teacher->id;
         $user->save();
 
-        return redirect()->route('user.teachers.index');
+        return redirect()->route('user.dashboard');
     }
 
     /**
