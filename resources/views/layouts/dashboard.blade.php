@@ -65,7 +65,7 @@
                 <div class="main-header text-light d-flex justify-content-between align-items-center">
                     <h2>Welcome, {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }} </h2>
                     <div class="d-flex justify-content-between align-items-center gap-3">
-                        <a href="">Visualizza Profilo</a>
+                        <a href="{{ route('user.teachers.show', ['teacher' => auth()->user()->teacher->id]) }}">Visualizza Profilo</a>
                         <img class="ms-img-dashboard" src="/storage/{{ auth()->user()->teacher->photo }}" alt="">
                     </div>
                 </div>

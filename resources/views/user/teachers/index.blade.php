@@ -18,7 +18,7 @@
                         </div>                        
                         <div class="card-body d-flex flex-column justify-content-between my-card-slug mt-2">
                             <h5 class="card-title">{{ $teacher->user->first_name }} {{ $teacher->user->last_name }}</h5>
-                            <p class="card-text">{{ $teacher->bio }}</p>
+                            <p class="card-text">{{ substr($teacher->bio, 0, 100) . '...' }}</p>
                             <div class="justify-content-center align-items-center">
                                 <a href="{{ route('user.teachers.show', ['teacher' => $teacher]) }}" class="btn btn-outline-light btn-success mt-3">Show</a>
                             </div>
