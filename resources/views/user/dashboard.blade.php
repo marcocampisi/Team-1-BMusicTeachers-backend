@@ -5,19 +5,18 @@
 @section('main-content')
 
 <h1>funziona</h1>
-{{-- {{ dd($monthlyAverages) }} --}}
 
 <label for="timeFrameSelect">Seleziona il periodo:</label>
 <select id="timeFrameSelect">
   <option value="month">Mese</option>
   <option value="year">Anno</option>
 </select>
-   
+
 <div class="w-50">
   <canvas id="myChart" width="400" height="200"></canvas>
 </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-  
+
   <script>
     import {Chart} from "chart.js";
 
@@ -39,7 +38,7 @@
         return item.average;
     });
     let reviewCountsMonthly = dataMonthly.map(function(item) {
-        return item.numReatings;
+        return item.numRatings;
     });
 
     let ctx = document.getElementById('myChart').getContext('2d');
@@ -117,7 +116,7 @@
 
     // Inizializza il grafico con la selezione predefinita su Mese
     updateChart('month');
-</script> --}}
+</script>
 
 <h2>SPONSORIZZAZIONI MAGICHE</h2>
 {{-- Braintree --}}
@@ -131,7 +130,7 @@
       {{-- <button id="submit-button">Submit payment</button> --}}
   </div>
 </div>
-{{-- scrypt braintree --}}
+{{-- script braintree --}}
 
 <div class="card">
   <div class="card-body">
