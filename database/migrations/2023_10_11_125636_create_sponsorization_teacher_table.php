@@ -25,8 +25,8 @@ return new class extends Migration
                 ->on('teachers')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->dateTime('sponsored_start');
-            $table->dateTime('sponsored_until');
+            $table->dateTime('sponsored_start')->nullable()->default(null);
+            $table->dateTime('sponsored_until')->nullable()->default(null);
             $table->timestamps();
         });
     }

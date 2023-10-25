@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\SubjectController;
 use App\Http\Controllers\Api\TeacherController;
 use App\Http\Controllers\Api\ChartController;
+use App\Http\Controllers\Api\SponsorizationController;
+use App\Http\Controllers\Api\OrderController;
 //Cos'è lo slug?
 
 /*
@@ -31,7 +33,7 @@ Route::name('api.')->group(function(){
     Route::post('/reviews/create', [ReviewController::class, 'store']);
     Route::resource('/ratings', RatingController::class)->only([
         'index'
-    ]); 
+    ]);
     Route::resource('/subjects', SubjectController::class)->only([
         'index',
         'show'

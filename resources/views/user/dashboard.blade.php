@@ -19,6 +19,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
   
   <script>
+    import {Chart} from "chart.js";
+
     let dataYearly = @json($yearlyAverages);
     let dataMonthly = @json($monthlyAverages);
     let labelsYearly = dataYearly.map(function(item) {
@@ -41,7 +43,7 @@
     });
 
     let ctx = document.getElementById('myChart').getContext('2d');
-    let myChart;
+  let myChart;
 
     function updateChart(selectedTimeFrame) {
         if (myChart) {
@@ -115,5 +117,50 @@
 
     // Inizializza il grafico con la selezione predefinita su Mese
     updateChart('month');
-</script>
+</script> --}}
+
+<h2>SPONSORIZZAZIONI MAGICHE</h2>
+{{-- Braintree --}}
+<div>
+  <div id="dropin-wrapper">
+      <div id="checkout-message">
+          Qui ci sarà il resoconto
+      </div>
+      {{-- 🔪🔪🔪 Se ti prendo Taylor Otwell...  --}}
+      <div id="dropin-container"></div>
+      {{-- <button id="submit-button">Submit payment</button> --}}
+  </div>
+</div>
+{{-- scrypt braintree --}}
+
+<div class="card">
+  <div class="card-body">
+      <form method="POST" action="">
+          <button>
+              <a href="{{route('user.checkout', ['sponsorization' => 1])}}">Sponsorizzazione 1</a>
+          </button>
+      </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <form method="POST" action="">
+        <button>
+            <a href="{{route('user.checkout', ['sponsorization' => 2])}}">Sponsorizzazione 2</a>
+        </button>
+      </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+      <form method="POST" action="">
+          <button>
+              <a href="{{route('user.checkout', ['sponsorization' => 3])}}">Sponsorizzazione 3</a>
+          </button>
+      </form>
+  </div>
+</div>
+
 @endsection
