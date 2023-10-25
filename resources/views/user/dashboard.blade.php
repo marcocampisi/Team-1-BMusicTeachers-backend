@@ -4,8 +4,6 @@
 
 @section('main-content')
 
-<h1>funziona</h1>
-
 <label for="timeFrameSelect">Seleziona il periodo:</label>
 <select id="timeFrameSelect">
   <option value="month">Mese</option>
@@ -108,18 +106,16 @@
         }
     }
 
-    // Aggiungi un listener per gestire la selezione di Mese/Anno
     document.getElementById('timeFrameSelect').addEventListener('change', function() {
         const selectedTimeFrame = this.value;
         updateChart(selectedTimeFrame);
     });
 
-    // Inizializza il grafico con la selezione predefinita su Mese
     updateChart('month');
 </script>
 
-<h2>SPONSORIZZAZIONI MAGICHE</h2>
-{{-- Braintree --}}
+<h2>Sponsorizzazioni</h2>
+{{--Braintree--}}
 <div>
   <div id="dropin-wrapper">
       <div id="checkout-message">
@@ -127,39 +123,30 @@
       </div>
       {{-- 🔪🔪🔪 Se ti prendo Taylor Otwell...  --}}
       <div id="dropin-container"></div>
-      {{-- <button id="submit-button">Submit payment</button> --}}
-  </div>
-</div>
-{{-- script braintree --}}
-
-<div class="card">
-  <div class="card-body">
-      <form method="POST" action="">
-          <button>
-              <a href="{{route('user.checkout', ['sponsorization' => 1])}}">Sponsorizzazione 1</a>
-          </button>
-      </form>
   </div>
 </div>
 
-<div class="card">
-  <div class="card-body">
-    <form method="POST" action="">
-        <button>
-            <a href="{{route('user.checkout', ['sponsorization' => 2])}}">Sponsorizzazione 2</a>
-        </button>
-      </form>
-  </div>
+<div class="row">
+    <div class="col-4 text-center">
+        <div class="card">
+            <div class="card-body">
+                <a href="{{route('user.checkout', ['sponsorization' => 1])}}" class="text-black">Sponsorizzazione 1</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 text-center">
+        <div class="card">
+            <div class="card-body">
+                <a href="{{route('user.checkout', ['sponsorization' => 2])}}" class="text-black">Sponsorizzazione 2</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 text-center">
+        <div class="card">
+            <div class="card-body">
+                <a href="{{route('user.checkout', ['sponsorization' => 3])}}" class="text-black">Sponsorizzazione 3</a>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div class="card">
-  <div class="card-body">
-      <form method="POST" action="">
-          <button>
-              <a href="{{route('user.checkout', ['sponsorization' => 3])}}">Sponsorizzazione 3</a>
-          </button>
-      </form>
-  </div>
-</div>
-
 @endsection
