@@ -33,10 +33,12 @@
                         })
                         .then(function () {
                             console.log('Transazione eseguita');
+                            alert('Pagamento effettuato, grazie!');
                             window.location.href = 'http://localhost:8000/user/dashboard';
                         })
                         .catch(function (error) {
                             console.log('Transazione fallita');
+                            alert('Pagamento non effettuato, ripova')
                             console.error(error);
                         });
                     });
