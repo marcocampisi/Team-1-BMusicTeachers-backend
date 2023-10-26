@@ -4,11 +4,12 @@ namespace Database\Seeders;
 
 use App\Models\Message;
 use App\Models\Teacher;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
 //helpers
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class MessageSeeder extends Seeder
 {
@@ -49,12 +50,36 @@ class MessageSeeder extends Seeder
             "Vorrei imparare a suonare un nuovo genere musicale. Hai qualche consiglio?"
           ];
             
-          foreach($messages as $message) {
-            $random_teacher = Teacher::inRandomOrder()->first();
-            Message::create([
-                'teacher_id'=>$random_teacher->id,
-                'content' => $message
-            ]);
-          }
+        $teachers = Teacher::all();
+
+        foreach ($teachers as $teacher) {
+            $messagesCount = $teacher->messages->count();
+
+            while ($messagesCount < 30) {
+                $randomMessage = $messages[array_rand($messages)];
+       
+                $startDate = Carbon::now()->subYears(5)->startOfYear();
+                
+                $randomDate = Carbon::create(
+                    rand($startDate->year, Carbon::now()->year),
+                    rand(1, 12), // Mese casuale
+                    rand(1, 28),  // Giorno casuale
+                    rand(0, 23),   // Ore casuali
+                    rand(0, 59),   // Minuti casuali
+                    rand(0, 59)    // Secondi casuali
+                );
+
+                $message = new Message([
+                    'content' => $randomMessage,
+                ]);
+
+                $message->created_at = $randomDate;
+                $message->updated_at = $randomDate;
+
+                $teacher->messages()->save($message);
+                
+                $messagesCount++;
+            }
+        }
     }
 }
