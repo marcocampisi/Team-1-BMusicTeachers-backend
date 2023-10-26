@@ -41,7 +41,7 @@
 */
 
 
-}    
+}
 
 /*-----------------------------------*\
  * #RESET
@@ -53,11 +53,11 @@
     box-sizing: border-box;
     font-family:"Poppins" , sans-serif;
   }
-  
+
   li { list-style: none; }
-  
+
   a { text-decoration: none; }
-  
+
 //   a,
 //   img,
 //   time,
@@ -67,7 +67,7 @@
 //   button,
 //   textarea,
 //   ion-icon { display: block; }
-  
+
   input,
   button,
   select,
@@ -75,13 +75,13 @@
     border: none;
     font: inherit;
   }
-  
+
   button,
   select { cursor: pointer; }
-  
+
   input,
   textarea { width: 100%; }
-  
+
   ion-icon { pointer-events: none; }
 
 /*-----------------------------------*\
@@ -249,11 +249,11 @@ background-color: transparent;
 
 input:focus ~ label{
     top:-5px;
-} 
+}
 
 input:valid ~ label{
     top:-5px;
-} 
+}
 
 .inputbox input{
     width: 100%;
@@ -363,7 +363,7 @@ button.btn-log{
     // font-size: 30px;
     // padding-left: 12px;
     // padding-right: 10px;
-    
+
 }
 
 .wishlist svg{
@@ -453,4 +453,10 @@ button.btn-log{
     height: 100%;
     object-fit: cover;
     max-width: 100%;
+}
+
+// Braintree
+
+.braintree-show-card {
+    width: 100%;
 }

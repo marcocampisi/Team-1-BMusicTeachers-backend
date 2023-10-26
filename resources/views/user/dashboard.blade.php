@@ -7,40 +7,20 @@
 <h2 class="my-4">Sponsorizzazioni</h2>
 <p class="text-white text-center">I profili sponsorizzati appariranno in evidenza nella vetrina.</p>
 <div class="row d-flex w-full justify-content-center flex-wrap mx-3">
-    <div class="col-12 col-md-2 mb-2 text-center">
-        <div class="card bg-dark text-white">
-            <div class="card-header">
-                <h5>Starter</h5>
-                <p class="d-flex align-items-center justify-content-center"><span class="fs-2 me-1">€</span>2.99</p>
-            </div>
-            <div class="card-body">
-                <p>Visibilità: 1 Giorno</p>
-                <a href="{{route('user.checkout', ['sponsorization' => 1])}}" class="btn btn-light">Vai all'acquisto</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-2 mb-2 text-center">
-        <div class="card bg-dark text-white">
-            <div class="card-header">
-                <h2>3 Giorni</h2>
-            </div>
-            <div class="card-body">
-                <p><span class="fw-bold">Prezzo:</span> 5.99€</p>
-                <a href="{{route('user.checkout', ['sponsorization' => 2])}}" class="btn btn-light">Vai all'acquisto</a>
+    @foreach($sponsorizations as $sponsorization)
+        <div class="col-12 col-md-2 mb-2 text-center">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    <h3>{{$sponsorization->name}}</h3>
+                    <p class="d-flex align-items-center justify-content-center">{{$sponsorization->price}} €</p>
+                </div>
+                <div class="card-body">
+                    <p>Visibilità: {{$sponsorization->duration}} ore</p>
+                    <a href="{{route('user.checkout', ['sponsorization' => $sponsorization->id, 'name' => $sponsorization->name, 'price' => $sponsorization->price])}}" class="btn btn-light">Vai all'acquisto</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-12 col-md-2 mb-2 text-center">
-        <div class="card bg-dark text-white">
-            <div class="card-header">
-                <h2>1 Settimana</h2>
-            </div>
-            <div class="card-body">
-                <p><span class="fw-bold">Prezzo:</span> 9.99€</p>
-                <a href="{{route('user.checkout', ['sponsorization' => 3])}}" class="btn btn-light">Vai all'acquisto</a>
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 
 <h3 class="mt-3 text-light">Grafici</h3>

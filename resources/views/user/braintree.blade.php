@@ -6,15 +6,34 @@
     <div class="py-12">
         @csrf
         <h1 class="fs-1 fw-bold text-center text-white">Effettua il pagamento</h1>
-        <form action="{{route('user.payment')}}" id="myForm" method="post">
-            @method('POST')
-            <div id="dropin-wrapper">
-                <div id="dropin-container" style="display: flex;justify-content: center;align-items: center;"></div>
-                <div style="display: flex;justify-content: center;align-items: center; color: white">
-                    <a id="submit-button" class="btn btn-sm btn-success p-2 fw-bold my-3">Vai al pagamento</a>
-                </div>
+        <div class="row flex-column justify-content-center">
+            <div class="col-6 mx-auto">
+                <form action="{{route('user.payment')}}" id="myForm" method="post">
+                    @method('POST')
+                    <div id="dropin-wrapper">
+                        <div id="dropin-container" style="display: flex;justify-content: center;align-items: center;"></div>
+                        <div class="card col mx-auto mt-3">
+                            <div class="card-header">
+                                <h4 class="card-title">Riepilogo</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="fs-5">
+                                        <span class="fw-bold">Durata del piano: </span>{{request('name')}}
+                                    </li>
+                                    <li class="fs-5">
+                                        <span class="fw-bold">Prezzo: </span>{{request('price')}} €
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="display: flex;justify-content: center;align-items: center; color: white">
+                            <a id="submit-button" class="btn btn-sm btn-success p-2 fw-bold my-3">Vai al pagamento</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
         <script src="https://js.braintreegateway.com/web/dropin/1.40.2/js/dropin.min.js"></script>
         <script>
             const button = document.querySelector('#submit-button');

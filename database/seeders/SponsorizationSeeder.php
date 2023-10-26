@@ -23,20 +23,20 @@ class SponsorizationSeeder extends Seeder
         });
 
         $sponsorizations=[
-            [   
-            'name'=>'24_hours',
+            [
+            'name'=>'1 Giorno',
             'price'=>'2.99',
             'duration'=>24
             ],
             [
-            'name'=>'72_hours',
+            'name'=>'3 Giorni',
             'price'=>'5.99',
             'duration'=>72,
             ],
             [
-            'name'=>'144_hours',
+            'name'=>'7 Giorni',
             'price'=>'9.99',
-            'duration'=>144,
+            'duration'=>168,
             ]];
 
         foreach($sponsorizations as $sponsorization)
@@ -45,7 +45,7 @@ class SponsorizationSeeder extends Seeder
                 'name'=> $sponsorization['name'],
                 'price'=> $sponsorization['price'],
                 'duration'=> $sponsorization['duration']
-                
+
             ]);
         }
 
