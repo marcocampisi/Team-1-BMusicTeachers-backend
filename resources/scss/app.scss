@@ -454,3 +454,14 @@ button.btn-log{
     object-fit: cover;
     max-width: 100%;
 }
+
+.chart-rating-container{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 30px;
+}
+
+.chart-container{
+    width: calc(45% - 30px);
+    min-width: 600px;
+}

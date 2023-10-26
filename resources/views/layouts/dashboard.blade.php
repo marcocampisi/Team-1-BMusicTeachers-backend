@@ -15,10 +15,10 @@
 
         <!-- Scripts -->
         @vite('resources/js/app.js')
+        @vite('resources/js/chartRatings.js')
+        @vite('resources/js/chartMessages.js')
     </head>
     <body>
-      
-
         <div class="bg-dashboard  d-flex">
             <aside class="ms-header">
                 <div class="container h-100">
