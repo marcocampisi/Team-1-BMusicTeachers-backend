@@ -4,9 +4,9 @@
 
 @section('main-content')
 
-<div>
+{{-- <div>
     <img class="back-dash" src="{{ Vite::asset('/resources/img/file-img-pdf/png/note-2.png') }}" alt="note">
-</div>
+</div> --}}
 <div class="container-card">
     <h5 class="text-center">Scegli il piano che fa per te</h5>  
 </div>
