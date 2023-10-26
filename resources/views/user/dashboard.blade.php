@@ -26,7 +26,7 @@
 <h3 class="mt-3 text-light">Grafici Valutazioni</h3>
 
 <label for="timeFrameSelect" class="text-light">Seleziona il periodo:</label>
-<select id="timeFrameSelect">
+<select id="timeFrameSelect" class="form-select w-auto mt-2">
     <option value="month">Mese</option>
     <option value="year">Anno</option>
 </select>
@@ -42,7 +42,7 @@
     <div class="chart-container">
         <h3 class="mt-3 text-light">Grafici Messaggi</h3>
       <label for="chartType" class="text-light">Seleziona il periodo:</label>
-      <select id="chartType">
+      <select id="chartType" class="form-select w-auto mt-2">
           <option value="monthly">Mese</option>
           <option value="yearly">Anno</option>
       </select>
@@ -51,7 +51,7 @@
     <div class="chart-container">
         <h3 class="mt-3 text-light">Grafico delle Recensioni</h3>
         <label for="reviewChartType" class="text-light">Seleziona il periodo:</label>
-        <select id="reviewChartType">
+        <select id="reviewChartType" class="form-select w-auto mt-2">
             <option value="monthly">Mese</option>
             <option value="yearly">Anno</option>
         </select>
