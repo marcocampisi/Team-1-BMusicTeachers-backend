@@ -14,15 +14,14 @@ class DashboardController extends Controller
             return redirect()->route('user.teachers.create');
            
         }
-
         $teacher = auth()->user()->teacher;
 
-        if (!$teacher) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Insegnante non trovato.'
-            ], 404);
-        }
+    if (!$teacher) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Insegnante non trovato.'
+        ], 404);
+    }
 
         $currentYear = date('Y');
         $startYear = $currentYear - 5;
@@ -31,6 +30,8 @@ class DashboardController extends Controller
         $yearlyAverages = [];
         $monthlyMessagesCounts = [];
         $yearlyMessagesCounts = [];
+        $monthlyReviewsCounts = [];
+        $yearlyReviewsCounts = [];
 
         for ($year = $startYear; $year <= $currentYear; $year++) {
             // Filtra i rating per l'anno corrente
@@ -58,6 +59,16 @@ class DashboardController extends Controller
             $yearlyMessagesCounts[] = [
                 'year' => $year,
                 'numMessages' => $messagesForYear->count(),
+            ];
+
+            // Filtra le recensioni per l'anno corrente e conta il numero di recensioni
+            $reviewsForYear = $teacher->reviews()
+                ->whereBetween('created_at', [$startDate, $endDate])
+                ->get();
+
+            $yearlyReviewsCounts[] = [
+                'year' => $year,
+                'numReviews' => $reviewsForYear->count(),
             ];
         }
 
@@ -91,11 +102,26 @@ class DashboardController extends Controller
                 'month' => $monthName,
                 'numMessages' => $messagesForMonth->count(),
             ];
+
+            // Filtra le recensioni per il mese corrente e conta il numero di recensioni
+            $reviewsForMonth = $teacher->reviews()
+                ->whereBetween('created_at', [$startDate, $endDate])
+                ->get();
+
+            $monthlyReviewsCounts[] = [
+                'month' => $monthName,
+                'numReviews' => $reviewsForMonth->count(),
+            ];
         }
 
-        //Messages Data
-
-        return view('user.dashboard', compact('monthlyAverages', 'yearlyAverages', 'monthlyMessagesCounts', 'yearlyMessagesCounts'));
+        return view('user.dashboard', compact(
+            'monthlyAverages',
+            'yearlyAverages',
+            'monthlyMessagesCounts',
+            'yearlyMessagesCounts',
+            'monthlyReviewsCounts',
+            'yearlyReviewsCounts'
+        ));
     }
     
 }

@@ -4,10 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Review;
 use App\Models\Teacher;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 //helpers
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ReviewSeeder extends Seeder
 {
@@ -54,12 +55,39 @@ class ReviewSeeder extends Seeder
             "Insegnante eccezionale, le sue lezioni sono un'esperienza da non perdere."
         ];
 
-        foreach($reviews as $review) {
-            $random_teacher = Teacher::inRandomOrder()->first();
-            Review::create([
-                'teacher_id'=>$random_teacher->id,
-                'content' => $review
-            ]);
+        $teachers = Teacher::all();
+
+        foreach ($teachers as $teacher) {
+            $reviewsCount = $teacher->reviews->count();
+    
+            while ($reviewsCount < 30) {
+                $randomReview = $reviews[array_rand($reviews)];
+    
+                $startDate = Carbon::now()->subYears(5)->startOfYear();
+                
+                $randomDate = Carbon::create(
+                    rand($startDate->year, Carbon::now()->year),
+                    rand(1, 12), // Mese casuale
+                    rand(1, 28),  // Giorno casuale
+                    rand(0, 23),   // Ore casuali
+                    rand(0, 59),   // Minuti casuali
+                    rand(0, 59)    // Secondi casuali
+                );
+    
+                $randomDateFormatted = $randomDate->format('Y-m-d H:i:s');
+    
+                $review = new Review([
+                    'content' => $randomReview,
+                ]);
+    
+                $review->created_at = $randomDateFormatted;
+                $review->updated_at = $randomDateFormatted;
+    
+                $teacher->reviews()->save($review);
+                
+                $reviewsCount++;
+            }
         }
+
     }
 }

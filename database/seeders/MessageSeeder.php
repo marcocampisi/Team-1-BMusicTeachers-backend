@@ -50,40 +50,36 @@ class MessageSeeder extends Seeder
             "Vorrei imparare a suonare un nuovo genere musicale. Hai qualche consiglio?"
           ];
             
-          $teachers = Teacher::all();
+        $teachers = Teacher::all();
 
-    foreach ($teachers as $teacher) {
-        $messagesCount = $teacher->messages->count();
+        foreach ($teachers as $teacher) {
+            $messagesCount = $teacher->messages->count();
 
-        while ($messagesCount < 100) {
-            $randomMessage = $messages[array_rand($messages)];
+            while ($messagesCount < 30) {
+                $randomMessage = $messages[array_rand($messages)];
+       
+                $startDate = Carbon::now()->subYears(5)->startOfYear();
+                
+                $randomDate = Carbon::create(
+                    rand($startDate->year, Carbon::now()->year),
+                    rand(1, 12), // Mese casuale
+                    rand(1, 28),  // Giorno casuale
+                    rand(0, 23),   // Ore casuali
+                    rand(0, 59),   // Minuti casuali
+                    rand(0, 59)    // Secondi casuali
+                );
 
-            // Calcola la data iniziale 5 anni prima dalla data corrente
-            $startDate = Carbon::now()->subYears(5)->startOfYear();
-            
-            // Genera una data casuale tra 5 anni prima e la data corrente
-            $randomDate = Carbon::create(
-                rand($startDate->year, Carbon::now()->year),
-                rand(1, 12), // Mese casuale
-                rand(1, 28),  // Giorno casuale
-                rand(0, 23),   // Ore casuali
-                rand(0, 59),   // Minuti casuali
-                rand(0, 59)    // Secondi casuali
-            );
+                $message = new Message([
+                    'content' => $randomMessage,
+                ]);
 
-            $message = new Message([
-                'content' => $randomMessage,
-            ]);
+                $message->created_at = $randomDate;
+                $message->updated_at = $randomDate;
 
-            // Imposta le date create_at e updated_at
-            $message->created_at = $randomDate;
-            $message->updated_at = $randomDate;
-
-            // Collega il messaggio all'insegnante
-            $teacher->messages()->save($message);
-            
-            $messagesCount++;
+                $teacher->messages()->save($message);
+                
+                $messagesCount++;
+            }
         }
-    }
     }
 }

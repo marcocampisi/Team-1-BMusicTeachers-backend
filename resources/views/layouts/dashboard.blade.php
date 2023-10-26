@@ -17,6 +17,7 @@
         @vite('resources/js/app.js')
         @vite('resources/js/chartRatings.js')
         @vite('resources/js/chartMessages.js')
+        @vite('resources/js/chartReviews.js')
     </head>
     <body>
         <div class="bg-dashboard  d-flex">

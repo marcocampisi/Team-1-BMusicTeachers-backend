@@ -65,6 +65,15 @@
       </select>
       <canvas id="messageChart"></canvas>
     </div>
+    <div class="chart-container">
+        <h3 class="mt-3 text-light">Grafico delle Recensioni</h3>
+        <label for="reviewChartType" class="text-light">Seleziona il periodo:</label>
+        <select id="reviewChartType">
+            <option value="monthly">Mese</option>
+            <option value="yearly">Anno</option>
+        </select>
+        <canvas id="reviewChart"></canvas>
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
@@ -73,5 +82,7 @@
     let yearlyData = @json($yearlyAverages);
     let monthlyMessagesCounts = @json($monthlyMessagesCounts);
     let yearlyMessagesCounts = @json($yearlyMessagesCounts);
+    let monthlyReviewsCounts = @json($monthlyReviewsCounts);
+    let yearlyReviewsCounts = @json($yearlyReviewsCounts);
 </script>
 @endsection
