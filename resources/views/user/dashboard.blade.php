@@ -4,44 +4,52 @@
 
 @section('main-content')
 
-<h2 class="my-4">Sponsorizzazioni</h2>
-<p class="text-white text-center">I profili sponsorizzati appariranno in evidenza nella vetrina.</p>
-<div class="row d-flex w-full justify-content-center flex-wrap mx-3">
-    <div class="col-12 col-md-2 mb-2 text-center">
-        <div class="card bg-dark text-white">
-            <div class="card-header">
-                <h5>Starter</h5>
-                <p class="d-flex align-items-center justify-content-center"><span class="fs-2 me-1">€</span>2.99</p>
-            </div>
-            <div class="card-body">
-                <p>Visibilità: 1 Giorno</p>
-                <a href="{{route('user.checkout', ['sponsorization' => 1])}}" class="btn btn-light">Vai all'acquisto</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-2 mb-2 text-center">
-        <div class="card bg-dark text-white">
-            <div class="card-header">
-                <h2>3 Giorni</h2>
-            </div>
-            <div class="card-body">
-                <p><span class="fw-bold">Prezzo:</span> 5.99€</p>
-                <a href="{{route('user.checkout', ['sponsorization' => 2])}}" class="btn btn-light">Vai all'acquisto</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-2 mb-2 text-center">
-        <div class="card bg-dark text-white">
-            <div class="card-header">
-                <h2>1 Settimana</h2>
-            </div>
-            <div class="card-body">
-                <p><span class="fw-bold">Prezzo:</span> 9.99€</p>
-                <a href="{{route('user.checkout', ['sponsorization' => 3])}}" class="btn btn-light">Vai all'acquisto</a>
-            </div>
-        </div>
-    </div>
+<div>
+    <img class="back-dash" src="{{ Vite::asset('/resources/img/file-img-pdf/png/note-2.png') }}" alt="note">
 </div>
+<div class="container-card">
+    <h5 class="text-center">Scegli il piano che fa per te</h5>  
+</div>
+  <div class="container-card">
+    <div class="pricing-table">
+    <ul class="col-price">
+      <li class="header">BASE</li>
+      <li class="price"><span>€2.99</span><i>per giorno</i></li>
+      <li>1 Giorno</li>
+      <li>Nessun Supporto</li>
+      <li class="get-it">
+        <a href="{{ route('user.checkout', ['sponsorization' => 1]) }}" class="button-card">Compra Adesso</a>
+      </li>    
+    </ul>
+      {{-- <ul class="col-price stand-out">
+      <li class="header">BASIC</li>
+        <li class="price"><span>$20</span><i>per month</i></li>
+      <li>5,000 MB</li>
+      <li>15 Email</li>
+      <li>10 Databases</li>
+      <li>Support</li>
+      <li class="get-it"><button type="button">Get it now</button></li>
+      </ul> --}}
+    <ul class="col-price">
+      <li class="header">MEDIO</li>
+        <li class="price"><span>€5.99</span><i>per 3 giorni</i></li>
+      <li>3 Giorni</li>
+      <li>Nessun Supporto</li>
+      <li class="get-it">
+        <a href="{{ route('user.checkout', ['sponsorization' => 2]) }}" class="button-card">Get it now</a>
+      </li>      
+    </ul>
+      <ul class="col-price">
+      <li class="header">PROFESSIONALE</li>
+        <li class="price"><span>€9.99</span><i>per una settimana</i></li>
+      <li>7 Giorni</li>
+      <li>Supporto incluso</li>
+      <li class="get-it">
+        <a href="{{ route('user.checkout', ['sponsorization' => 3]) }}" class="button-card">Compra Adesso</a>
+      </li>       
+    </ul>
+    </div>
+  </div>
 
 <h3 class="mt-3 text-light">Grafici</h3>
 <label for="timeFrameSelect" class="text-light">Seleziona il periodo:</label>

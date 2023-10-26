@@ -353,16 +353,10 @@ button.btn-log{
     bottom: 260px;
     right: 50px;
 
-    // color: black;
-    // border:1px solid white;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    // font-size: 30px;
-    // padding-left: 12px;
-    // padding-right: 10px;
+    
     
 }
 
@@ -388,6 +382,7 @@ button.btn-log{
 .button-logout:hover{
     background-image: linear-gradient(to right , transparent , transparent);
     background-color: white;
+    border: 1px solid green;
     color:green;
     transition: background-color 0.5s linear;
 }
@@ -418,6 +413,12 @@ button.btn-log{
     object-position: top center;
 }
 
+/*-----------------------------------*\
+* #DASHBOARD
+\*-----------------------------------*/  
+
+// NAVBAR LATERALE
+
 .bg-dashboard {
     background-image: url('/file-img-pdf/background-dashboard-login/dashboard-scheletro.png');
     background-size: cover;
@@ -428,19 +429,21 @@ button.btn-log{
     background-size: cover;
 }
 
-.ms-header{
-    width: 20%;
-    max-width:320px;
-}
 
-.ms-dashboard-main{
-    width: 80%;
+
+.ms-button form{
+    margin-top: auto;
+}
+.border-dash{
+    border-right: 1px solid #45c00c;
 }
 
 .ms-img-dashboard{
-    width: 80px;
-    height: 80px;
+    width: 32px;
+    height: 32px;
+    background-image: contain;
     border-radius: 50%;
+    border: 2px solid var(--green-dark);
 }
 
 .ms-img-wrapper{
@@ -454,3 +457,182 @@ button.btn-log{
     object-fit: cover;
     max-width: 100%;
 }
+
+.ms-button {
+    margin-top: auto;
+}
+
+/*-----------------------------------*\
+* #CONTAINER
+\*-----------------------------------*/  
+
+.container-card {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media (min-width: 768px) {
+    .container-card {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container-card {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container-card {
+      width: 1170px;
+    }
+  }
+  h2 {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .pricing-table {
+    width:100%;
+    margin: 50px 0;
+    text-align: center;
+    font-family: Arial;
+    font-size: 14px;
+    color: #fff;
+  }
+  .pricing-table:before,
+  .pricing-table:after {
+    content: " ";
+    display: table;
+  }
+  .pricing-table:after {
+    clear: both;
+  }
+  .pricing-table {
+    *zoom: 1;
+  }
+  .pricing-table ul:first-child {
+    margin-left: 0;
+  }
+  .pricing-table ul li {
+    padding: 10px 20px;
+  }
+  .col-price {
+    list-style:none;
+    padding: 0;
+    margin: 10px 1px;
+    position: relative;
+    display: block;
+    float:left;
+    border: 1px solid #ddd;
+    background: #fff;
+    transition: all 0.2s;
+    margin-inline: 30px;
+  }
+  @media (min-width: 768px){
+    .col-price {
+      width: 37.7%;
+    }
+  }
+  @media (min-width: 992px){
+    .col-price {
+      width: 29%;
+    }
+  }
+  @media (min-width: 1200px){
+    .col-price {
+       width: 24.8%;
+    }
+  }
+  .col-price:hover {
+    box-shadow: 0 0 2px 2px #00aa72;
+    -webkit-transform: scale(1.1,1.1);
+    transform: scale(1,1.1);
+    z-index: 1001;
+    cursor: pointer;
+  }
+  .col-price.stand-out {
+    z-index: 1000;
+    box-shadow: 0 0 2px 2px #00aa72;
+    -webkit-transform: scale(1.1,1.1);
+    transform: scale(1,1.1);
+  }
+  .col-price li:nth-child(2n+1) {
+    background: #444;
+  }
+  .col-price li:nth-child(2n) {
+     background: #888;
+  }
+  
+  .col-price li.header {
+    color: #00aa72;
+    font-size: 18px;
+    font-weight:bold;
+    background: #eee;
+  }
+  .col-price li.price {
+    color: #333;
+    background: #fff;
+  }
+  .col-price .price span {
+    font-size: 34px;
+  }
+  .col-price li.get-it {
+    background: #fff;
+  }
+  .button-card {
+    padding: 5px 20px;
+    font-size: 16px;
+    color: #fff;
+    border: 1px solid #00aa72;
+    box-shadow: 0 3px #009a67;
+    background: #00aa72;
+  }
+
+  .back-dash{
+    background-image: url(../img/file-img-pdf/png/note-2.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+// <h2 class="my-4">Sponsorizzazioni</h2>
+// <p class="text-white text-center">I profili sponsorizzati appariranno in evidenza nella vetrina.</p>
+// <div class="row d-flex w-full justify-content-center flex-wrap mx-3">
+//     <div class="col-12 col-md-2 mb-2 text-center">
+//         <div class="card bg-dark text-white">
+//             <div class="card-header">
+//                 <h5>Starter</h5>
+//                 <p class="d-flex align-items-center justify-content-center"><span class="fs-2 me-1">€</span>2.99</p>
+//             </div>
+//             <div class="card-body">
+//                 <p>Visibilità: 1 Giorno</p>
+//                 <a href="{{route('user.checkout', ['sponsorization' => 1])}}" class="btn btn-light">Vai all'acquisto</a>
+//             </div>
+//         </div>
+//     </div>
+//     <div class="col-12 col-md-2 mb-2 text-center">
+//         <div class="card bg-dark text-white">
+//             <div class="card-header">
+//                 <h2>3 Giorni</h2>
+//             </div>
+//             <div class="card-body">
+//                 <p><span class="fw-bold">Prezzo:</span> 5.99€</p>
+//                 <a href="{{route('user.checkout', ['sponsorization' => 2])}}" class="btn btn-light">Vai all'acquisto</a>
+//             </div>
+//         </div>
+//     </div>
+//     <div class="col-12 col-md-2 mb-2 text-center">
+//         <div class="card bg-dark text-white">
+//             <div class="card-header">
+//                 <h2>1 Settimana</h2>
+//             </div>
+//             <div class="card-body">
+//                 <p><span class="fw-bold">Prezzo:</span> 9.99€</p>
+//                 <a href="{{route('user.checkout', ['sponsorization' => 3])}}" class="btn btn-light">Vai all'acquisto</a>
+//             </div>
+//         </div>
+//     </div>
+// </div>
