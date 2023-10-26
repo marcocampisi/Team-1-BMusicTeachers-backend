@@ -18,29 +18,46 @@
         <script src="https://js.braintreegateway.com/web/dropin/1.40.2/js/dropin.min.js"></script>
         <script>
             const button = document.querySelector('#submit-button');
+            const input = document.querySelector('#dropin-wrapper');
 
             braintree.dropin.create({
                     authorization: '{{$token}}',
                     container: '#dropin-container'
                 },
 
-                function () {
+                function (createErr, instance) {
+                    let paymentValidated = false;
+
+                    input.addEventListener('mouseleave', function () {
+                        if (!paymentValidated) {
+                            instance.requestPaymentMethod((requestPaymentMethod) => {
+                                if (requestPaymentMethod) {
+                                    console.error(requestPaymentMethod);
+                                } else {
+                                    paymentValidated = true;
+                                }
+                            });
+                        }
+                    });
+
                     button.addEventListener('click', function () {
-                        axios.post('{{ route('user.payment') }}', {
-                            "token": "fake-valid-nonce",
-                            "sponsorization": "{{ request('sponsorization') }}",
-                            "teacher_id": "{{ auth()->user()->teacher_id }}"
-                        })
-                        .then(function () {
-                            console.log('Transazione eseguita');
-                            alert('Pagamento effettuato, grazie!');
-                            window.location.href = 'http://localhost:8000/user/dashboard';
-                        })
-                        .catch(function (error) {
-                            console.log('Transazione fallita');
-                            alert('Pagamento non effettuato, ripova')
-                            console.error(error);
-                        });
+                        if (paymentValidated) {
+                            axios.post('{{ route('user.payment') }}', {
+                                "token": "fake-valid-nonce",
+                                "sponsorization": "{{ request('sponsorization') }}",
+                                "teacher_id": "{{ auth()->user()->teacher_id }}"
+                            })
+                                .then(function () {
+                                    console.log('Transazione eseguita');
+                                    alert('Pagamento effettuato, grazie!');
+                                    window.location.href = 'http://localhost:8000/user/dashboard';
+                                })
+                                .catch(function (error) {
+                                    console.log('Transazione fallita');
+                                    alert('Pagamento non effettuato, ripova')
+                                    console.error(error);
+                                });
+                        }
                     });
                 })
         </script>
