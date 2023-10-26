@@ -59,35 +59,36 @@ class ReviewSeeder extends Seeder
 
         foreach ($teachers as $teacher) {
             $reviewsCount = $teacher->reviews->count();
-    
-            while ($reviewsCount < 30) {
+            
+            // Calcola quante recensioni mancano per raggiungere 30
+            $remainingReviews = 30 - $reviewsCount;
+        
+            while ($remainingReviews > 0) {
                 $randomReview = $reviews[array_rand($reviews)];
-    
                 $startDate = Carbon::now()->subYears(5)->startOfYear();
                 
                 $randomDate = Carbon::create(
                     rand($startDate->year, Carbon::now()->year),
-                    rand(1, 12), // Mese casuale
-                    rand(1, 28),  // Giorno casuale
-                    rand(0, 23),   // Ore casuali
-                    rand(0, 59),   // Minuti casuali
-                    rand(0, 59)    // Secondi casuali
+                    rand(1, 12),
+                    rand(1, 28),
+                    rand(0, 23),
+                    rand(0, 59),
+                    rand(0, 59)
                 );
-    
+        
                 $randomDateFormatted = $randomDate->format('Y-m-d H:i:s');
-    
+        
                 $review = new Review([
                     'content' => $randomReview,
                 ]);
-    
+        
                 $review->created_at = $randomDateFormatted;
                 $review->updated_at = $randomDateFormatted;
-    
+        
                 $teacher->reviews()->save($review);
-                
-                $reviewsCount++;
+        
+                $remainingReviews--;
             }
         }
-
     }
 }
