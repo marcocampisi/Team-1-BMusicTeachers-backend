@@ -16,7 +16,10 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');  
+        }
+
         $subjects = Subject::all();
 
         return view('user.subjects.index', compact('subjects'));
@@ -43,7 +46,10 @@ class SubjectController extends Controller
      */
     public function show(Subject $subject)
     {
-        //
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');  
+        }
+        
         $teachers=Teacher::all();
 
         return view('user.subjects.show', compact('subject'), compact('teachers'));

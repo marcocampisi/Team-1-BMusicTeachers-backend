@@ -18,7 +18,10 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');   
+        }
+
         $teachers = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
             ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
             ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
@@ -90,6 +93,10 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create'); 
+        }
+        
         return view('user.teachers.show', compact('teacher'));
     }
 

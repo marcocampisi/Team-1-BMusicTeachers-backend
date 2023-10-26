@@ -14,7 +14,10 @@ class SponsorizationController extends Controller
      */
     public function index()
     {
-        //
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');  
+        }
+        
         $sponsorizations = Sponsorization::all();
 
         return view('user.sponsorizations.index', compact('sponsorizations'));

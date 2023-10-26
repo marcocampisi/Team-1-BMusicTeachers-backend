@@ -4,17 +4,6 @@
 
 @section('main-content')
 
-<label for="timeFrameSelect">Seleziona il periodo:</label>
-<select id="timeFrameSelect">
-  <option value="month">Mese</option>
-  <option value="year">Anno</option>
-</select>
-
-<div class="w-50">
-  <canvas id="myChart" width="400" height="200"></canvas>
-</div>
-
-
 <h2>Sponsorizzazioni</h2>
 {{--Braintree--}}
 <div>
@@ -51,6 +40,16 @@
     </div>
 </div>
 
+<h3 class="mt-3 text-light">Grafici</h3>
+<label for="timeFrameSelect" class="text-light">Seleziona il periodo:</label>
+<select id="timeFrameSelect">
+  <option value="month">Mese</option>
+  <option value="year">Anno</option>
+</select>
+
+<div class="w-50">
+  <canvas id="myChart" width="400" height="200"></canvas>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 <script>

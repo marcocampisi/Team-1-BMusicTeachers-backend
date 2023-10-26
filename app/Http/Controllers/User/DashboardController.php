@@ -10,6 +10,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');
+           
+        }
+
         $teacher = auth()->user()->teacher;
     
         if (!$teacher) {

@@ -16,7 +16,10 @@ class RatingController extends Controller
      */
     public function index()
     {
-        //
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');   
+        }
+
         $rating = Rating::all();
 
         return view('ratings.index', compact('ratings'));

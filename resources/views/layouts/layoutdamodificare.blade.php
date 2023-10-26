@@ -25,6 +25,11 @@
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
                             </div>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-column w-100">
+                                <li class="nav-item ">
+                                    <a class="nav-link text-light" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                </li>
+                            </ul>
                         </div>
                         <div>
                             @auth

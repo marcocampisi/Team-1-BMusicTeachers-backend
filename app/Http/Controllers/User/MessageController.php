@@ -15,6 +15,10 @@ class MessageController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');      
+        }
+
         $teacherID = auth()->user()->teacher_id;
 
         $messages = Message::where('teacher_id', $teacherID)->get();
@@ -49,6 +53,10 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');      
+        }
+        
         return view('user.messages.show', compact('message'));
     }
 

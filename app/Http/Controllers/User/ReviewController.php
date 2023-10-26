@@ -14,6 +14,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');         
+        }
+
         $teacherID = auth()->user()->teacher_id;
 
         $reviews = Review::where('teacher_id', $teacherID)->get();
@@ -46,6 +50,10 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
+        if (!auth()->user()->teacher_id) {
+            return redirect()->route('user.teachers.create');  
+        }
+        
         return view('user.reviews.show', compact('review'));
     }
 
