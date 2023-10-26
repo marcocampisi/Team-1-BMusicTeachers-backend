@@ -1,4 +1,4 @@
-@extends('layouts.layoutdamodificare')
+@extends('layouts.app')
 
 @section('page-title', 'Checkout')
 
@@ -11,7 +11,7 @@
             <div id="dropin-wrapper">
                 <div id="dropin-container" style="display: flex;justify-content: center;align-items: center;"></div>
                 <div style="display: flex;justify-content: center;align-items: center; color: white">
-                    <a id="submit-button" class="btn btn-sm btn-success">Submit payment</a>
+                    <a id="submit-button" class="btn btn-sm btn-success p-2 fw-bold my-3">Vai al pagamento</a>
                 </div>
             </div>
         </form>

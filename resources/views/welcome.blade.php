@@ -2,8 +2,6 @@
 
 @section('main-content')
 
-
-
 <div class="row">
   <div class="col-lg-8 col-12 welcome-blur">
       <h1 class="text-white fs-1">Benvenuto!</h1>
@@ -14,14 +12,8 @@
         "La nostra app è la chiave per connettere appassionati di musica con insegnanti esperti, offrendo lezioni straordinarie per imparare a suonare gli strumenti che ami. Scopri il mondo della musica con i migliori insegnanti al tuo fianco. Inizia a suonare oggi stesso!"
       </p>
       <p class="text-warning">
-        ricordati di registrarti per accedere a tutte le funzionalità riservate ai membri
+        Ricordati di registrarti per accedere a tutte le funzionalità riservate ai membri.
       </p>
-      
     </div>
-
-
 </div>
-
-
-
 @endsection

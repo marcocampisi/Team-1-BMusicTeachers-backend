@@ -4,37 +4,40 @@
 
 @section('main-content')
 
-<h2>Sponsorizzazioni</h2>
-{{--Braintree--}}
-<div>
-  <div id="dropin-wrapper">
-      <div id="checkout-message">
-          Qui ci sarà il resoconto
-      </div>
-      {{-- 🔪🔪🔪 Se ti prendo Taylor Otwell...  --}}
-      <div id="dropin-container"></div>
-  </div>
-</div>
-
-<div class="row">
-    <div class="col-4 text-center">
-        <div class="card">
+<h2 class="my-4">Sponsorizzazioni</h2>
+<p class="text-white text-center">I profili sponsorizzati appariranno in evidenza nella vetrina.</p>
+<div class="row d-flex w-full justify-content-center flex-wrap mx-3">
+    <div class="col-12 col-md-2 mb-2 text-center">
+        <div class="card bg-dark text-white">
+            <div class="card-header">
+                <h5>Starter</h5>
+                <p class="d-flex align-items-center justify-content-center"><span class="fs-2 me-1">€</span>2.99</p>
+            </div>
             <div class="card-body">
-                <a href="{{route('user.checkout', ['sponsorization' => 1])}}" class="text-black">Sponsorizzazione 1</a>
+                <p>Visibilità: 1 Giorno</p>
+                <a href="{{route('user.checkout', ['sponsorization' => 1])}}" class="btn btn-light">Vai all'acquisto</a>
             </div>
         </div>
     </div>
-    <div class="col-4 text-center">
-        <div class="card">
+    <div class="col-12 col-md-2 mb-2 text-center">
+        <div class="card bg-dark text-white">
+            <div class="card-header">
+                <h2>3 Giorni</h2>
+            </div>
             <div class="card-body">
-                <a href="{{route('user.checkout', ['sponsorization' => 2])}}" class="text-black">Sponsorizzazione 2</a>
+                <p><span class="fw-bold">Prezzo:</span> 5.99€</p>
+                <a href="{{route('user.checkout', ['sponsorization' => 2])}}" class="btn btn-light">Vai all'acquisto</a>
             </div>
         </div>
     </div>
-    <div class="col-4 text-center">
-        <div class="card">
+    <div class="col-12 col-md-2 mb-2 text-center">
+        <div class="card bg-dark text-white">
+            <div class="card-header">
+                <h2>1 Settimana</h2>
+            </div>
             <div class="card-body">
-                <a href="{{route('user.checkout', ['sponsorization' => 3])}}" class="text-black">Sponsorizzazione 3</a>
+                <p><span class="fw-bold">Prezzo:</span> 9.99€</p>
+                <a href="{{route('user.checkout', ['sponsorization' => 3])}}" class="btn btn-light">Vai all'acquisto</a>
             </div>
         </div>
     </div>

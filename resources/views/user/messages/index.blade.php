@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
-@section('page-title', 'Index di Messages')
+@section('page-title', 'Index dei Messaggi')
 
 @section('main-content')
-    <h1 class="text-center text-warning my-4">Messages</h1>
+    <h1 class="text-center text-white my-4">Messaggi</h1>
     <div class="container">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-dark">
             <thead>
               <tr>
                 <th scope="col">#</th>

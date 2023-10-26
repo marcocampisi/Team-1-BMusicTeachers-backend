@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
-@section('page-title', 'Index di Messages')
+@section('page-title', 'Index delle Recensioni')
 
 @section('main-content')
     <h1 class="text-center text-warning my-4">Recensioni</h1>
     <div class="container">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-dark">
             <thead>
               <tr>
                 <th scope="col">#</th>
