@@ -17,9 +17,9 @@ class TeacherController extends Controller
         $teachers = Teacher::with('subjects', 'ratings', 'reviews', 'sponsorization')
             ->leftJoin('sponsorization_teacher', 'sponsorization_teacher.teacher_id', '=', 'teachers.id')
             ->leftJoin('users', 'users.id', '=', 'teachers.user_id')
-            ->selectRaw('teachers.*, sponsorization_teacher.sponsored_until, users.first_name, users.last_name, MAX(sponsorization_teacher.sponsored_until) AS sponsored_until_max')
-            ->groupBy('teachers.id')
-            ->orderBy('sponsored_until_max', 'desc')
+            ->select('teachers.*', 'sponsorization_teacher.sponsored_until', 'users.first_name', 'users.last_name')
+            ->distinct()
+            ->orderBy('sponsorization_teacher.sponsored_until', 'desc')
             ->get();
 
         return response()->json([
