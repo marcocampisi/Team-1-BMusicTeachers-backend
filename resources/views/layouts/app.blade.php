@@ -25,16 +25,18 @@
                                 </button>
                             </div>
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-column w-100">
-                                <li class="nav-item ">
-                                    <a class="nav-link text-light" href="{{ route('user.dashboard') }}">Dashboard</a>
-                                </li>
+                                @if(!Route('auth.login') or !Route('auth.register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                         <div>
                             @auth
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    @if(!Route::is('user.checkout'))
+                                    @if(!Route::is('user.checkout') or !Route('auth.login') or !Route('auth.register'))
                                         <button type="submit" class="btn btn-outline-danger">
                                             Disconnettiti
                                         </button>
