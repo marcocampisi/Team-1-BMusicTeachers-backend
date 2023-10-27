@@ -1,5 +1,5 @@
  // Elemento canvas per il grafico
- const ctx = document.getElementById('reviewsChart').getContext('2d');
+ const ctx = document.getElementById('reviewChart').getContext('2d');
 
  // Opzioni di default per il grafico
  const defaultData = {

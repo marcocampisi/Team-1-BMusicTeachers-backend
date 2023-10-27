@@ -65,16 +65,43 @@
 {{-- FINE CSS CARD SPONSORIZZAZIONI --}}
 
 {{-- INIZIO CSS GRAFICI --}}
-<h3 class="mt-3 text-light">Grafici</h3>
-<label for="timeFrameSelect" class="text-light">Seleziona il periodo:</label>
-<select id="timeFrameSelect">
-  <option value="month">Mese</option>
-  <option value="year">Anno</option>
-</select>
 
-<div class="w-50">
-  <canvas id="myChart" width="400" height="200"></canvas>
+<h3 class="mt-3 text-light">Grafici Valutazioni</h3>
+
+<label for="timeFrameSelect" class="text-light">Seleziona il periodo:</label>
+<select id="timeFrameSelect" class="form-select w-auto mt-2">
+    <option value="month">Mese</option>
+    <option value="year">Anno</option>
+</select>
+<div class="chart-rating-container">
+    <div class="chart-container">
+      <canvas id="chartRatings" ></canvas>
+    </div>
+    <div class="chart-container">
+      <canvas id="chartReviewCounts"></canvas>
+    </div>
 </div>
+<div class="chart-rating-container">
+    <div class="chart-container">
+        <h3 class="mt-3 text-light">Grafici Messaggi</h3>
+      <label for="chartType" class="text-light">Seleziona il periodo:</label>
+      <select id="chartType" class="form-select w-auto mt-2">
+          <option value="monthly">Mese</option>
+          <option value="yearly">Anno</option>
+      </select>
+      <canvas id="messageChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <h3 class="mt-3 text-light">Grafico delle Recensioni</h3>
+        <label for="reviewChartType" class="text-light">Seleziona il periodo:</label>
+        <select id="reviewChartType" class="form-select w-auto mt-2">
+            <option value="monthly">Mese</option>
+            <option value="yearly">Anno</option>
+        </select>
+        <canvas id="reviewChart"></canvas>
+    </div>
+</div>
+
 {{-- FINE CSS GRAFICI --}}
 
 
