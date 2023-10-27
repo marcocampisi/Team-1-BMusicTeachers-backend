@@ -29,7 +29,7 @@
                         <div class="collapse navbar-collapse" id="navbarText">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 @auth
-                                    @if(!Route('user.teacher.create'))
+                                    @if(!Route('user.teachers.create'))
                                         <li class="nav-item">
                                             <a class="nav-link text-light" href="{{ route('user.dashboard') }}">Dashboard</a>
                                         </li>
@@ -48,7 +48,7 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
-                                    @if(!Route::is('user.techer.create')))
+                                    @if(!Route::is('user.teachers.create')))
                                         <button type="submit" class="btn btn-outline-danger">
                                             Disconnettiti
                                         </button>
