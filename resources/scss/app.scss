@@ -417,7 +417,7 @@ button.btn-log{
 * #DASHBOARD
 \*-----------------------------------*/  
 
-// NAVBAR LATERALE
+// NAVBAR
 
 .bg-dashboard {
     background-image: url('/file-img-pdf/background-dashboard-login/dashboard-scheletro.png');
@@ -428,9 +428,6 @@ button.btn-log{
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-
-
 .ms-button form{
     margin-top: auto;
 }
@@ -480,7 +477,7 @@ button.btn-log{
 }
 .single-price a {
 	background: var(--green-dark);
-	color: black;
+	color: #fff;
 	padding: 15px 30px;
 	text-decoration: none;
 	border-radius: 25px;
@@ -559,12 +556,14 @@ button.btn-log{
 	font-size: 30px;
 	margin-top: 7px;
 	vertical-align: top;
+    color:black;
 }
 .single-price .amount {
 	display: inline-block;
 	font-size: 40px;
 	font-weight: 600;
 	line-height: 65px;
+    color: black;
 }
 .single-price .amount span {
 	display: inline-block;
