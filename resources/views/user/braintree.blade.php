@@ -28,7 +28,7 @@
                 function (createErr, instance) {
                     let paymentValidated = false;
 
-                    input.addEventListener('mouseleave', function () {
+                    button.addEventListener('click', function () {
                         if (!paymentValidated) {
                             instance.requestPaymentMethod((requestPaymentMethod) => {
                                 if (requestPaymentMethod) {
@@ -38,9 +38,7 @@
                                 }
                             });
                         }
-                    });
 
-                    button.addEventListener('click', function () {
                         if (paymentValidated) {
                             axios.post('{{ route('user.payment') }}', {
                                 "token": "fake-valid-nonce",
