@@ -13,13 +13,12 @@
     <body>
         <div class="bg-guest">
             <header>
-
                 <div class="container">
                     <nav class="navbar navbar-dark navbar-expand-md">
                         <a class="navbar-brand" href="">
                             <img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt="">
                         </a>
-                        <div class="d-flex align-items-center justify-content-between">   
+                        <div class="d-flex align-items-center justify-content-between">
                             <div class="button-wrapper">
                                 <button class="navbar-toggler btn-wight" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -35,21 +34,17 @@
                             @auth
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-    
-                                    <button type="submit" class="btn btn-outline-danger">
-                                        Log Out
-                                    </button>
+                                    @if(!Route::is('user.checkout'))
+                                        <button type="submit" class="btn btn-outline-danger">
+                                            Disconnettiti
+                                        </button>
+                                    @endif
                                 </form>
                             @endauth
                         </div>
-    
-                            
-                        
                     </nav>
                 </div>
-
             </header>
-    
             <main class="py-4">
                 <div class="container">
                     @yield('main-content')
