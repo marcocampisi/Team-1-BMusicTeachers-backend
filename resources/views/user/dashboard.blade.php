@@ -55,7 +55,7 @@
                     </div>
                     <div class="price-value">
                         <div class="value">
-                            <span class="currency">$</span> <span class="amount">2.<span>99</span></span> <span class="month">/month</span>
+                            <span class="currency">$</span> <span class="amount">2.<span>99</span></span> <span class="month">/giornaliero</span>
                         </div>
                     </div>
                     <ul class="deals">
@@ -71,7 +71,7 @@
                     </div>
                     <div class="price-value">
                         <div class="value">
-                            <span class="currency">$</span> <span class="amount">5.<span>99</span></span> <span class="month">/month</span>
+                            <span class="currency">$</span> <span class="amount">5.<span>99</span></span> <span class="month">/3 giorni</span>
                         </div>
                     </div>
                     <ul class="deals">
@@ -88,7 +88,7 @@
                     </div>
                     <div class="price-value">
                         <div class="value">
-                            <span class="currency">$</span> <span class="amount">9.<span>99</span></span> <span class="month">/month</span>
+                            <span class="currency">$</span> <span class="amount">9.<span>99</span></span> <span class="month">/settimanale</span>
                         </div>
                     </div>
                     <ul class="deals">
