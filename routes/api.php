@@ -2,6 +2,15 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\RatingController;
+use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\Api\SubjectController;
+use App\Http\Controllers\Api\TeacherController;
+use App\Http\Controllers\Api\ChartController;
+use App\Http\Controllers\Api\SponsorizationController;
+use App\Http\Controllers\Api\OrderController;
+//Cos'è lo slug?
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +26,23 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::name('api.')->group(function(){
+    Route::post('/message/create', [MessageController::class, 'store']);
+    Route::post('/ratings/create', [RatingController::class, 'store']);
+    Route::post('/reviews/create', [ReviewController::class, 'store']);
+    Route::resource('/ratings', RatingController::class)->only([
+        'index'
+    ]);
+    Route::resource('/subjects', SubjectController::class)->only([
+        'index',
+        'show'
+    ]);
+    Route::resource('/teachers', TeacherController::class)->only([
+        'index',
+        'show',
+    ]);
+    Route::resource('/chart', ChartController::class)->only(['show']);
+});
+
+Route::post('/teachers/search', [TeacherController::class, 'search']);

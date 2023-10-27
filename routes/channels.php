@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Broadcast;
-
+//Ciao Alessio Vietri
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
