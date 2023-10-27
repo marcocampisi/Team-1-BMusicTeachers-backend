@@ -4,62 +4,79 @@
 
 @section('main-content')
 
-<h2 class="my-4">Sponsorizzazioni</h2>
-<p class="text-white text-center">I profili sponsorizzati appariranno in evidenza nella vetrina.</p>
-<div class="row d-flex w-full justify-content-center flex-wrap mx-3">
-    @foreach($sponsorizations as $sponsorization)
-        <div class="col-12 col-md-2 mb-2 text-center">
-            <div class="card bg-dark text-white">
-                <div class="card-header">
-                    <h3>{{$sponsorization->name}}</h3>
-                    <p class="d-flex align-items-center justify-content-center">{{$sponsorization->price}} €</p>
+  <div class="container-card">
+    <h3 class="text-center">Scegli il piano che fa per te</h5>
+  </div>
+  <div class="pricing-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="single-price">
+                    <div class="price-header">
+                        <h3 class="title">Base</h3>
+                    </div>
+                    <div class="price-value">
+                        <div class="value">
+                            <span class="currency">$</span> <span class="amount">2.<span>99</span></span> <span class="month">/giornaliero</span>
+                        </div>
+                    </div>
+                    <ul class="deals">
+                        <li>Giornaliero.</li>
+                        <li>Più Visibilità per un giorno.</li>
+                    </ul><a href="{{ route('user.checkout', ['sponsorization' => 1]) }}" class="button-card">Compra Adesso</a>
                 </div>
-                <div class="card-body">
-                    <p>Visibilità: {{$sponsorization->duration}} ore</p>
-                    <a href="{{route('user.checkout', ['sponsorization' => $sponsorization->id, 'name' => $sponsorization->name, 'price' => $sponsorization->price])}}" class="btn btn-light">Vai all'acquisto</a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="single-price">
+                    <div class="price-header">
+                        <h3 class="title">Medio</h3>
+                    </div>
+                    <div class="price-value">
+                        <div class="value">
+                            <span class="currency">$</span> <span class="amount">5.<span>99</span></span> <span class="month">/3 giorni</span>
+                        </div>
+                    </div>
+                    <ul class="deals">
+                        <li>Tripla Giornaliero.</li>
+                        <li>Più Visibilità per tre giorni.</li>
+                    </ul><a href="{{ route('user.checkout', ['sponsorization' => 2]) }}" class="button-card">Compra Adesso</a>
+
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="single-price">
+                    <div class="price-header">
+                        <h3 class="title">Professionale</h3>
+                    </div>
+                    <div class="price-value">
+                        <div class="value">
+                            <span class="currency">$</span> <span class="amount">9.<span>99</span></span> <span class="month">/settimanale</span>
+                        </div>
+                    </div>
+                    <ul class="deals">
+                        <li>Settimanale.</li>
+                        <li>Più Visibilità per una settimana.</li>
+                    </ul><a href="{{ route('user.checkout', ['sponsorization' => 3]) }}" class="button-card">Compra Adesso</a>
                 </div>
             </div>
         </div>
-    @endforeach
+    </div>
 </div>
+{{-- FINE CSS CARD SPONSORIZZAZIONI --}}
 
-<h3 class="mt-3 text-light">Grafici Valutazioni</h3>
-
+{{-- INIZIO CSS GRAFICI --}}
+<h3 class="mt-3 text-light">Grafici</h3>
 <label for="timeFrameSelect" class="text-light">Seleziona il periodo:</label>
-<select id="timeFrameSelect" class="form-select w-auto mt-2">
-    <option value="month">Mese</option>
-    <option value="year">Anno</option>
+<select id="timeFrameSelect">
+  <option value="month">Mese</option>
+  <option value="year">Anno</option>
 </select>
-<div class="chart-rating-container">
-    <div class="chart-container">
-      <canvas id="chartRatings" ></canvas>
-    </div>
-    <div class="chart-container">
-      <canvas id="chartReviewCounts"></canvas>
-    </div>
-</div>
-<div class="chart-rating-container">
-    <div class="chart-container">
-        <h3 class="mt-3 text-light">Grafici Messaggi</h3>
-      <label for="chartType" class="text-light">Seleziona il periodo:</label>
-      <select id="chartType" class="form-select w-auto mt-2">
-          <option value="monthly">Mese</option>
-          <option value="yearly">Anno</option>
-      </select>
-      <canvas id="messageChart"></canvas>
-    </div>
 
-    <div class="chart-container">
-        <h3 class="mt-3 text-light">Grafico delle Recensioni</h3>
-      <label for="reviewChartType" class="text-light">Seleziona il periodo:</label>
-      <select id="reviewChartType" class="form-select w-auto mt-2">
-          <option value="monthly">Mese</option>
-          <option value="yearly">Anno</option>
-      </select>
-      <canvas id="reviewsChart"></canvas>
-    </div>
-
+<div class="w-50">
+  <canvas id="myChart" width="400" height="200"></canvas>
 </div>
+{{-- FINE CSS GRAFICI --}}
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 <script>
@@ -67,7 +84,7 @@
     let yearlyData = @json($yearlyAverages);
     let monthlyMessagesCounts = @json($monthlyMessagesCounts);
     let yearlyMessagesCounts = @json($yearlyMessagesCounts);
- 
+
     let monthlyReviewsCounts = @json($monthlyReviewsCounts);
     let yearlyReviewsCounts = @json($yearlyReviewsCounts);
 </script>

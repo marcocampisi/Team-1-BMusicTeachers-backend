@@ -20,44 +20,41 @@
         @vite('resources/js/chartReviews.js')
     </head>
     <body>
-        <div class="bg-dashboard  d-flex">
-            <aside class="ms-header">
-                <div class="container h-100">
-                    <nav class="navbar navbar-dark navbar-expand-md d-flex flex-column align-items-center justify-content-between h-100">
-                        <div class="w-100">
-                            <a class="navbar-brand text-center mx-0" href="">
-                                <img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt="">
-                            </a>
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-column w-100">
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" href="{{ route('user.dashboard') }}">Dashboard</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" href="{{ route('user.messages.index') }}">Messaggi</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" href="{{ route('user.reviews.index') }}">Recensioni</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="btn button-logout">
-                                Log Out
-                            </button>
-                        </form>
-                    </nav>
-                </div>
-            </aside>
-            <main class="py-4 ms-dashboard-main">
-                <div class="main-header text-light d-flex justify-content-between align-items-center">
-                    <h2>Benvenuto, {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}.</h2>
-                    <div class="d-flex justify-content-between align-items-center gap-3">
-                        <a href="{{ route('user.teachers.show', ['teacher' => auth()->user()->teacher->id]) }}" class="text-white btn btn-success">Visualizza Profilo</a>
-                        <img class="ms-img-dashboard" src="/storage/{{ auth()->user()->teacher->photo }}" alt="">
+        <div class="bg-dashboard d-flex">
+            <nav class="navbar bg-dark fixed-top justify-content-between">
+                <div class="container-fluid">
+                    <a class="navbar-brand text-center mx-0" href=""><img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt=""></a>
+                    <a class="navbar-brand text-success fw-bold fs-5" href="#"><img class="ms-img-dashboard mx-2" src="/storage/{{ auth()->user()->teacher->photo }}" alt="">{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</a>
+                    <button class="navbar-toggler bg-success bg-outline-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a class="navbar-brand text-center mx-0" href=""><img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt=""></a>Musicisti In Rete</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('user.dashboard') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('user.teachers.show', ['teacher' => auth()->user()->teacher->id]) }}" class="nav-link active" aria-current="page">Modifica Profilo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('user.messages.index') }}">Messaggi</a>
+                          </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('user.reviews.index') }}">Recensioni</a>
+                          </li>
+                        <li class="ms-button">
+                            <form method="POST" action="{{ route('logout') }}">@csrf<button type="submit" class="btn button-logout">Disconnetti</button></form>
+                        </li>
                     </div>
                 </div>
-                <div>
+              </nav>
+            <main class="py-4 w-100 my-5">
+                <div class="main-header text-light my-4">
                     @yield('main-content')
                 </div>
             </main>
