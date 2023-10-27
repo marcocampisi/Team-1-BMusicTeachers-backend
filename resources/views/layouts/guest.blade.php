@@ -19,7 +19,7 @@
                         <a class="navbar-brand" href="">
                             <img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt="">
                         </a>
-                        <div class="d-flex align-items-center justify-content-between">   
+                        <div class="d-flex align-items-center justify-content-between">
                             <div class="button-wrapper">
                                 <button class="navbar-toggler btn-wight" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -37,17 +37,17 @@
                                         <a class="nav-link" href="{{ route('login') }}">Login</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                                        <a class="nav-link" href="{{ route('register') }}">Registrazione</a>
                                     </li>
                                 @endauth
                             </ul>
-    
+
                             @auth
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-    
+
                                     <button type="submit" class="btn btn-outline-danger">
-                                        Log Out
+                                        Disconnettiti
                                     </button>
                                 </form>
                             @endauth
@@ -56,7 +56,7 @@
                 </div>
 
             </header>
-    
+
             <main class="py-4">
                 <div class="container">
                     @yield('main-content')
