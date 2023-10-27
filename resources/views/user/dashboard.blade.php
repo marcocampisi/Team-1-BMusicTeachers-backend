@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <ul class="deals">
-                        <li>Tris Gionaliero.</li>
+                        <li>Tris Giornaliero.</li>
                         <li>Nessun Supporto.</li>
                     </ul><a href="{{ route('user.checkout', ['sponsorization' => 2]) }}" class="button-card">Compra Adesso</a>
 
