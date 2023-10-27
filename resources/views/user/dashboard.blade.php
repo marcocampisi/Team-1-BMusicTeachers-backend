@@ -43,7 +43,7 @@
     </div>
   </div> --}}
   <div class="container-card">
-    <h5 class="text-center">Scegli il piano che fa per te</h5>
+    <h3 class="text-center">Scegli il piano che fa per te</h5>
   </div>
   <div class="pricing-area">
     <div class="container">
@@ -60,7 +60,7 @@
                     </div>
                     <ul class="deals">
                         <li>Giornaliero.</li>
-                        <li>Nessun Supporto.</li>
+                        <li>Più Visibilità per un giorno.</li>
                     </ul><a href="{{ route('user.checkout', ['sponsorization' => 1]) }}" class="button-card">Compra Adesso</a>
                 </div>
             </div>
@@ -75,8 +75,8 @@
                         </div>
                     </div>
                     <ul class="deals">
-                        <li>Tris Giornaliero.</li>
-                        <li>Nessun Supporto.</li>
+                        <li>Tripla Giornaliero.</li>
+                        <li>Più Visibilità per tre giorni.</li>
                     </ul><a href="{{ route('user.checkout', ['sponsorization' => 2]) }}" class="button-card">Compra Adesso</a>
 
                 </div>
@@ -93,7 +93,7 @@
                     </div>
                     <ul class="deals">
                         <li>Settimanale.</li>
-                        <li>Supporto Incluso.</li>
+                        <li>Più Visibilità per una settimana.</li>
                     </ul><a href="{{ route('user.checkout', ['sponsorization' => 3]) }}" class="button-card">Compra Adesso</a>
                 </div>
             </div>
