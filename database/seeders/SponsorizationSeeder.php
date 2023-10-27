@@ -34,9 +34,9 @@ class SponsorizationSeeder extends Seeder
             'duration'=>72,
             ],
             [
-            'name'=>'7 Giorni',
+            'name'=>'6 Giorni',
             'price'=>'9.99',
-            'duration'=>168,
+            'duration'=>144,
             ]];
 
         foreach($sponsorizations as $sponsorization)

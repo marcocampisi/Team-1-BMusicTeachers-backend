@@ -9,7 +9,7 @@
         <form action="{{ route('user.teachers.update', ['teacher' => $teacher->id])}}" method="POST" enctype="multipart/form-data" >
             @csrf
             @method('PUT')
-            <h2>Modifica il profilo</h2>
+            <h2 class="text-white text-center">Modifica il profilo</h2>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Curriculum</label>
                 <input class="form-control" type="file" name="cv" id="formFile">

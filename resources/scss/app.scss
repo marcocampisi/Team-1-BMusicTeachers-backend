@@ -142,12 +142,6 @@
     background-repeat: no-repeat;
 }
 
-
-h2{
-    color:#fff;
-    text-align:center;
-}
-
 input.ms-form-control {
     background-color: transparent;
     border-bottom: 3px solid #fff;
@@ -485,9 +479,6 @@ button.btn-log{
 * #CARD SPONSORIZZAZIONI RESPONSIVE
 \*-----------------------------------*/
 
-.pricing-area {
-	padding: 80px 0;
-}
 .single-price {
 	padding-bottom: 25px;
 	background: #fff;
@@ -504,12 +495,15 @@ button.btn-log{
 	text-decoration: none;
 	border-radius: 25px;
 	display: inline-block;
+    transition: all 0.2s ease-in-out;
 }
-.single-price:hover {
-	cursor: pointer;
-	box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.1);
-	transform: scale(1.04);
+
+.single-price a:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
 }
+
 .single-price::before {
 	content: "";
 	width: 100%;

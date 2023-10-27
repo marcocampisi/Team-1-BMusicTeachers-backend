@@ -24,7 +24,7 @@
             <nav class="navbar bg-dark fixed-top justify-content-between">
                 <div class="container-fluid">
                     <a class="navbar-brand text-center mx-0" href=""><img class="logo-mt" src="{{ Vite::asset('file-img-pdf/logo/logo.png') }}" alt=""></a>
-                    <a class="navbar-brand text-success fw-bold fs-5" href="#"><img class="ms-img-dashboard mx-2" src="/storage/{{ auth()->user()->teacher->photo }}" alt="">{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</a>
+                    <a class="navbar-brand text-success fw-bold fs-5" href="{{ route('user.teachers.show', ['teacher' => auth()->user()->teacher->id]) }}"><img class="ms-img-dashboard mx-2" src="/storage/{{ auth()->user()->teacher->photo }}" alt="">{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</a>
                     <button class="navbar-toggler bg-success bg-outline-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>

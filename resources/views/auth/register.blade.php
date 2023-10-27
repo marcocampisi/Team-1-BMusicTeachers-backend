@@ -6,7 +6,7 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
-                <h2>Register</h2>
+                <h2 class="text-white text-center">Registrati</h2>
                 <div class="ms-progress bg-secondary mt-4">
                     <div class="ms-progress-bar w-50 bg-success"></div>
                     <div class="ms-display-1 fw-bold text-success">1/2</div>
@@ -40,7 +40,7 @@
                         {{ $message }}
                     </div>
                 @enderror
-        
+
                 <!-- Email Address -->
                 <div class="mt-4 inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
@@ -54,7 +54,7 @@
                         {{ $message }}
                     </div>
                 @enderror
-        
+
                 <!-- Password -->
                 <div class="mt-4 inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
@@ -68,7 +68,7 @@
                         {{ $message }}
                     </div>
                 @enderror
-        
+
                 <!-- Confirm Password -->
                 <div class="mt-4 inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
@@ -86,29 +86,29 @@
                 <div class="mb-1 text-light">
                     <p class="fw-light ms-small-text">I campi contrassegnati <span class="text-danger">*</span> sono obbligatori.</p>
                 </div>
-        
+
                 <div class="d-flex flex-column items-center justify-end mt-4">
-                    
+
 
                     <div class="forget">
                         <label for="remember">
                             <input type="checkbox" class="form-check-input" id="remember" name="remember"> Ricordami
                         </label>
                         <label>
-                            <a href="#">Forgot Password?</a>
+                            <a href="#">Password dimenticata?</a>
                         </label>
-                    </div>    
-        
+                    </div>
+
                     <button type="submit" class="btn-log mt-3">
-                    Register
+                    Registrati
                     </button>
                     <a class="text-center mt-3" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
+                        {{ __('Già registrato?') }}
                     </a>
                 </div>
             </form>
 
         </div>
     </div>
-    
+
 @endsection

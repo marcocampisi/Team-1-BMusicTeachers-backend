@@ -21,7 +21,6 @@
                             @method('DELETE')
                             <button class="btn btn-danger w-100">Elimina Profilo</button>
                         </form>
-
                     </div>
                 </div>
                 </div>

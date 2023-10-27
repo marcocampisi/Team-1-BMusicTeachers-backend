@@ -8,7 +8,7 @@
             <form action="{{ route('user.teachers.store', ['user_id' =>auth()->user()->id ])}}" method="POST"
                   enctype="multipart/form-data">
                 @csrf
-                <h2>Registrazione</h2>
+                <h2 class="text-center">Registrazione</h2>
 
                 <div class="ms-progress bg-secondary mt-4 mb-3">
                     <div class="ms-progress-bar w-100 bg-success"></div>
@@ -102,9 +102,11 @@
                               required>{{old('bio')}}</textarea>
                 </div>
 
-                <button type="submit">
-                    Crea
-                </button>
+                <div class="d-flex">
+                    <button type="submit" class="btn btn-light mx-auto px-4">
+                        Crea
+                    </button>
+                </div>
             </form>
         </div>
     </div>
