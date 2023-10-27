@@ -29,9 +29,11 @@
                         <div class="collapse navbar-collapse" id="navbarText">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 @auth
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('user.teachers.index') }}">Dashboard</a>
-                                    </li>
+                                    @if(!Route('user.teacher.create'))
+                                        <li class="nav-item">
+                                            <a class="nav-link text-light" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                        </li>
+                                    @endif
                                 @else
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -46,9 +48,11 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
-                                    <button type="submit" class="btn btn-outline-danger">
-                                        Disconnettiti
-                                    </button>
+                                    @if(!Route::is('user.techer.create')))
+                                        <button type="submit" class="btn btn-outline-danger">
+                                            Disconnettiti
+                                        </button>
+                                    @endif
                                 </form>
                             @endauth
                         </div>
