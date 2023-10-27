@@ -94,7 +94,7 @@
                 <textarea class="form-control bg-transparent text-light ms-textarea" name="bio" id="bio" rows="3" required>{{ old('bio', $teacher->bio) }}</textarea>
             </div>
 
-                <button type="submit" class="btn btn-light mx-auto px-4>
+                <button type="submit" class="btn btn-light mx-auto px-4">
                     Crea
                 </button>
         </form>
