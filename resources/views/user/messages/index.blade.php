@@ -20,7 +20,16 @@
                     <th scope="row">{{ $loop->index + 1 }}</th>
                     <td>{{ $message->name ? $message->name : "Anonimo" }}</td>
                     <td colspan="2">{{ $message->content }}</td>
-                    <td><a class="btn btn-primary" href="{{ route('user.messages.show', ['message' => $message->id]) }}">Visualizza</a></td>
+                    <td class="d-flex gap-2">
+                      <a class="btn btn-primary" href="{{ route('user.messages.show', ['message' => $message->id]) }}">Visualizza</a>
+                      <div class="ms-action-wrapper">
+                        <form action="{{ route('user.messages.destroy', ['message' => $message->id]) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger w-100">Elimina</button>
+                        </form>
+                      </div>
+                    </td>
                 </tr>
               @endforeach
             </tbody>

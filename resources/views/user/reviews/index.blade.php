@@ -20,8 +20,15 @@
                     <th scope="row">{{ $loop->index + 1 }}</th>
                     <td>{{ $review->name ? $review->name : "Anonimo" }}</td>
                     <td colspan="2">{{ $review->content }}</td>
-                    <td>
+                    <td class="d-flex gap-2">
                       <a class="btn btn-primary" href="{{ route('user.reviews.show', ['review' => $review->id]) }}">Visualizza</a>
+                      <div class="ms-action-wrapper">
+                          <form action="{{ route('user.reviews.destroy', ['review' => $review->id]) }}" method="post">
+                              @csrf
+                              @method('DELETE')
+                              <button class="btn btn-danger w-100">Elimina</button>
+                          </form>
+                      </div>
                     </td>
                 </tr>
               @endforeach

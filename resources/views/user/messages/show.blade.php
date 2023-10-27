@@ -9,7 +9,13 @@
         <div class="card-body">
             <h5 class="card-title">{{ $message->name ?  $message->name : 'Anonimo'}}</h5>
             <p class="card-text">{{ $message->content}}</p>
-            <a href="" class="btn btn-danger">Elimina</a>
+            <div class="ms-action-wrapper">
+                <form action="{{ route('user.messages.destroy', ['message' => $message->id]) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger w-100">Elimina</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

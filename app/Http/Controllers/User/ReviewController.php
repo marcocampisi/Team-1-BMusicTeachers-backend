@@ -78,6 +78,7 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        return redirect()->route('reviews.index')->with('success', 'Recensione eliminata correttamente.');
+        $review->delete();
+        return redirect()->route('user.reviews.index');
     }
 }

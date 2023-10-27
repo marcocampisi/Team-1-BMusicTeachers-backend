@@ -83,6 +83,6 @@ class MessageController extends Controller
     {
         $message->delete();
 
-        return redirect()->route('user.messages.index')->with('success', 'Messaggio eliminato correttamente.');
+        return redirect()->route('user.messages.index');
     }
 }
